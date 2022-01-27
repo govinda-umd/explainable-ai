@@ -19,14 +19,14 @@ import pickle
 
 import shap
 
-# # main dirs
-# proj_dir = pjoin(os.environ['HOME'], 'explainable-ai')
+# main dirs
+proj_dir = pjoin(os.environ['HOME'], 'explainable-ai')
 
-# # folders
-# sys.path.insert(0, proj_dir)
-# from py.dataset_utils import *
-# from py.base_model import *
-# from py.model_definitions import *
+# folders
+sys.path.insert(0, proj_dir)
+from helpers.dataset_utils import *
+from helpers.base_model import *
+from helpers.model_definitions import *
 
 
 # ## data
@@ -114,7 +114,7 @@ X_background = shap.utils.sample(X, 100)
 
 explainer = shap.KernelExplainer(model=linear_regression.model, 
                                  data=X_background)
-shap_values = explainer.shap_values(test_X[0, :, :].numpy())
+shap_values = explainer.shap_values(test_X[0, 0:1, :].numpy())
 
 
 # In[10]:
