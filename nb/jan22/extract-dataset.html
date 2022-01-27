@@ -362,14 +362,22 @@
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 <span class="kn">import</span> <span class="nn">pickle</span> 
 
-<span class="c1"># # main dirs</span>
-<span class="c1"># proj_dir = pjoin(os.environ[&#39;HOME&#39;], &#39;explainable-ai&#39;)</span>
+<span class="c1"># main dirs</span>
+<span class="n">proj_dir</span> <span class="o">=</span> <span class="n">pjoin</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOME&#39;</span><span class="p">],</span> <span class="s1">&#39;explainable-ai&#39;</span><span class="p">)</span>
 
-<span class="c1"># # folders</span>
-<span class="c1"># sys.path.insert(0, proj_dir)</span>
-<span class="c1"># from py.dataset_utils import *</span>
-<span class="c1"># from py.base_model import *</span>
-<span class="c1"># from py.model_definitions import *</span>
+<span class="c1"># folders</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_dir</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">helpers.dataset_utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">helpers.base_model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">helpers.model_definitions</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow_addons/utils/ensure_tf_install.py:37: UserWarning: You are currently using a nightly version of TensorFlow (2.9.0-dev20220124). 
+TensorFlow Addons offers no support for the nightly versions of TensorFlow. Some things might work, some other might not. 
+If you encounter a bug, do not file an issue on GitHub.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
