@@ -109,11 +109,11 @@ class base_model():
             # Compare predicted label to actual label
             # training=True is needed only if there are layers with different
             # behavior during training versus inference (e.g. Dropout).
-            if self.task_type is "regression":
+            if self.task_type == "regression":
                 self.eval_metric.update_state(tf.keras.backend.flatten(y), 
                                               tf.keras.backend.flatten(self.model(x,
                                                                             training=is_training)))
-            elif self.task_type is "classification":
+            elif self.task_type == "classification":
                 self.eval_metric.update_state(y,
                                               self.model(x, training=is_training))
 
