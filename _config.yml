@@ -3,7 +3,7 @@
 
 title: My Project [Daily Progress]
 author: Govinda Surampudi
-logo: logo_sepia.png
+logo: logo.png
 exclude_patterns : ['_tag', '_reset_cell_id', '**.ipynb_checkpoints']
 only_build_toc_files: false
 
