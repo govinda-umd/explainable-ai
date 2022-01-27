@@ -14,8 +14,8 @@ parts:
         sections:
           - file: nb/jan22/jan-23-2022
           - file: nb/jan22/jan-??-2022
-          - file: extract-dataset
-          - file: build_models
+          - file: nb/jan22/extract-dataset
+          - file: nb/jan22/build_models
 
   - caption: February 2022
     chapters:
