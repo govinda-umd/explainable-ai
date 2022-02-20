@@ -51,8 +51,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="January 21-25, 22" href="build_models.html" />
-    <link rel="prev" title="Jan ??, 2022 (title)" href="jan-%3F%3F-2022.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,53 +89,9 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../md/intro.html">
+  <a class="reference internal" href="../../intro.html">
    Welcome
   </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  January 2022
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../md/jan22.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../../md/jan22_updates.html">
-   Updates
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="jan-23-2022.html">
-     Jan 23rd, 2022 (jb tutorial)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="jan-%3F%3F-2022.html">
-     Jan ??, 2022 (title)
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     January 20-21, 22
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="build_models.html">
-     January 21-25, 22
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -147,23 +101,28 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../md/feb22.html">
+  <a class="reference internal" href="../feb22/feb22.html">
    Summary
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../md/feb22_updates.html">
+  <a class="reference internal" href="../feb22/date15.html">
    Updates
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../feb22/feb-%3F%3F-2022.html">
-     Feb ??, 2022 (title)
+    <a class="reference internal" href="../feb22/visualize_data.html">
+     February 15, 2022
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../feb22/linear_regression.html">
+     February 15, 2022
     </a>
    </li>
   </ul>
@@ -287,11 +246,6 @@
      organize data per run in a df
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-input-and-target-vectors">
-     create input and target vectors
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -327,11 +281,6 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#organize-data-per-run-in-a-df">
      organize data per run in a df
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-input-and-target-vectors">
-     create input and target vectors
     </a>
    </li>
   </ul>
@@ -523,38 +472,11 @@ If you encounter a bug, do not file an issue on GitHub.
 <p>716 rows × 5 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="create-input-and-target-vectors">
-<h2>create input and target vectors<a class="headerlink" href="#create-input-and-target-vectors" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split subjects into train and test partitions</span>
-<span class="n">subjs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;subj&#39;</span><span class="p">])</span>
-<span class="n">num_subjs</span> <span class="o">=</span> <span class="n">subjs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">num_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.9</span> <span class="o">*</span> <span class="n">num_subjs</span><span class="p">)</span>
-<span class="n">num_test</span> <span class="o">=</span> <span class="n">num_subjs</span> <span class="o">-</span> <span class="n">num_train</span>
-
-<span class="n">permuted_subjs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">subjs</span><span class="p">)</span>
-<span class="n">train_subjs</span> <span class="o">=</span> <span class="n">permuted_subjs</span><span class="p">[:</span><span class="n">num_train</span><span class="p">]</span>
-<span class="n">test_subjs</span> <span class="o">=</span> <span class="n">permuted_subjs</span><span class="p">[</span><span class="n">num_train</span><span class="p">:]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create X and y</span>
-<span class="n">train_arrays</span> <span class="o">=</span> <span class="n">get_Xy</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">train_subjs</span><span class="p">)</span> <span class="c1"># (X_train, y_train, mask_train)</span>
-<span class="n">test_arrays</span> <span class="o">=</span> <span class="n">get_Xy</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">test_subjs</span><span class="p">)</span> <span class="c1"># (X_test, y_test, mask_test)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save these arrays</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pjoin</span><span class="p">(</span><span class="n">proj_dir</span><span class="p">,</span> <span class="s1">&#39;data/emoprox2&#39;</span><span class="p">,</span> <span class="s1">&#39;train_test_arrays.pkl&#39;</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="s1">&#39;train&#39;</span><span class="p">:</span><span class="n">train_arrays</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">:</span><span class="n">test_arrays</span><span class="p">},</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the dataframe</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">proj_dir</span><span class="si">}</span><span class="s2">/data/emoprox2/dataframe.pkl&quot;</span>
+<span class="n">data_df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -586,21 +508,7 @@ If you encounter a bug, do not file an issue on GitHub.
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="jan-%3F%3F-2022.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Jan ??, 2022 (title)</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="build_models.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">January 21-25, 22</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>

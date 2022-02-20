@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>January 21-25, 22 &#8212; My Project [Daily Progress]</title>
+    <title>January 27-30, 22 &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -168,7 +168,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/nb/jan22/build_models.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/nb/jan22/testing_models.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -188,7 +188,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/govinda-umd/explainable-ai/issues/new?title=Issue%20on%20page%20%2Fnb/jan22/build_models.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/govinda-umd/explainable-ai/issues/new?title=Issue%20on%20page%20%2Fnb/jan22/testing_models.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -209,7 +209,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/govinda-umd/explainable-ai/master?urlpath=tree/docs/nb/jan22/build_models.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/govinda-umd/explainable-ai/master?urlpath=tree/docs/nb/jan22/testing_models.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -232,13 +232,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   data
+  <a class="reference internal nav-link" href="#model">
+   model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model">
-   model
+  <a class="reference internal nav-link" href="#data">
+   data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -261,7 +261,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>January 21-25, 22</h1>
+                <h1>January 27-30, 22</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -272,13 +272,13 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   data
+  <a class="reference internal nav-link" href="#model">
+   model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model">
-   model
+  <a class="reference internal nav-link" href="#data">
+   data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -300,8 +300,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="january-21-25-22">
-<h1>January 21-25, 22<a class="headerlink" href="#january-21-25-22" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="january-27-30-22">
+<h1>January 27-30, 22<a class="headerlink" href="#january-27-30-22" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -347,6 +347,36 @@ If you encounter a bug, do not file an issue on GitHub.
 </div>
 </div>
 </div>
+<div class="section" id="model">
+<h2>model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Linear_Model</span><span class="p">()</span>
+
+<span class="n">default_slice</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">start</span> <span class="p">:</span> <span class="n">end</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="n">linear_regression</span> <span class="o">=</span> <span class="n">base_model</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="s2">&quot;regression&quot;</span><span class="p">,</span> 
+                               <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+                               <span class="n">loss_object</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">MeanSquaredError</span><span class="p">(),</span> 
+                               <span class="n">L1_scale</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+                               <span class="n">L2_scale</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                               <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span> 
+                               <span class="n">eval_metric</span><span class="o">=</span><span class="n">tfa</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">RSquare</span><span class="p">(),</span>
+                               <span class="n">eval_metric_name</span><span class="o">=</span><span class="s2">&quot;% var explained&quot;</span><span class="p">,</span>
+                               <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> 
+                               <span class="n">slice_input</span><span class="o">=</span><span class="n">default_slice</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-29 18:54:32.032533: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-29 18:54:32.475220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 14796 MB memory:  -&gt; device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="data">
 <h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -377,45 +407,15 @@ If you encounter a bug, do not file an issue on GitHub.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-01 14:24:32.001067: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-02-01 14:24:32.398153: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 14796 MB memory:  -&gt; device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_mask</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">train_mask</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorShape([645, 360])
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="model">
-<h2>model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Linear_Model</span><span class="p">()</span>
-
-<span class="n">default_slice</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">start</span> <span class="p">:</span> <span class="n">end</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
-
-<span class="n">linear_regression</span> <span class="o">=</span> <span class="n">base_model</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="s2">&quot;regression&quot;</span><span class="p">,</span> 
-                               <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
-                               <span class="n">loss_object</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">MeanSquaredError</span><span class="p">(),</span> 
-                               <span class="n">L1_scale</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
-                               <span class="n">L2_scale</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                               <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span> 
-                               <span class="n">eval_metric</span><span class="o">=</span><span class="n">tfa</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">RSquare</span><span class="p">(),</span>
-                               <span class="n">eval_metric_name</span><span class="o">=</span><span class="s2">&quot;% var explained&quot;</span><span class="p">,</span>
-                               <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> 
-                               <span class="n">slice_input</span><span class="o">=</span><span class="n">default_slice</span><span class="p">)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorShape([647, 360, 1])
 </pre></div>
 </div>
 </div>
@@ -429,34 +429,26 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
                                 <span class="n">train_Y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span> 
                                 <span class="n">val_X</span><span class="o">=</span><span class="n">train_X</span><span class="p">,</span> 
                                 <span class="n">val_Y</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span> 
-                                <span class="n">num_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+                                <span class="n">num_epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 000: Train Loss: 0.449, Train % var explained: -505.795%  Val Loss: 0.260, Val % var explained: -277.047%  
-Epoch 001: Train Loss: 0.170, Train % var explained: -138.390%  Val Loss: 0.118, Val % var explained: -71.300%  
-Epoch 002: Train Loss: 0.099, Train % var explained: -42.024%  Val Loss: 0.083, Val % var explained: -20.447%  
-Epoch 003: Train Loss: 0.076, Train % var explained: -10.699%  Val Loss: 0.071, Val % var explained: -4.157%  
-Epoch 004: Train Loss: 0.069, Train % var explained: -0.440%  Val Loss: 0.067, Val % var explained: 2.382%  
-Epoch 005: Train Loss: 0.066, Train % var explained: 3.664%  Val Loss: 0.065, Val % var explained: 4.894%  
-Epoch 006: Train Loss: 0.065, Train % var explained: 5.445%  Val Loss: 0.064, Val % var explained: 6.087%  
-Epoch 007: Train Loss: 0.064, Train % var explained: 6.311%  Val Loss: 0.064, Val % var explained: 6.708%  
-Epoch 008: Train Loss: 0.064, Train % var explained: 6.753%  Val Loss: 0.064, Val % var explained: 7.034%  
-Epoch 009: Train Loss: 0.064, Train % var explained: 6.983%  Val Loss: 0.063, Val % var explained: 7.206%  
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">train_X</span><span class="p">)</span>
-<span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorShape([645, 360, 1])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 000: Train Loss: 0.065, Train % var explained: 5.607%  Val Loss: 0.064, Val % var explained: 6.339%  
+Epoch 001: Train Loss: 0.064, Train % var explained: 6.611%  Val Loss: 0.064, Val % var explained: 7.024%  
+Epoch 002: Train Loss: 0.064, Train % var explained: 6.995%  Val Loss: 0.063, Val % var explained: 7.224%  
+Epoch 003: Train Loss: 0.064, Train % var explained: 7.090%  Val Loss: 0.063, Val % var explained: 7.295%  
+Epoch 004: Train Loss: 0.064, Train % var explained: 7.097%  Val Loss: 0.063, Val % var explained: 7.291%  
+Epoch 005: Train Loss: 0.064, Train % var explained: 7.055%  Val Loss: 0.063, Val % var explained: 7.257%  
+Epoch 006: Train Loss: 0.064, Train % var explained: 6.969%  Val Loss: 0.063, Val % var explained: 7.207%  
+Epoch 007: Train Loss: 0.064, Train % var explained: 6.822%  Val Loss: 0.063, Val % var explained: 7.152%  
+Epoch 008: Train Loss: 0.064, Train % var explained: 6.582%  Val Loss: 0.064, Val % var explained: 7.097%  
+Epoch 009: Train Loss: 0.064, Train % var explained: 6.224%  Val Loss: 0.064, Val % var explained: 7.036%  
+Epoch 010: Train Loss: 0.065, Train % var explained: 5.769%  Val Loss: 0.064, Val % var explained: 6.973%  
+Epoch 011: Train Loss: 0.065, Train % var explained: 5.306%  Val Loss: 0.064, Val % var explained: 6.915%  
+Epoch 012: Train Loss: 0.065, Train % var explained: 4.984%  Val Loss: 0.064, Val % var explained: 6.847%  
+Epoch 013: Train Loss: 0.065, Train % var explained: 4.944%  Val Loss: 0.064, Val % var explained: 6.766%  
+Epoch 014: Train Loss: 0.065, Train % var explained: 5.192%  Val Loss: 0.064, Val % var explained: 6.726%  
 </pre></div>
 </div>
 </div>
@@ -464,32 +456,6 @@ Epoch 009: Train Loss: 0.064, Train % var explained: 6.983%  Val Loss: 0.063, Va
 </div>
 <div class="section" id="shapley-values">
 <h2>Shapley values<a class="headerlink" href="#shapley-values" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select a set of background examples to take an expectation over</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">train_X</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-<span class="c1"># background = train_X[np.random.choice(train_X.shape[0], 100, replace=False), :]</span>
-<span class="n">X_background</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">X_background</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 85)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SHAP explainer</span>
-<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">KernelExplainer</span><span class="p">(</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">X_background</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 
