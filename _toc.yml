@@ -18,5 +18,6 @@ parts:
             sections:
               - file: nb/feb22/visualize_data
               - file: nb/feb22/linear_regression
+              - file: nb/feb22/model_explanations
           
       

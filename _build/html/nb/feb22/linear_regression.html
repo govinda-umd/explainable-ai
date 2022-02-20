@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>February 15, 2022 &#8212; My Project [Daily Progress]</title>
+    <title>build a simple linear model &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="February 15, 2022" href="visualize_data.html" />
+    <link rel="next" title="model explanations" href="model_explanations.html" />
+    <link rel="prev" title="visualize the data" href="visualize_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,7 +108,7 @@
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="date15.html">
+  <a class="reference internal" href="feb22_updates.html">
    Updates
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -116,15 +117,32 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="visualize_data.html">
-     February 15, 2022
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="date15.html">
+     Feb 15, 2022
     </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     February 15, 2022
-    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="visualize_data.html">
+       visualize the data
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       build a simple linear model
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="model_explanations.html">
+       model explanations
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -264,7 +282,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>February 15, 2022</h1>
+                <h1>build a simple linear model</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -305,9 +323,12 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="february-15-2022">
-<h1>February 15, 2022<a class="headerlink" href="#february-15-2022" title="Permalink to this headline">¶</a></h1>
-<p>Here, we explain the predictions of a simple linear regression model trained on emoprox2 dataset.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="build-a-simple-linear-model">
+<h1>build a simple linear model<a class="headerlink" href="#build-a-simple-linear-model" title="Permalink to this headline">¶</a></h1>
+<p>Here, we</p>
+<ol class="simple">
+<li><p>build a simple model for linear regression, train it, and save for further analysis.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -364,23 +385,23 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-18 16:27:02.700353: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-02-18 16:27:04.524254: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
-2022-02-18 16:27:04.547436: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-19 20:43:18.324232: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-02-19 20:43:20.151357: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2022-02-19 20:43:20.174344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:17:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-02-18 16:27:04.547689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
+2022-02-19 20:43:20.174722: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-02-18 16:27:04.547714: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-02-18 16:27:04.551083: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
-2022-02-18 16:27:04.551154: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
-2022-02-18 16:27:04.552265: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
-2022-02-18 16:27:04.552584: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
-2022-02-18 16:27:04.553628: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
-2022-02-18 16:27:04.554478: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
-2022-02-18 16:27:04.554649: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
-2022-02-18 16:27:04.555547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
+2022-02-19 20:43:20.174763: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-02-19 20:43:20.179677: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-02-19 20:43:20.179767: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+2022-02-19 20:43:20.181031: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2022-02-19 20:43:20.181405: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2022-02-19 20:43:20.182608: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
+2022-02-19 20:43:20.183623: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
+2022-02-19 20:43:20.183833: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2022-02-19 20:43:20.184832: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
 </pre></div>
 </div>
 <div class="output text_html"><div align='center'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAdxJREFUeNq0Vt1Rg0AQJjcpgBJiBWIFkgoMFYhPPAIVECogPuYpdJBYgXQQrMCUkA50V7+d2ZwXuXPGm9khHLu3f9+3l1nkWNvtNqfHLgpfQ1EUS3tz5nAQ0+NIsiAZSc6eDlI8M3J00B/mDuUKDk6kfOebAgW3pkdD0pFcODGW4gKKvOrAUm04MA4QDt1OEIXU9hDigfS5rC1eS5T90gltck1Xrizo257kgySZcNRzgCSxCvgiE9nckPJo2b/B2AcEkk2OwL8bD8gmOKR1GPbaCUqxEgTq0tLvgb6zfo7+DgYGkkWL2tqLDV4RSITfbHPPfJKIrWz4nJQTMPAWA7IbD6imcNaDeDfgk+4No+wZr40BL3g9eQJJCFqRQ54KiSt72lsLpE3o3MCBSxDuq4yOckU2hKXRuwBH3OyMR4g1UpyTYw6mlmBqNdUXRM1NfyF5EPI6JkcpIDBIX8jX6DR/6ckAZJ0wEAdLR8DEk6OfC1Pp8BKo6TQIwPJbvJ6toK5lmuvJoRtfK6Ym1iRYIarRo2UyYHvRN5qpakR3yoizWrouoyuXXQqI185LCw07op5ZyCRGL99h24InP0e9xdQukEKVmhzrqZuRIfwISB//cP3Wk3f8f/yR+BRgAHu00HjLcEQBAAAAAElFTkSuQmCC' /></div><script charset='utf-8'>!function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=410)}([function(t,e,n){"use strict";function r(t,e,n,r,o,a,u,c){if(i(e),!t){var s;if(void 0===e)s=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,a,u,c],f=0;s=new Error(e.replace(/%s/g,function(){return l[f++]})),s.name="Invariant Violation"}throw s.framesToPop=1,s}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";var r=n(8),i=r;t.exports=i},function(t,e,n){"use strict";function r(t){for(var e=arguments.length-1,n="Minified React error #"+t+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant="+t,r=0;r<e;r++)n+="&args[]="+encodeURIComponent(arguments[r+1]);n+=" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";var i=new Error(n);throw i.name="Invariant Violation",i.framesToPop=1,i}t.exports=r},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}function i(){try{if(!Object.assign)return!1;var t=new String("abc");if(t[5]="de","5"===Object.getOwnPropertyNames(t)[0])return!1;for(var e={},n=0;n<10;n++)e["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(e).map(function(t){return e[t]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(t){i[t]=t}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},i)).join("")}catch(t){return!1}}/*
@@ -500,24 +521,25 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">saving</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">linear_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/models/linear_model&quot;</span><span class="p">)</span>
+<span class="n">model_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/models/linear_model&quot;</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-18 16:27:04.753427: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-19 20:43:20.376708: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-02-18 16:27:04.754532: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+2022-02-19 20:43:20.378000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-02-18 16:27:04.754887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
-2022-02-18 16:27:04.754930: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-02-18 16:27:05.139006: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
-2022-02-18 16:27:05.139039: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
-2022-02-18 16:27:05.139044: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
-2022-02-18 16:27:05.139769: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14804 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
-2022-02-18 16:27:05.234104: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
-2022-02-18 16:27:05.234788: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
+2022-02-19 20:43:20.378353: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
+2022-02-19 20:43:20.378395: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-02-19 20:43:20.751518: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-02-19 20:43:20.751550: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
+2022-02-19 20:43:20.751555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
+2022-02-19 20:43:20.752226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14804 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
+2022-02-19 20:43:20.845564: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-02-19 20:43:20.846199: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
@@ -538,38 +560,40 @@ None
 Epoch 1/50
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-18 16:27:05.518399: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-19 20:43:21.144553: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  87/5823 [..............................] - ETA: 10s - loss: 0.2850
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  87/5823 [..............................] - ETA: 10s - loss: 0.4009
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-18 16:27:05.831432: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-19 20:43:21.466496: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5823/5823 [==============================] - 16s 3ms/step - loss: 0.2727 - val_loss: 0.3225
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5823/5823 [==============================] - 16s 3ms/step - loss: 0.2768 - val_loss: 0.1174
 Epoch 2/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2964 - val_loss: 0.1675
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2470 - val_loss: 0.1194
 Epoch 3/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2592 - val_loss: 0.1189
+5823/5823 [==============================] - 15s 3ms/step - loss: 0.2604 - val_loss: 0.1500
 Epoch 4/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2851 - val_loss: 0.1958
+5823/5823 [==============================] - 15s 3ms/step - loss: 0.2841 - val_loss: 0.1100
 Epoch 5/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.3506 - val_loss: 0.0822
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2466 - val_loss: 0.1588
 Epoch 6/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2340 - val_loss: 0.2900
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2777 - val_loss: 0.0910
 Epoch 7/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2376 - val_loss: 0.4223
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2496 - val_loss: 0.9560
 Epoch 8/50
-5823/5823 [==============================] - 15s 3ms/step - loss: 0.2932 - val_loss: 0.1974
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2369 - val_loss: 0.4105
 Epoch 9/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2864 - val_loss: 0.1096
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2803 - val_loss: 0.1194
 Epoch 10/50
-5823/5823 [==============================] - 16s 3ms/step - loss: 0.2583 - val_loss: 0.1041
+5823/5823 [==============================] - 15s 3ms/step - loss: 0.2768 - val_loss: 0.1248
+Epoch 11/50
+5823/5823 [==============================] - 16s 3ms/step - loss: 0.2356 - val_loss: 0.1539
 INFO:tensorflow:Assets written to: /home/govindas/explainable-ai/results/models/linear_model/assets
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-18 16:29:42.175208: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-19 20:46:12.547874: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
 </pre></div>
 </div>
 </div>
@@ -627,8 +651,15 @@ INFO:tensorflow:Assets written to: /home/govindas/explainable-ai/results/models/
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">February 15, 2022</p>
+            <p class="prev-next-title">visualize the data</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="model_explanations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">model explanations</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

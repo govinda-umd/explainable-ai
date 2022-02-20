@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # February 15, 2022
-
+# # visualize the data
+**Motivation**: What is this update about?  What was the motivation? Main findings? Put a brief summary here.
 # Here, we 
 # 1. split the whole data into training and testing sets, save them for further use, and 
 # 2. visualize lower-dimensional representations of data and discover its patterns.

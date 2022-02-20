@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # February 15, 2022
+# # build a simple linear model
 
-# Here, we explain the predictions of a simple linear regression model trained on emoprox2 dataset.
+# Here, we
+# 1. build a simple model for linear regression, train it, and save for further analysis.
 
 # In[1]:
 
@@ -125,7 +126,8 @@ linear_model.fit(x=X_train,
 '''
 saving
 '''
-linear_model.save(f"{results_dir}/models/linear_model")
+model_file = f"{results_dir}/models/linear_model"
+linear_model.save(model_file)
 
 
 # In[8]:
