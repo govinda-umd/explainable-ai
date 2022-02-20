@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>visualize the data &#8212; My Project [Daily Progress]</title>
+    <title>model explanations &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="build a simple linear model" href="linear_regression.html" />
-    <link rel="prev" title="Feb 15, 2022" href="date15.html" />
+    <link rel="prev" title="build a simple linear model" href="linear_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,8 +126,8 @@
      </i>
     </label>
     <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
+     <li class="toctree-l3">
+      <a class="reference internal" href="visualize_data.html">
        visualize the data
       </a>
      </li>
@@ -137,8 +136,8 @@
        build a simple linear model
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="model_explanations.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        model explanations
       </a>
      </li>
@@ -187,7 +186,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/nb/feb22/visualize_data.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/nb/feb22/model_explanations.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -207,7 +206,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/govinda-umd/explainable-ai/issues/new?title=Issue%20on%20page%20%2Fnb/feb22/visualize_data.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/govinda-umd/explainable-ai/issues/new?title=Issue%20on%20page%20%2Fnb/feb22/model_explanations.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -228,7 +227,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/govinda-umd/explainable-ai/master?urlpath=tree/docs/nb/feb22/visualize_data.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/govinda-umd/explainable-ai/master?urlpath=tree/docs/nb/feb22/model_explanations.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -251,43 +250,28 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   data
+  <a class="reference internal nav-link" href="#load-the-data-and-the-trained-model">
+   load the data and the trained model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualize-data">
-   visualize data
+  <a class="reference internal nav-link" href="#explanations">
+   explanations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#select-randomly-a-few-data-samples-and-then-visualize-them-this-will-reduce-the-operational-load-do-not-give-all-training-samples">
-     SELECT RANDOMLY A FEW DATA SAMPLES AND THEN VISUALIZE THEM. THIS WILL REDUCE THE OPERATIONAL LOAD. DO NOT GIVE ALL TRAINING SAMPLES.
+    <a class="reference internal nav-link" href="#data-for-explaining-the-model">
+     data for explaining the model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pca">
-     pca
+    <a class="reference internal nav-link" href="#shap-gradientexplainer">
+     shap: GradientExplainer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#isomap">
-     Isomap
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spectral-embedding">
-     spectral embedding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mds-multidimensional-scaling">
-     mds: multidimensional scaling
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tsne">
-     tsne
+    <a class="reference internal nav-link" href="#shap-kernelexplainer">
+     shap: KernelExplainer
     </a>
    </li>
   </ul>
@@ -302,7 +286,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>visualize the data</h1>
+                <h1>model explanations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -313,43 +297,28 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   data
+  <a class="reference internal nav-link" href="#load-the-data-and-the-trained-model">
+   load the data and the trained model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualize-data">
-   visualize data
+  <a class="reference internal nav-link" href="#explanations">
+   explanations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#select-randomly-a-few-data-samples-and-then-visualize-them-this-will-reduce-the-operational-load-do-not-give-all-training-samples">
-     SELECT RANDOMLY A FEW DATA SAMPLES AND THEN VISUALIZE THEM. THIS WILL REDUCE THE OPERATIONAL LOAD. DO NOT GIVE ALL TRAINING SAMPLES.
+    <a class="reference internal nav-link" href="#data-for-explaining-the-model">
+     data for explaining the model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pca">
-     pca
+    <a class="reference internal nav-link" href="#shap-gradientexplainer">
+     shap: GradientExplainer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#isomap">
-     Isomap
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spectral-embedding">
-     spectral embedding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mds-multidimensional-scaling">
-     mds: multidimensional scaling
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tsne">
-     tsne
+    <a class="reference internal nav-link" href="#shap-kernelexplainer">
+     shap: KernelExplainer
     </a>
    </li>
   </ul>
@@ -363,13 +332,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="visualize-the-data">
-<h1>visualize the data<a class="headerlink" href="#visualize-the-data" title="Permalink to this headline">¶</a></h1>
-<p>Here, we</p>
-<ol class="simple">
-<li><p>split the whole data into training and testing sets, save them for further use, and</p></li>
-<li><p>visualize lower-dimensional representations of data and discover its patterns.</p></li>
-</ol>
+  <div class="tex2jax_ignore mathjax_ignore section" id="model-explanations">
+<h1>model explanations<a class="headerlink" href="#model-explanations" title="Permalink to this headline">¶</a></h1>
+<p>Here we explain the linear model’s predictions using Shap explanation methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -402,6 +367,7 @@
 
 <span class="c1"># main dirs</span>
 <span class="n">proj_dir</span> <span class="o">=</span> <span class="n">pjoin</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;HOME&#39;</span><span class="p">],</span> <span class="s1">&#39;explainable-ai&#39;</span><span class="p">)</span>
+<span class="n">results_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">proj_dir</span><span class="si">}</span><span class="s2">/results&quot;</span>
 
 <span class="c1"># folders</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_dir</span><span class="p">)</span>
@@ -425,23 +391,23 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-19 20:32:50.594592: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-02-19 20:32:52.406383: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
-2022-02-19 20:32:52.457102: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-20 13:36:53.246801: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-02-20 13:36:55.060231: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2022-02-20 13:36:55.085826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:17:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-02-19 20:32:52.457350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
+2022-02-20 13:36:55.086017: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-02-19 20:32:52.457386: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-02-19 20:32:52.460651: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
-2022-02-19 20:32:52.460791: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
-2022-02-19 20:32:52.461649: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
-2022-02-19 20:32:52.461950: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
-2022-02-19 20:32:52.462634: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
-2022-02-19 20:32:52.463256: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
-2022-02-19 20:32:52.463421: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
-2022-02-19 20:32:52.464088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
+2022-02-20 13:36:55.086047: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-02-20 13:36:55.088454: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-02-20 13:36:55.088572: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+2022-02-20 13:36:55.089300: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2022-02-20 13:36:55.089582: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2022-02-20 13:36:55.090228: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
+2022-02-20 13:36:55.090792: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
+2022-02-20 13:36:55.090931: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2022-02-20 13:36:55.091572: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
 </pre></div>
 </div>
 <div class="output text_html"><div align='center'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAdxJREFUeNq0Vt1Rg0AQJjcpgBJiBWIFkgoMFYhPPAIVECogPuYpdJBYgXQQrMCUkA50V7+d2ZwXuXPGm9khHLu3f9+3l1nkWNvtNqfHLgpfQ1EUS3tz5nAQ0+NIsiAZSc6eDlI8M3J00B/mDuUKDk6kfOebAgW3pkdD0pFcODGW4gKKvOrAUm04MA4QDt1OEIXU9hDigfS5rC1eS5T90gltck1Xrizo257kgySZcNRzgCSxCvgiE9nckPJo2b/B2AcEkk2OwL8bD8gmOKR1GPbaCUqxEgTq0tLvgb6zfo7+DgYGkkWL2tqLDV4RSITfbHPPfJKIrWz4nJQTMPAWA7IbD6imcNaDeDfgk+4No+wZr40BL3g9eQJJCFqRQ54KiSt72lsLpE3o3MCBSxDuq4yOckU2hKXRuwBH3OyMR4g1UpyTYw6mlmBqNdUXRM1NfyF5EPI6JkcpIDBIX8jX6DR/6ckAZJ0wEAdLR8DEk6OfC1Pp8BKo6TQIwPJbvJ6toK5lmuvJoRtfK6Ym1iRYIarRo2UyYHvRN5qpakR3yoizWrouoyuXXQqI185LCw07op5ZyCRGL99h24InP0e9xdQukEKVmhzrqZuRIfwISB//cP3Wk3f8f/yR+BRgAHu00HjLcEQBAAAAAElFTkSuQmCC' /></div><script charset='utf-8'>!function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=410)}([function(t,e,n){"use strict";function r(t,e,n,r,o,a,u,c){if(i(e),!t){var s;if(void 0===e)s=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,a,u,c],f=0;s=new Error(e.replace(/%s/g,function(){return l[f++]})),s.name="Invariant Violation"}throw s.framesToPop=1,s}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";var r=n(8),i=r;t.exports=i},function(t,e,n){"use strict";function r(t){for(var e=arguments.length-1,n="Minified React error #"+t+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant="+t,r=0;r<e;r++)n+="&args[]="+encodeURIComponent(arguments[r+1]);n+=" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";var i=new Error(n);throw i.name="Invariant Violation",i.framesToPop=1,i}t.exports=r},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}function i(){try{if(!Object.assign)return!1;var t=new String("abc");if(t[5]="de","5"===Object.getOwnPropertyNames(t)[0])return!1;for(var e={},n=0;n<10;n++)e["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(e).map(function(t){return e[t]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(t){i[t]=t}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},i)).join("")}catch(t){return!1}}/*
@@ -488,167 +454,22 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </div>
 </div>
 </div>
-<div class="section" id="data">
-<h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="load-the-data-and-the-trained-model">
+<h2>load the data and the trained model<a class="headerlink" href="#load-the-data-and-the-trained-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># whole data</span>
-<span class="n">file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">proj_dir</span><span class="si">}</span><span class="s2">/data/emoprox2/dataframe.pkl&quot;</span>
-<span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
-<span class="n">data_df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>subj</th>
-      <th>run</th>
-      <th>ts</th>
-      <th>prox</th>
-      <th>censor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>123</td>
-      <td>1</td>
-      <td>[[0.184886, 0.237496, -0.869801, -0.077807, -0...</td>
-      <td>[0.3019871606242329, 0.3593604239884513, 0.416...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>123</td>
-      <td>2</td>
-      <td>[[0.197471, 0.278874, -0.539631, 0.180507, 0.4...</td>
-      <td>[0.4512517163194395, 0.403617813223693, 0.3560...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>123</td>
-      <td>3</td>
-      <td>[[0.060113, 0.16845, 0.202967, 0.0108, 0.27181...</td>
-      <td>[0.4950820412729392, 0.4404447770753938, 0.380...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, ...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>123</td>
-      <td>4</td>
-      <td>[[-0.126394, -0.255507, -0.543931, -0.35221, -...</td>
-      <td>[0.3476834139494951, 0.3990256455963081, 0.450...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>123</td>
-      <td>5</td>
-      <td>[[-0.167003, -0.329194, 0.711475, -0.060723, -...</td>
-      <td>[0.4991469039553821, 0.441531815585027, 0.3806...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>711</th>
-      <td>042</td>
-      <td>2</td>
-      <td>[[-0.058707, -0.34063, -1.171228, 0.004106, -0...</td>
-      <td>[0.4512517163194395, 0.403617813223693, 0.3560...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>712</th>
-      <td>042</td>
-      <td>3</td>
-      <td>[[0.116604, -0.237293, -0.015429, -0.034826, -...</td>
-      <td>[0.4950820412729392, 0.4406881501898595, 0.380...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, ...</td>
-    </tr>
-    <tr>
-      <th>713</th>
-      <td>042</td>
-      <td>4</td>
-      <td>[[-0.44084, -0.046966, -1.170635, 0.289755, -0...</td>
-      <td>[0.348026457813505, 0.399483037414988, 0.45071...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>714</th>
-      <td>042</td>
-      <td>5</td>
-      <td>[[0.409907, -0.082538, -1.07226, -0.206831, -0...</td>
-      <td>[0.4991469039553821, 0.441531815585027, 0.3806...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-    <tr>
-      <th>715</th>
-      <td>042</td>
-      <td>6</td>
-      <td>[[-0.055194, -0.13724, 0.019737, 0.101967, 0.3...</td>
-      <td>[0.3768834148159293, 0.4256255019324579, 0.474...</td>
-      <td>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</td>
-    </tr>
-  </tbody>
-</table>
-<p>716 rows × 5 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">proj_dir</span><span class="si">}</span><span class="s2">/data/emoprox2/train_dataframe.pkl&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data</span>
 <span class="n">test_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">proj_dir</span><span class="si">}</span><span class="s2">/data/emoprox2/test_dataframe.pkl&quot;</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">test_file</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">test_file</span><span class="p">):</span>
-    <span class="c1"># split subjects into train and test partitions</span>
-    <span class="n">subjs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data_df</span><span class="p">[</span><span class="s1">&#39;subj&#39;</span><span class="p">])</span>
-    <span class="n">train_subjs</span><span class="p">,</span> <span class="n">test_subjs</span> <span class="o">=</span> <span class="n">split_subjs</span><span class="p">(</span><span class="n">subjs</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data_for_model</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">test_df</span><span class="p">)</span>
 
-    <span class="n">train_df</span> <span class="o">=</span> <span class="n">get_Xy</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">train_subjs</span><span class="p">)</span>
-    <span class="n">test_df</span> <span class="o">=</span> <span class="n">get_Xy</span><span class="p">(</span><span class="n">data_df</span><span class="p">,</span> <span class="n">test_subjs</span><span class="p">)</span>
+<span class="c1"># model</span>
+<span class="n">model_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/models/linear_model&quot;</span>
+<span class="n">linear_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
 
-    <span class="c1"># apply censor mask</span>
-    <span class="n">train_df</span> <span class="o">=</span> <span class="n">apply_mask_Xy</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
-    <span class="n">test_df</span> <span class="o">=</span> <span class="n">apply_mask_Xy</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
-
-    <span class="c1"># save these sets</span>
-    <span class="n">train_df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
-    <span class="n">test_df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">test_file</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">train_file</span><span class="p">)</span>
-    <span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">test_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_df</span>
+<span class="n">linear_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -746,267 +567,119 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
   </tbody>
 </table>
 <p>69 rows × 3 columns</p>
-</div></div></div>
+</div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-20 13:36:55.585947: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-02-20 13:36:55.587088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
+coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
+2022-02-20 13:36:55.587433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
+2022-02-20 13:36:55.587481: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-02-20 13:36:55.962311: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-02-20 13:36:55.962342: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
+2022-02-20 13:36:55.962347: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
+2022-02-20 13:36:55.963028: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14804 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
+</pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 85)]              0         
+_________________________________________________________________
+masking (Masking)            (None, 85)                0         
+_________________________________________________________________
+dense (Dense)                (None, 1)                 86        
+=================================================================
+Total params: 86
+Trainable params: 86
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="explanations">
+<h2>explanations<a class="headerlink" href="#explanations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-for-explaining-the-model">
+<h3>data for explaining the model<a class="headerlink" href="#data-for-explaining-the-model" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prepare input and target for model</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">prepare_data_for_model</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">train_df</span><span class="p">)</span>
-<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">prepare_data_for_model</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">test_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x, y = prepare_data_for_model(test_df[:1], shuffle=False)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">test_df</span><span class="p">[:</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">test_df</span><span class="p">[:</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="shap-gradientexplainer">
+<h3>shap: GradientExplainer<a class="headerlink" href="#shap-gradientexplainer" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(232920, 85) (232920,)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(24840, 85) (24840,)
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="visualize-data">
-<h2>visualize data<a class="headerlink" href="#visualize-data" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="select-randomly-a-few-data-samples-and-then-visualize-them-this-will-reduce-the-operational-load-do-not-give-all-training-samples">
-<h3>SELECT RANDOMLY A FEW DATA SAMPLES AND THEN VISUALIZE THEM. THIS WILL REDUCE THE OPERATIONAL LOAD. DO NOT GIVE ALL TRAINING SAMPLES.<a class="headerlink" href="#select-randomly-a-few-data-samples-and-then-visualize-them-this-will-reduce-the-operational-load-do-not-give-all-training-samples" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_points</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">sample_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="n">num_points</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select a set of background examples to take an expectation over</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="c1"># background.shape</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">sample_idxs</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">sample_idxs</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">gradient_explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">GradientExplainer</span><span class="p">(</span><span class="n">linear_model</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap_values_gradient</span> <span class="o">=</span> <span class="n">gradient_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 85) (1000,)
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="pca">
-<h3>pca<a class="headerlink" href="#pca" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">skl</span><span class="o">.</span><span class="n">decomposition</span><span class="o">.</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
-
-<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-20 13:36:56.306880: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-02-20 13:36:56.619423: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+`tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+2022-02-20 13:36:56.681932: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-02-20 13:36:56.700076: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cumsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
-
-<span class="n">num_feats_pca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cumsum</span> <span class="o">&lt;</span> <span class="mf">0.95</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">num_feats_pca</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_values_gradient</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.34917199 0.43401761 0.47633231 0.51440324 0.55103898 0.58241257
- 0.60684292 0.62895109 0.6480919  0.66607004 0.68172279 0.69664349
- 0.71024958 0.72359144 0.7359422  0.7474366  0.75828771 0.76866115
- 0.77863594 0.78810517 0.79650406 0.80464311 0.81258817 0.82012977
- 0.82756605 0.8343042  0.84086152 0.84728177 0.85354194 0.85951008
- 0.86508289 0.87052134 0.87577719 0.88086447 0.88570736 0.89028615
- 0.89475877 0.89909729 0.90333534 0.90744124 0.91140648 0.9151993
- 0.91885353 0.92238353 0.92586753 0.92929036 0.9325265  0.93560792
- 0.93861141 0.94150026 0.94437927 0.94723225 0.94995294 0.95258384]
-53
-</pre></div>
-</div>
-<img alt="../../_images/visualize_data_17_1.png" src="../../_images/visualize_data_17_1.png" />
+<img alt="../../_images/model_explanations_12_0.png" src="../../_images/model_explanations_12_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="shap-kernelexplainer">
+<h3>shap: KernelExplainer<a class="headerlink" href="#shap-kernelexplainer" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd4fcc2d280&gt;
-</pre></div>
-</div>
-<img alt="../../_images/visualize_data_18_1.png" src="../../_images/visualize_data_18_1.png" />
-</div>
-</div>
-</div>
-<div class="section" id="isomap">
-<h3>Isomap<a class="headerlink" href="#isomap" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isomap_embedding</span> <span class="o">=</span> <span class="n">skl</span><span class="o">.</span><span class="n">manifold</span><span class="o">.</span><span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">neighbors_algorithm</span><span class="o">=</span><span class="s1">&#39;kd_tree&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select a set of background examples to take an expectation over</span>
+<span class="c1"># 50 &#39;typical&#39; feature values</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="c1"># background.shape</span>
 
-<span class="n">X_isomap</span> <span class="o">=</span> <span class="n">isomap_embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">2.54</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_isomap</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot().
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd4fc2e8820&gt;
-</pre></div>
-</div>
-<img alt="../../_images/visualize_data_21_2.png" src="../../_images/visualize_data_21_2.png" />
-</div>
-</div>
-</div>
-<div class="section" id="spectral-embedding">
-<h3>spectral embedding<a class="headerlink" href="#spectral-embedding" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectral</span> <span class="o">=</span> <span class="n">skl</span><span class="o">.</span><span class="n">manifold</span><span class="o">.</span><span class="n">SpectralEmbedding</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#n_neighbors=50</span>
+<span class="n">kernel_explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">KernelExplainer</span><span class="p">(</span><span class="n">linear_model</span><span class="p">,</span> <span class="n">background</span><span class="p">)</span>
 
-<span class="n">X_spectral</span> <span class="o">=</span> <span class="n">spectral</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># 500 perturbation samples over the typical values to compute shap values for the given dataset.</span>
+<span class="n">shap_values_kernel</span> <span class="o">=</span> <span class="n">kernel_explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">2.54</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_spectral</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_values_kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot().
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd4fc24f8b0&gt;
-</pre></div>
-</div>
-<img alt="../../_images/visualize_data_24_2.png" src="../../_images/visualize_data_24_2.png" />
+<img alt="../../_images/model_explanations_15_0.png" src="../../_images/model_explanations_15_0.png" />
 </div>
 </div>
-<p><strong>Isomap and Spectral embedding</strong>
-This is a continuous, single manifold. Data points for lower proximities are at the center of the manifold, and data points for higher proximities move away from the center in two directions. This suggests that</p>
-<ol class="simple">
-<li><p>data points with similar proximities are together, i.e. fmri responses capture information about proximity,</p></li>
-<li><p>since data points diverge into two directions, there may be <em>two varieties of explanations</em> for the same proximity value.</p></li>
-</ol>
-</div>
-<div class="section" id="mds-multidimensional-scaling">
-<h3>mds: multidimensional scaling<a class="headerlink" href="#mds-multidimensional-scaling" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mds_embedding</span> <span class="o">=</span> <span class="n">skl</span><span class="o">.</span><span class="n">manifold</span><span class="o">.</span><span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="n">X_mds</span> <span class="o">=</span> <span class="n">mds_embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">2.54</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_mds</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot().
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd63ca32520&gt;
-</pre></div>
-</div>
-<img alt="../../_images/visualize_data_28_2.png" src="../../_images/visualize_data_28_2.png" />
-</div>
-</div>
-</div>
-<div class="section" id="tsne">
-<h3>tsne<a class="headerlink" href="#tsne" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tsne</span> <span class="o">=</span> <span class="n">skl</span><span class="o">.</span><span class="n">manifold</span><span class="o">.</span><span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
-                         <span class="n">learning_rate</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> 
-                         <span class="n">init</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> 
-                         <span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">2.54</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="mi">15</span><span class="o">*</span><span class="n">cm</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calling gca() with keyword arguments was deprecated in Matplotlib 3.4. Starting two minor releases later, gca() will take no keyword arguments. The gca() function should only be used to get the current axes, or if no axes exist, create new axes with default keyword arguments. To create a new axes with non-default arguments, use plt.axes() or plt.subplot().
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd63c925dc0&gt;
-</pre></div>
-</div>
-<img alt="../../_images/visualize_data_32_2.png" src="../../_images/visualize_data_32_2.png" />
-</div>
-</div>
-<p><strong>MDS and tSNE</strong>
-This single, blob-like manifold suggests that data points with similar proximities group together.</p>
 </div>
 </div>
 </div>
@@ -1036,19 +709,12 @@ This single, blob-like manifold suggests that data points with similar proximiti
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="date15.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="linear_regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Feb 15, 2022</p>
+            <p class="prev-next-title">build a simple linear model</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="linear_regression.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">build a simple linear model</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
