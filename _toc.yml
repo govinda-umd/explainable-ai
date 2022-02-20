@@ -16,8 +16,8 @@ parts:
           - file: nb/jan22/date21
             sections:
               - file: nb/jan22/extract-dataset
-          
-          - file: nb/jan/date30
+              
+          - file: nb/jan22/date30
             sections:
               - file: nb/jan22/intro_shap_values
               

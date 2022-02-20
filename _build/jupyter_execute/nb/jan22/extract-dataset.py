@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # January 20-21, 22
-
 # # get dataset: emoproxII
 
 # In[1]:
