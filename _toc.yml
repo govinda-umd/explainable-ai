@@ -6,14 +6,33 @@ root: intro
 # defaults:
   # numbered: True
 parts:
-
+  - caption: January 2022
+    chapters:
+      - file: nb/jan22/jan22
+      
+      - file: nb/jan22/jan22_updates
+        sections:
+        
+          - file: nb/jan22/date21
+            sections:
+              - file: nb/jan22/extract-dataset
+          
+          - file: nb/jan/date30
+            sections:
+              - file: nb/jan22/intro_shap_values
+              
+              
   - caption: February 2022
     chapters:
       - file: nb/feb22/feb22
       
       - file: nb/feb22/feb22_updates
         sections:
-        
+         
+          - file: nb/feb22/date1
+            sections:
+              - file: nb/feb22/basic_pipeline
+              
           - file: nb/feb22/date15
             sections:
               - file: nb/feb22/visualize_data

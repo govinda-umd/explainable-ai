@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # February 1-2, 10-14, 22
+# # February 1-2, 10-14, 2022: complete basic pipeline
 
 # In[1]:
 
