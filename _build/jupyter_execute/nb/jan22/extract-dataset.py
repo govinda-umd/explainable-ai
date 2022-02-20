@@ -48,34 +48,19 @@ data_df = get_data_df(subj_folder_list, time_series_path, target_path, num_TRs)
 data_df
 
 
-# ## create input and target vectors
-
 # In[4]:
 
 
-# split subjects into train and test partitions
+# save the dataframe
+file_name = f"{proj_dir}/data/emoprox2/dataframe.pkl"
+data_df.to_pickle(file_name)
+
+## create input and target vectors# split subjects into train and test partitions
 subjs = pd.unique(data_df['subj'])
-num_subjs = subjs.shape[0]
-num_train = round(0.9 * num_subjs)
-num_test = num_subjs - num_train
-
-permuted_subjs = np.random.permutation(subjs)
-train_subjs = permuted_subjs[:num_train]
-test_subjs = permuted_subjs[num_train:]
-
-
-# In[5]:
-
+train_subjs, test_subjs = split_subjs(subjs, 0.9)
 
 # create X and y
 train_arrays = get_Xy(data_df, train_subjs) # (X_train, y_train, mask_train)
-test_arrays = get_Xy(data_df, test_subjs) # (X_test, y_test, mask_test)
-
-
-# In[6]:
-
-
-# save these arrays
+test_arrays = get_Xy(data_df, test_subjs) # (X_test, y_test, mask_test)# save these arrays
 with open(pjoin(proj_dir, 'data/emoprox2', 'train_test_arrays.pkl'), 'wb') as f:
     pickle.dump({'train':train_arrays, 'test':test_arrays}, f)
-

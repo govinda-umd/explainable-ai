@@ -2,24 +2,21 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: md/intro
+root: intro
 # defaults:
   # numbered: True
 parts:
 
-  - caption: January 2022
-    chapters:
-      - file: md/jan22
-      - file: md/jan22_updates
-        sections:
-          - file: nb/jan22/jan-23-2022
-          - file: nb/jan22/jan-??-2022
-          - file: nb/jan22/extract-dataset
-          - file: nb/jan22/build_models
-
   - caption: February 2022
     chapters:
-      - file: md/feb22
-      - file: md/feb22_updates
+      - file: nb/feb22/feb22
+      
+      - file: nb/feb22/feb22_updates
         sections:
-          - file: nb/feb22/feb-??-2022
+        
+          - file: nb/feb22/date15
+            sections:
+              - file: nb/feb22/visualize_data
+              - file: nb/feb22/linear_regression
+          
+      

@@ -20,7 +20,7 @@ class base_model():
         self.task_type = task_type
         self.model = model
         self.loss_object = loss_object
-        self.L1_regularizer = tf.keras.regularizers.L1(L1_scale) #snt.regularizers.L1(L1_scale)
+        self.L1_regularizer = tf.keras.regularizers.L1(L1_scale)
         self.L2_regularizer = tf.keras.regularizers.L2(L2_scale)
         self.L1L2_regularizer = tf.keras.regularizers.L1L2(l1=L1_scale, l2=L2_scale) 
         self.optimizer = optimizer
@@ -32,10 +32,10 @@ class base_model():
         self.eval_metric_name = eval_metric_name
         
     def _loss(self, x, y, training):
-        # tf regularizers take only one variable at a time, 
-        # unlike sonnet regularizers which take a list of variables 
+        # y_._keras_mask ensures that loss ignores the masked timesteps/samples
         y_ = self.model(x, training=training)
-        loss = self.loss_object(y_true=y, y_pred=y_)
+        loss = self.loss_object(y_true=y[y_._keras_mask],
+                                y_pred=y_[y_._keras_mask])
         for var in self.model.trainable_variables:
             loss += self.L1L2_regularizer(var)
         return loss
@@ -96,6 +96,7 @@ class base_model():
                                  i, i + self.batch_size)
             y = outputs[i: i + self.batch_size, ...]
 
+            # training/loss calculation --------
             if is_training:
                 # Optimize the model
                 loss_value, grads = self._grad(x, y, is_training)
@@ -106,16 +107,18 @@ class base_model():
             # Track progress
             self.loss_avg.update_state(loss_value)  # Add current batch loss
 
+            # evaluation metric --------------
             # Compare predicted label to actual label
             # training=True is needed only if there are layers with different
             # behavior during training versus inference (e.g. Dropout).
+            y_pred = self.model(x, training=is_training)
+            mask = y_pred._keras_mask
             if self.task_type == "regression":
-                self.eval_metric.update_state(tf.keras.backend.flatten(y), 
-                                              tf.keras.backend.flatten(self.model(x,
-                                                                            training=is_training)))
+                self.eval_metric.update_state(tf.keras.backend.flatten(y[mask]), 
+                                              tf.keras.backend.flatten(y_pred[mask]))
             elif self.task_type == "classification":
-                self.eval_metric.update_state(y,
-                                              self.model(x, training=is_training))
+                self.eval_metric.update_state(y[mask],
+                                              y_pred[mask])
 
         # print(f"loss_value: {loss_value}")
         return (self.loss_avg.result(), self.eval_metric.result())
