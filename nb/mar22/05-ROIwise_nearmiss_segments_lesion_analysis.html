@@ -863,11 +863,11 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 </div>
 </div>
 </div>
+<p>organize the roi sets in ascending order of accuracies.
+so that we can see which rois decrease performance the most.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># organize the roi sets in ascending order of accuracies.</span>
-<span class="c1"># so that we can see which rois decrease performance the most.</span>
-<span class="n">rois_records</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rois_records</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_rois</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">records</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">==</span> <span class="n">idx</span><span class="p">}</span>
     <span class="n">rois_records</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;rois_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span>
@@ -923,9 +923,11 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ROIs&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_18_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_18_1.png" />
+<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_19_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_19_1.png" />
 </div>
 </div>
+<p>below three plots show accuracy curves by lesioning a set of rois,
+the sets of rois are ordered in ascending order of their accuracies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#1/2.54</span>
@@ -961,7 +963,7 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;accuracy&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_19_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_19_1.png" />
+<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_21_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_21_1.png" />
 </div>
 </div>
 </div>
@@ -1002,7 +1004,7 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;accuracy&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_21_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_21_1.png" />
+<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_24_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_24_1.png" />
 </div>
 </div>
 </div>
@@ -1043,9 +1045,10 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;accuracy&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_23_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_23_1.png" />
+<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_26_1.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_26_1.png" />
 </div>
 </div>
+<p><strong>It seems better to see the first few sets of rois and mark them as important.</strong></p>
 </div>
 </div>
 </div>
