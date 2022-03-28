@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>March 23, 2022: null saliency &#8212; My Project [Daily Progress]</title>
+    <title>March 25, 2022: lesion analysis &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="March 25, 2022: lesion analysis" href="05-ROIwise_nearmiss_segments_lesion_analysis.html" />
-    <link rel="prev" title="March 11, 14-15, 2022: saliency maps" href="03-ROIwise_nearmiss_segments_saliency.html" />
+    <link rel="prev" title="March 23, 2022: null saliency" href="04-ROIwise_nearmiss_segments_null_saliency.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -258,13 +257,13 @@
      March 11, 14-15, 2022: saliency maps
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04-ROIwise_nearmiss_segments_null_saliency.html">
      March 23, 2022: null saliency
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05-ROIwise_nearmiss_segments_lesion_analysis.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      March 25, 2022: lesion analysis
     </a>
    </li>
@@ -311,7 +310,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/nb/mar22/04-ROIwise_nearmiss_segments_null_saliency.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/nb/mar22/05-ROIwise_nearmiss_segments_lesion_analysis.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -331,7 +330,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/govinda-umd/explainable-ai/issues/new?title=Issue%20on%20page%20%2Fnb/mar22/04-ROIwise_nearmiss_segments_null_saliency.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/govinda-umd/explainable-ai/issues/new?title=Issue%20on%20page%20%2Fnb/mar22/05-ROIwise_nearmiss_segments_lesion_analysis.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -352,7 +351,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/govinda-umd/explainable-ai/master?urlpath=tree/docs/nb/mar22/04-ROIwise_nearmiss_segments_null_saliency.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/govinda-umd/explainable-ai/master?urlpath=tree/docs/nb/mar22/05-ROIwise_nearmiss_segments_lesion_analysis.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -375,45 +374,35 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   data
+  <a class="reference internal nav-link" href="#loading-data-and-model">
+   loading data and model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parameters">
-     parameters
+    <a class="reference internal nav-link" href="#data">
+     data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#organizing-into-tensors">
-     organizing into tensors
+    <a class="reference internal nav-link" href="#model">
+     model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saliency-maps">
-   saliency maps
+  <a class="reference internal nav-link" href="#testing-hypergraphs">
+   testing hypergraphs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lesion-analysis">
+   lesion analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-temperature-to-pretrained-models">
-     add temperature to pretrained models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-adversarial-model-alternative-hypothesis">
-     (non-adversarial) model: alternative hypothesis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#null-non-adversarial-model-null-hypothesis">
-     null (non-adversarial) model: null hypothesis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-to-see-significance">
-     plotting to see significance
+    <a class="reference internal nav-link" href="#single-roi">
+     single roi
     </a>
    </li>
   </ul>
@@ -428,7 +417,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>March 23, 2022: null saliency</h1>
+                <h1>March 25, 2022: lesion analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -439,45 +428,35 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   data
+  <a class="reference internal nav-link" href="#loading-data-and-model">
+   loading data and model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parameters">
-     parameters
+    <a class="reference internal nav-link" href="#data">
+     data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#organizing-into-tensors">
-     organizing into tensors
+    <a class="reference internal nav-link" href="#model">
+     model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saliency-maps">
-   saliency maps
+  <a class="reference internal nav-link" href="#testing-hypergraphs">
+   testing hypergraphs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lesion-analysis">
+   lesion analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-temperature-to-pretrained-models">
-     add temperature to pretrained models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-adversarial-model-alternative-hypothesis">
-     (non-adversarial) model: alternative hypothesis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#null-non-adversarial-model-null-hypothesis">
-     null (non-adversarial) model: null hypothesis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-to-see-significance">
-     plotting to see significance
+    <a class="reference internal nav-link" href="#single-roi">
+     single roi
     </a>
    </li>
   </ul>
@@ -491,8 +470,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="march-23-2022-null-saliency">
-<h1>March 23, 2022: null saliency<a class="headerlink" href="#march-23-2022-null-saliency" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="march-25-2022-lesion-analysis">
+<h1>March 25, 2022: lesion analysis<a class="headerlink" href="#march-25-2022-lesion-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -507,16 +486,22 @@
 <span class="kn">import</span> <span class="nn">neural_structured_learning</span> <span class="k">as</span> <span class="nn">nsl</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">combinations</span>
 
 <span class="c1"># explanation tools</span>
 <span class="kn">import</span> <span class="nn">shap</span>
 
 <span class="c1"># plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;sans-serif&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Arial&quot;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;errorbar.capsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="kn">import</span> <span class="nn">hypernetx</span> <span class="k">as</span> <span class="nn">hnx</span>
+<span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">fruchterman_reingold_layout</span> <span class="k">as</span> <span class="n">layout</span>
 
 <span class="c1"># nilearn</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
@@ -550,25 +535,6 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-24 14:36:45.409900: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-03-24 14:36:47.273832: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
-2022-03-24 14:36:47.300534: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
-pciBusID: 0000:17:00.0 name: Quadro RTX 5000 computeCapability: 7.5
-coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-03-24 14:36:47.300727: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
-pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
-coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-03-24 14:36:47.300751: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-03-24 14:36:47.304612: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
-2022-03-24 14:36:47.304710: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
-2022-03-24 14:36:47.305456: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
-2022-03-24 14:36:47.305717: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
-2022-03-24 14:36:47.306399: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
-2022-03-24 14:36:47.306984: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
-2022-03-24 14:36:47.308244: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
-2022-03-24 14:36:47.308976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
-</pre></div>
-</div>
 <div class="output text_html"><div align='center'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAdxJREFUeNq0Vt1Rg0AQJjcpgBJiBWIFkgoMFYhPPAIVECogPuYpdJBYgXQQrMCUkA50V7+d2ZwXuXPGm9khHLu3f9+3l1nkWNvtNqfHLgpfQ1EUS3tz5nAQ0+NIsiAZSc6eDlI8M3J00B/mDuUKDk6kfOebAgW3pkdD0pFcODGW4gKKvOrAUm04MA4QDt1OEIXU9hDigfS5rC1eS5T90gltck1Xrizo257kgySZcNRzgCSxCvgiE9nckPJo2b/B2AcEkk2OwL8bD8gmOKR1GPbaCUqxEgTq0tLvgb6zfo7+DgYGkkWL2tqLDV4RSITfbHPPfJKIrWz4nJQTMPAWA7IbD6imcNaDeDfgk+4No+wZr40BL3g9eQJJCFqRQ54KiSt72lsLpE3o3MCBSxDuq4yOckU2hKXRuwBH3OyMR4g1UpyTYw6mlmBqNdUXRM1NfyF5EPI6JkcpIDBIX8jX6DR/6ckAZJ0wEAdLR8DEk6OfC1Pp8BKo6TQIwPJbvJ6toK5lmuvJoRtfK6Ym1iRYIarRo2UyYHvRN5qpakR3yoizWrouoyuXXQqI185LCw07op5ZyCRGL99h24InP0e9xdQukEKVmhzrqZuRIfwISB//cP3Wk3f8f/yR+BRgAHu00HjLcEQBAAAAAElFTkSuQmCC' /></div><script charset='utf-8'>!function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=410)}([function(t,e,n){"use strict";function r(t,e,n,r,o,a,u,c){if(i(e),!t){var s;if(void 0===e)s=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,a,u,c],f=0;s=new Error(e.replace(/%s/g,function(){return l[f++]})),s.name="Invariant Violation"}throw s.framesToPop=1,s}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";var r=n(8),i=r;t.exports=i},function(t,e,n){"use strict";function r(t){for(var e=arguments.length-1,n="Minified React error #"+t+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant="+t,r=0;r<e;r++)n+="&args[]="+encodeURIComponent(arguments[r+1]);n+=" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";var i=new Error(n);throw i.name="Invariant Violation",i.framesToPop=1,i}t.exports=r},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}function i(){try{if(!Object.assign)return!1;var t=new String("abc");if(t[5]="de","5"===Object.getOwnPropertyNames(t)[0])return!1;for(var e={},n=0;n<10;n++)e["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(e).map(function(t){return e[t]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(t){i[t]=t}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},i)).join("")}catch(t){return!1}}/*
 object-assign
 (c) Sindre Sorhus
@@ -601,8 +567,10 @@ if("topMouseOut"!==t&&"topMouseOver"!==t)return null;var c;if(u.window===u)c=u;e
 n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"use strict";function r(t,e){"_hostNode"in t?void 0:c("33"),"_hostNode"in e?void 0:c("33");for(var n=0,r=t;r;r=r._hostParent)n++;for(var i=0,o=e;o;o=o._hostParent)i++;for(;n-i>0;)t=t._hostParent,n--;for(;i-n>0;)e=e._hostParent,i--;for(var a=n;a--;){if(t===e)return t;t=t._hostParent,e=e._hostParent}return null}function i(t,e){"_hostNode"in t?void 0:c("35"),"_hostNode"in e?void 0:c("35");for(;e;){if(e===t)return!0;e=e._hostParent}return!1}function o(t){return"_hostNode"in t?void 0:c("36"),t._hostParent}function a(t,e,n){for(var r=[];t;)r.push(t),t=t._hostParent;var i;for(i=r.length;i-- >0;)e(r[i],"captured",n);for(i=0;i<r.length;i++)e(r[i],"bubbled",n)}function u(t,e,n,i,o){for(var a=t&&e?r(t,e):null,u=[];t&&t!==a;)u.push(t),t=t._hostParent;for(var c=[];e&&e!==a;)c.push(e),e=e._hostParent;var s;for(s=0;s<u.length;s++)n(u[s],"bubbled",i);for(s=c.length;s-- >0;)n(c[s],"captured",o)}var c=n(2);n(0);t.exports={isAncestor:i,getLowestCommonAncestor:r,getParentInstance:o,traverseTwoPhase:a,traverseEnterLeave:u}},function(t,e,n){"use strict";function r(){this.reinitializeTransaction()}var i=n(3),o=n(11),a=n(53),u=n(8),c={initialize:u,close:function(){p.isBatchingUpdates=!1}},s={initialize:u,close:o.flushBatchedUpdates.bind(o)},l=[s,c];i(r.prototype,a,{getTransactionWrappers:function(){return l}});var f=new r,p={isBatchingUpdates:!1,batchedUpdates:function(t,e,n,r,i,o){var a=p.isBatchingUpdates;return p.isBatchingUpdates=!0,a?t(e,n,r,i,o):f.perform(t,null,e,n,r,i,o)}};t.exports=p},function(t,e,n){"use strict";function r(){C||(C=!0,y.EventEmitter.injectReactEventListener(m),y.EventPluginHub.injectEventPluginOrder(u),y.EventPluginUtils.injectComponentTree(p),y.EventPluginUtils.injectTreeTraversal(d),y.EventPluginHub.injectEventPluginsByName({SimpleEventPlugin:w,EnterLeaveEventPlugin:c,ChangeEventPlugin:a,SelectEventPlugin:x,BeforeInputEventPlugin:o}),y.HostComponent.injectGenericComponentClass(f),y.HostComponent.injectTextComponentClass(v),y.DOMProperty.injectDOMPropertyConfig(i),y.DOMProperty.injectDOMPropertyConfig(s),y.DOMProperty.injectDOMPropertyConfig(b),y.EmptyComponent.injectEmptyComponentFactory(function(t){return new h(t)}),y.Updates.injectReconcileTransaction(_),y.Updates.injectBatchingStrategy(g),y.Component.injectEnvironment(l))}var i=n(331),o=n(333),a=n(335),u=n(337),c=n(338),s=n(341),l=n(343),f=n(346),p=n(4),h=n(348),d=n(356),v=n(354),g=n(357),m=n(361),y=n(362),_=n(367),b=n(372),x=n(373),w=n(374),C=!1;t.exports={inject:r}},function(t,e,n){"use strict";var r="function"==typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103;t.exports=r},function(t,e,n){"use strict";function r(t){i.enqueueEvents(t),i.processEventQueue(!1)}var i=n(22),o={handleTopLevel:function(t,e,n,o){var a=i.extractEvents(t,e,n,o);r(a)}};t.exports=o},function(t,e,n){"use strict";function r(t){for(;t._hostParent;)t=t._hostParent;var e=f.getNodeFromInstance(t),n=e.parentNode;return f.getClosestInstanceFromNode(n)}function i(t,e){this.topLevelType=t,this.nativeEvent=e,this.ancestors=[]}function o(t){var e=h(t.nativeEvent),n=f.getClosestInstanceFromNode(e),i=n;do t.ancestors.push(i),i=i&&r(i);while(i);for(var o=0;o<t.ancestors.length;o++)n=t.ancestors[o],v._handleTopLevel(t.topLevelType,n,t.nativeEvent,h(t.nativeEvent))}function a(t){var e=d(window);t(e)}var u=n(3),c=n(150),s=n(6),l=n(17),f=n(4),p=n(11),h=n(93),d=n(324);u(i.prototype,{destructor:function(){this.topLevelType=null,this.nativeEvent=null,this.ancestors.length=0}}),l.addPoolingTo(i,l.twoArgumentPooler);var v={_enabled:!0,_handleTopLevel:null,WINDOW_HANDLE:s.canUseDOM?window:null,setHandleTopLevel:function(t){v._handleTopLevel=t},setEnabled:function(t){v._enabled=!!t},isEnabled:function(){return v._enabled},trapBubbledEvent:function(t,e,n){return n?c.listen(n,e,v.dispatchEvent.bind(null,t)):null},trapCapturedEvent:function(t,e,n){return n?c.capture(n,e,v.dispatchEvent.bind(null,t)):null},monitorScrollValue:function(t){var e=a.bind(null,t);c.listen(window,"scroll",e)},dispatchEvent:function(t,e){if(v._enabled){var n=i.getPooled(t,e);try{p.batchedUpdates(o,n)}finally{i.release(n)}}}};t.exports=v},function(t,e,n){"use strict";var r=n(21),i=n(22),o=n(50),a=n(86),u=n(159),c=n(51),s=n(161),l=n(11),f={Component:a.injection,DOMProperty:r.injection,EmptyComponent:u.injection,EventPluginHub:i.injection,EventPluginUtils:o.injection,EventEmitter:c.injection,HostComponent:s.injection,Updates:l.injection};t.exports=f},function(t,e,n){"use strict";var r=n(385),i=/\/?>/,o=/^<\!\-\-/,a={CHECKSUM_ATTR_NAME:"data-react-checksum",addChecksumToMarkup:function(t){var e=r(t);return o.test(t)?t:t.replace(i," "+a.CHECKSUM_ATTR_NAME+'="'+e+'"$&')},canReuseMarkup:function(t,e){var n=e.getAttribute(a.CHECKSUM_ATTR_NAME);n=n&&parseInt(n,10);var i=r(t);return i===n}};t.exports=a},function(t,e,n){"use strict";function r(t,e,n){return{type:"INSERT_MARKUP",content:t,fromIndex:null,fromNode:null,toIndex:n,afterNode:e}}function i(t,e,n){return{type:"MOVE_EXISTING",content:null,fromIndex:t._mountIndex,fromNode:p.getHostNode(t),toIndex:n,afterNode:e}}function o(t,e){return{type:"REMOVE_NODE",content:null,fromIndex:t._mountIndex,fromNode:e,toIndex:null,afterNode:null}}function a(t){return{type:"SET_MARKUP",content:t,fromIndex:null,fromNode:null,toIndex:null,afterNode:null}}function u(t){return{type:"TEXT_CONTENT",content:t,fromIndex:null,fromNode:null,toIndex:null,afterNode:null}}function c(t,e){return e&&(t=t||[],t.push(e)),t}function s(t,e){f.processChildrenUpdates(t,e)}var l=n(2),f=n(86),p=(n(40),n(9),n(15),n(24)),h=n(342),d=(n(8),n(388)),v=(n(0),{Mixin:{_reconcilerInstantiateChildren:function(t,e,n){return h.instantiateChildren(t,e,n)},_reconcilerUpdateChildren:function(t,e,n,r,i,o){var a,u=0;return a=d(e,u),h.updateChildren(t,a,n,r,i,this,this._hostContainerInfo,o,u),a},mountChildren:function(t,e,n){var r=this._reconcilerInstantiateChildren(t,e,n);this._renderedChildren=r;var i=[],o=0;for(var a in r)if(r.hasOwnProperty(a)){var u=r[a],c=0,s=p.mountComponent(u,e,this,this._hostContainerInfo,n,c);u._mountIndex=o++,i.push(s)}return i},updateTextContent:function(t){var e=this._renderedChildren;h.unmountChildren(e,!1);for(var n in e)e.hasOwnProperty(n)&&l("118");var r=[u(t)];s(this,r)},updateMarkup:function(t){var e=this._renderedChildren;h.unmountChildren(e,!1);for(var n in e)e.hasOwnProperty(n)&&l("118");var r=[a(t)];s(this,r)},updateChildren:function(t,e,n){this._updateChildren(t,e,n)},_updateChildren:function(t,e,n){var r=this._renderedChildren,i={},o=[],a=this._reconcilerUpdateChildren(r,t,o,i,e,n);if(a||r){var u,l=null,f=0,h=0,d=0,v=null;for(u in a)if(a.hasOwnProperty(u)){var g=r&&r[u],m=a[u];g===m?(l=c(l,this.moveChild(g,v,f,h)),h=Math.max(g._mountIndex,h),g._mountIndex=f):(g&&(h=Math.max(g._mountIndex,h)),l=c(l,this._mountChildAtIndex(m,o[d],v,f,e,n)),d++),f++,v=p.getHostNode(m)}for(u in i)i.hasOwnProperty(u)&&(l=c(l,this._unmountChild(r[u],i[u])));l&&s(this,l),this._renderedChildren=a}},unmountChildren:function(t){var e=this._renderedChildren;h.unmountChildren(e,t),this._renderedChildren=null},moveChild:function(t,e,n,r){if(t._mountIndex<r)return i(t,e,n)},createChild:function(t,e,n){return r(n,e,t._mountIndex)},removeChild:function(t,e){return o(t,e)},_mountChildAtIndex:function(t,e,n,r,i,o){return t._mountIndex=r,this.createChild(t,n,e)},_unmountChild:function(t,e){var n=this.removeChild(t,e);return t._mountIndex=null,n}}});t.exports=v},function(t,e,n){"use strict";function r(t){return!(!t||"function"!=typeof t.attachRef||"function"!=typeof t.detachRef)}var i=n(2),o=(n(0),{addComponentAsRefTo:function(t,e,n){r(n)?void 0:i("119"),n.attachRef(e,t)},removeComponentAsRefFrom:function(t,e,n){r(n)?void 0:i("120");var o=n.getPublicInstance();o&&o.refs[e]===t.getPublicInstance()&&n.detachRef(e)}});t.exports=o},function(t,e,n){"use strict";var r="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";t.exports=r},function(t,e,n){"use strict";function r(t){this.reinitializeTransaction(),this.renderToStaticMarkup=!1,this.reactMountReady=o.getPooled(null),this.useCreateElement=t}var i=n(3),o=n(155),a=n(17),u=n(51),c=n(162),s=(n(9),n(53)),l=n(88),f={initialize:c.getSelectionInformation,close:c.restoreSelection},p={initialize:function(){var t=u.isEnabled();return u.setEnabled(!1),t},close:function(t){u.setEnabled(t)}},h={initialize:function(){this.reactMountReady.reset()},close:function(){this.reactMountReady.notifyAll()}},d=[f,p,h],v={getTransactionWrappers:function(){return d},getReactMountReady:function(){return this.reactMountReady},getUpdateQueue:function(){return l},checkpoint:function(){return this.reactMountReady.checkpoint()},rollback:function(t){this.reactMountReady.rollback(t)},destructor:function(){o.release(this.reactMountReady),this.reactMountReady=null}};i(r.prototype,s,v),a.addPoolingTo(r),t.exports=r},function(t,e,n){"use strict";function r(t,e,n){"function"==typeof t?t(e.getPublicInstance()):o.addComponentAsRefTo(e,t,n)}function i(t,e,n){"function"==typeof t?t(null):o.removeComponentAsRefFrom(e,t,n)}var o=n(365),a={};a.attachRefs=function(t,e){if(null!==e&&"object"==typeof e){var n=e.ref;null!=n&&r(n,t,e._owner)}},a.shouldUpdateRefs=function(t,e){var n=null,r=null;null!==t&&"object"==typeof t&&(n=t.ref,r=t._owner);var i=null,o=null;return null!==e&&"object"==typeof e&&(i=e.ref,o=e._owner),n!==i||"string"==typeof i&&o!==r},a.detachRefs=function(t,e){if(null!==e&&"object"==typeof e){var n=e.ref;null!=n&&i(n,t,e._owner)}},t.exports=a},function(t,e,n){"use strict";function r(t){this.reinitializeTransaction(),this.renderToStaticMarkup=t,this.useCreateElement=!1,this.updateQueue=new u(this)}var i=n(3),o=n(17),a=n(53),u=(n(9),n(370)),c=[],s={enqueue:function(){}},l={getTransactionWrappers:function(){return c},getReactMountReady:function(){return s},getUpdateQueue:function(){return this.updateQueue},destructor:function(){},checkpoint:function(){},rollback:function(){}};i(r.prototype,a,l),o.addPoolingTo(r),t.exports=r},function(t,e,n){"use strict";function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){}var o=n(88),a=(n(1),function(){function t(e){r(this,t),this.transaction=e}return t.prototype.isMounted=function(t){return!1},t.prototype.enqueueCallback=function(t,e,n){this.transaction.isInTransaction()&&o.enqueueCallback(t,e,n)},t.prototype.enqueueForceUpdate=function(t){this.transaction.isInTransaction()?o.enqueueForceUpdate(t):i(t,"forceUpdate")},t.prototype.enqueueReplaceState=function(t,e){this.transaction.isInTransaction()?o.enqueueReplaceState(t,e):i(t,"replaceState")},t.prototype.enqueueSetState=function(t,e){this.transaction.isInTransaction()?o.enqueueSetState(t,e):i(t,"setState")},t}());t.exports=a},function(t,e,n){"use strict";t.exports="15.4.2"},function(t,e,n){"use strict";var r={xlink:"http://www.w3.org/1999/xlink",xml:"http://www.w3.org/XML/1998/namespace"},i={accentHeight:"accent-height",accumulate:0,additive:0,alignmentBaseline:"alignment-baseline",allowReorder:"allowReorder",alphabetic:0,amplitude:0,arabicForm:"arabic-form",ascent:0,attributeName:"attributeName",attributeType:"attributeType",autoReverse:"autoReverse",azimuth:0,baseFrequency:"baseFrequency",baseProfile:"baseProfile",baselineShift:"baseline-shift",bbox:0,begin:0,bias:0,by:0,calcMode:"calcMode",capHeight:"cap-height",clip:0,clipPath:"clip-path",clipRule:"clip-rule",clipPathUnits:"clipPathUnits",colorInterpolation:"color-interpolation",colorInterpolationFilters:"color-interpolation-filters",colorProfile:"color-profile",colorRendering:"color-rendering",contentScriptType:"contentScriptType",contentStyleType:"contentStyleType",cursor:0,cx:0,cy:0,d:0,decelerate:0,descent:0,diffuseConstant:"diffuseConstant",direction:0,display:0,divisor:0,dominantBaseline:"dominant-baseline",dur:0,dx:0,dy:0,edgeMode:"edgeMode",elevation:0,enableBackground:"enable-background",end:0,exponent:0,externalResourcesRequired:"externalResourcesRequired",fill:0,fillOpacity:"fill-opacity",fillRule:"fill-rule",filter:0,filterRes:"filterRes",filterUnits:"filterUnits",floodColor:"flood-color",floodOpacity:"flood-opacity",focusable:0,fontFamily:"font-family",fontSize:"font-size",fontSizeAdjust:"font-size-adjust",fontStretch:"font-stretch",fontStyle:"font-style",fontVariant:"font-variant",fontWeight:"font-weight",format:0,from:0,fx:0,fy:0,g1:0,g2:0,glyphName:"glyph-name",glyphOrientationHorizontal:"glyph-orientation-horizontal",glyphOrientationVertical:"glyph-orientation-vertical",glyphRef:"glyphRef",gradientTransform:"gradientTransform",gradientUnits:"gradientUnits",hanging:0,horizAdvX:"horiz-adv-x",horizOriginX:"horiz-origin-x",ideographic:0,imageRendering:"image-rendering",in:0,in2:0,intercept:0,k:0,k1:0,k2:0,k3:0,k4:0,kernelMatrix:"kernelMatrix",kernelUnitLength:"kernelUnitLength",kerning:0,keyPoints:"keyPoints",keySplines:"keySplines",keyTimes:"keyTimes",lengthAdjust:"lengthAdjust",letterSpacing:"letter-spacing",lightingColor:"lighting-color",limitingConeAngle:"limitingConeAngle",local:0,markerEnd:"marker-end",markerMid:"marker-mid",markerStart:"marker-start",markerHeight:"markerHeight",markerUnits:"markerUnits",markerWidth:"markerWidth",mask:0,maskContentUnits:"maskContentUnits",maskUnits:"maskUnits",mathematical:0,mode:0,numOctaves:"numOctaves",offset:0,opacity:0,operator:0,order:0,orient:0,orientation:0,origin:0,overflow:0,overlinePosition:"overline-position",overlineThickness:"overline-thickness",paintOrder:"paint-order",panose1:"panose-1",pathLength:"pathLength",patternContentUnits:"patternContentUnits",patternTransform:"patternTransform",patternUnits:"patternUnits",pointerEvents:"pointer-events",points:0,pointsAtX:"pointsAtX",pointsAtY:"pointsAtY",pointsAtZ:"pointsAtZ",preserveAlpha:"preserveAlpha",preserveAspectRatio:"preserveAspectRatio",primitiveUnits:"primitiveUnits",r:0,radius:0,refX:"refX",refY:"refY",renderingIntent:"rendering-intent",repeatCount:"repeatCount",repeatDur:"repeatDur",requiredExtensions:"requiredExtensions",requiredFeatures:"requiredFeatures",restart:0,result:0,rotate:0,rx:0,ry:0,scale:0,seed:0,shapeRendering:"shape-rendering",slope:0,spacing:0,specularConstant:"specularConstant",specularExponent:"specularExponent",speed:0,spreadMethod:"spreadMethod",startOffset:"startOffset",stdDeviation:"stdDeviation",stemh:0,stemv:0,stitchTiles:"stitchTiles",stopColor:"stop-color",stopOpacity:"stop-opacity",strikethroughPosition:"strikethrough-position",strikethroughThickness:"strikethrough-thickness",string:0,stroke:0,strokeDasharray:"stroke-dasharray",strokeDashoffset:"stroke-dashoffset",strokeLinecap:"stroke-linecap",strokeLinejoin:"stroke-linejoin",strokeMiterlimit:"stroke-miterlimit",strokeOpacity:"stroke-opacity",strokeWidth:"stroke-width",surfaceScale:"surfaceScale",systemLanguage:"systemLanguage",tableValues:"tableValues",targetX:"targetX",targetY:"targetY",textAnchor:"text-anchor",textDecoration:"text-decoration",textRendering:"text-rendering",textLength:"textLength",to:0,transform:0,u1:0,u2:0,underlinePosition:"underline-position",underlineThickness:"underline-thickness",unicode:0,unicodeBidi:"unicode-bidi",unicodeRange:"unicode-range",unitsPerEm:"units-per-em",vAlphabetic:"v-alphabetic",vHanging:"v-hanging",vIdeographic:"v-ideographic",vMathematical:"v-mathematical",values:0,vectorEffect:"vector-effect",version:0,vertAdvY:"vert-adv-y",vertOriginX:"vert-origin-x",vertOriginY:"vert-origin-y",viewBox:"viewBox",viewTarget:"viewTarget",visibility:0,widths:0,wordSpacing:"word-spacing",writingMode:"writing-mode",x:0,xHeight:"x-height",x1:0,x2:0,xChannelSelector:"xChannelSelector",xlinkActuate:"xlink:actuate",xlinkArcrole:"xlink:arcrole",xlinkHref:"xlink:href",xlinkRole:"xlink:role",xlinkShow:"xlink:show",xlinkTitle:"xlink:title",xlinkType:"xlink:type",xmlBase:"xml:base",xmlns:0,xmlnsXlink:"xmlns:xlink",xmlLang:"xml:lang",xmlSpace:"xml:space",y:0,y1:0,y2:0,yChannelSelector:"yChannelSelector",z:0,zoomAndPan:"zoomAndPan"},o={Properties:{},DOMAttributeNamespaces:{xlinkActuate:r.xlink,xlinkArcrole:r.xlink,xlinkHref:r.xlink,xlinkRole:r.xlink,xlinkShow:r.xlink,xlinkTitle:r.xlink,xlinkType:r.xlink,xmlBase:r.xml,xmlLang:r.xml,xmlSpace:r.xml},DOMAttributeNames:{}};Object.keys(i).forEach(function(t){o.Properties[t]=0,i[t]&&(o.DOMAttributeNames[t]=i[t])}),t.exports=o},function(t,e,n){"use strict";function r(t){if("selectionStart"in t&&c.hasSelectionCapabilities(t))return{start:t.selectionStart,end:t.selectionEnd};if(window.getSelection){var e=window.getSelection();return{anchorNode:e.anchorNode,anchorOffset:e.anchorOffset,focusNode:e.focusNode,focusOffset:e.focusOffset}}if(document.selection){var n=document.selection.createRange();return{parentElement:n.parentElement(),text:n.text,top:n.boundingTop,left:n.boundingLeft}}}function i(t,e){if(y||null==v||v!==l())return null;var n=r(v);if(!m||!p(m,n)){m=n;var i=s.getPooled(d.select,g,t,e);return i.type="select",i.target=v,o.accumulateTwoPhaseDispatches(i),i}return null}var o=n(23),a=n(6),u=n(4),c=n(162),s=n(14),l=n(152),f=n(170),p=n(80),h=a.canUseDOM&&"documentMode"in document&&document.documentMode<=11,d={select:{phasedRegistrationNames:{bubbled:"onSelect",captured:"onSelectCapture"},dependencies:["topBlur","topContextMenu","topFocus","topKeyDown","topKeyUp","topMouseDown","topMouseUp","topSelectionChange"]}},v=null,g=null,m=null,y=!1,_=!1,b={eventTypes:d,extractEvents:function(t,e,n,r){if(!_)return null;var o=e?u.getNodeFromInstance(e):window;switch(t){case"topFocus":(f(o)||"true"===o.contentEditable)&&(v=o,g=e,m=null);break;case"topBlur":v=null,g=null,m=null;break;case"topMouseDown":y=!0;break;case"topContextMenu":case"topMouseUp":return y=!1,i(n,r);case"topSelectionChange":if(h)break;case"topKeyDown":case"topKeyUp":return i(n,r)}return null},didPutListener:function(t,e,n){"onSelect"===e&&(_=!0)}};t.exports=b},function(t,e,n){"use strict";function r(t){return"."+t._rootNodeID}function i(t){return"button"===t||"input"===t||"select"===t||"textarea"===t}var o=n(2),a=n(150),u=n(23),c=n(4),s=n(375),l=n(376),f=n(14),p=n(379),h=n(381),d=n(52),v=n(378),g=n(382),m=n(383),y=n(25),_=n(384),b=n(8),x=n(91),w=(n(0),{}),C={};["abort","animationEnd","animationIteration","animationStart","blur","canPlay","canPlayThrough","click","contextMenu","copy","cut","doubleClick","drag","dragEnd","dragEnter","dragExit","dragLeave","dragOver","dragStart","drop","durationChange","emptied","encrypted","ended","error","focus","input","invalid","keyDown","keyPress","keyUp","load","loadedData","loadedMetadata","loadStart","mouseDown","mouseMove","mouseOut","mouseOver","mouseUp","paste","pause","play","playing","progress","rateChange","reset","scroll","seeked","seeking","stalled","submit","suspend","timeUpdate","touchCancel","touchEnd","touchMove","touchStart","transitionEnd","volumeChange","waiting","wheel"].forEach(function(t){var e=t[0].toUpperCase()+t.slice(1),n="on"+e,r="top"+e,i={phasedRegistrationNames:{bubbled:n,captured:n+"Capture"},dependencies:[r]};w[t]=i,C[r]=i});var M={},k={eventTypes:w,extractEvents:function(t,e,n,r){var i=C[t];if(!i)return null;var a;switch(t){case"topAbort":case"topCanPlay":case"topCanPlayThrough":case"topDurationChange":case"topEmptied":case"topEncrypted":case"topEnded":case"topError":case"topInput":case"topInvalid":case"topLoad":case"topLoadedData":case"topLoadedMetadata":case"topLoadStart":case"topPause":case"topPlay":case"topPlaying":case"topProgress":case"topRateChange":case"topReset":case"topSeeked":case"topSeeking":case"topStalled":case"topSubmit":case"topSuspend":case"topTimeUpdate":case"topVolumeChange":case"topWaiting":a=f;break;case"topKeyPress":if(0===x(n))return null;case"topKeyDown":case"topKeyUp":a=h;break;case"topBlur":case"topFocus":a=p;break;case"topClick":if(2===n.button)return null;case"topDoubleClick":case"topMouseDown":case"topMouseMove":case"topMouseUp":case"topMouseOut":case"topMouseOver":case"topContextMenu":a=d;break;case"topDrag":case"topDragEnd":case"topDragEnter":case"topDragExit":case"topDragLeave":case"topDragOver":case"topDragStart":case"topDrop":a=v;break;case"topTouchCancel":case"topTouchEnd":case"topTouchMove":case"topTouchStart":a=g;break;case"topAnimationEnd":case"topAnimationIteration":case"topAnimationStart":a=s;break;case"topTransitionEnd":a=m;break;case"topScroll":a=y;break;case"topWheel":a=_;break;case"topCopy":case"topCut":case"topPaste":a=l}a?void 0:o("86",t);var c=a.getPooled(i,e,n,r);return u.accumulateTwoPhaseDispatches(c),c},didPutListener:function(t,e,n){if("onClick"===e&&!i(t._tag)){var o=r(t),u=c.getNodeFromInstance(t);M[o]||(M[o]=a.listen(u,"click",b))}},willDeleteListener:function(t,e){if("onClick"===e&&!i(t._tag)){var n=r(t);M[n].remove(),delete M[n]}}};t.exports=k},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(14),o={animationName:null,elapsedTime:null,pseudoElement:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(14),o={clipboardData:function(t){return"clipboardData"in t?t.clipboardData:window.clipboardData}};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(14),o={data:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(52),o={dataTransfer:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(25),o={relatedTarget:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(14),o={data:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(25),o=n(91),a=n(389),u=n(92),c={key:a,location:null,ctrlKey:null,shiftKey:null,altKey:null,metaKey:null,repeat:null,locale:null,getModifierState:u,charCode:function(t){return"keypress"===t.type?o(t):0},keyCode:function(t){return"keydown"===t.type||"keyup"===t.type?t.keyCode:0},which:function(t){return"keypress"===t.type?o(t):"keydown"===t.type||"keyup"===t.type?t.keyCode:0}};i.augmentClass(r,c),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(25),o=n(92),a={touches:null,targetTouches:null,changedTouches:null,altKey:null,metaKey:null,ctrlKey:null,shiftKey:null,getModifierState:o};i.augmentClass(r,a),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(14),o={propertyName:null,elapsedTime:null,pseudoElement:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t,e,n,r){return i.call(this,t,e,n,r)}var i=n(52),o={deltaX:function(t){return"deltaX"in t?t.deltaX:"wheelDeltaX"in t?-t.wheelDeltaX:0},deltaY:function(t){return"deltaY"in t?t.deltaY:"wheelDeltaY"in t?-t.wheelDeltaY:"wheelDelta"in t?-t.wheelDelta:0},deltaZ:null,deltaMode:null};i.augmentClass(r,o),t.exports=r},function(t,e,n){"use strict";function r(t){for(var e=1,n=0,r=0,o=t.length,a=o&-4;r<a;){for(var u=Math.min(r+4096,a);r<u;r+=4)n+=(e+=t.charCodeAt(r))+(e+=t.charCodeAt(r+1))+(e+=t.charCodeAt(r+2))+(e+=t.charCodeAt(r+3));e%=i,n%=i}for(;r<o;r++)n+=e+=t.charCodeAt(r);return e%=i,n%=i,e|n<<16}var i=65521;t.exports=r},function(t,e,n){"use strict";function r(t,e,n){var r=null==e||"boolean"==typeof e||""===e;if(r)return"";var i=isNaN(e);if(i||0===e||o.hasOwnProperty(t)&&o[t])return""+e;if("string"==typeof e){e=e.trim()}return e+"px"}var i=n(154),o=(n(1),i.isUnitlessNumber);t.exports=r},function(t,e,n){"use strict";function r(t){if(null==t)return null;if(1===t.nodeType)return t;var e=a.get(t);return e?(e=u(e),e?o.getNodeFromInstance(e):null):void("function"==typeof t.render?i("44"):i("45",Object.keys(t)))}var i=n(2),o=(n(15),n(4)),a=n(40),u=n(167);n(0),n(1);t.exports=r},function(t,e,n){"use strict";(function(e){function r(t,e,n,r){if(t&&"object"==typeof t){var i=t,o=void 0===i[n];o&&null!=e&&(i[n]=e)}}function i(t,e){if(null==t)return t;var n={};return o(t,r,n),n}var o=(n(84),n(172));n(1);"undefined"!=typeof e&&e.env,1,t.exports=i}).call(e,n(153))},function(t,e,n){"use strict";function r(t){if(t.key){var e=o[t.key]||t.key;if("Unidentified"!==e)return e}if("keypress"===t.type){var n=i(t);return 13===n?"Enter":String.fromCharCode(n)}return"keydown"===t.type||"keyup"===t.type?a[t.keyCode]||"Unidentified":""}var i=n(91),o={Esc:"Escape",Spacebar:" ",Left:"ArrowLeft",Up:"ArrowUp",Right:"ArrowRight",Down:"ArrowDown",Del:"Delete",Win:"OS",Menu:"ContextMenu",Apps:"ContextMenu",Scroll:"ScrollLock",MozPrintableKey:"Unidentified"},a={8:"Backspace",9:"Tab",12:"Clear",13:"Enter",16:"Shift",17:"Control",18:"Alt",19:"Pause",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"NumLock",145:"ScrollLock",224:"Meta"};t.exports=r},function(t,e,n){"use strict";function r(t){var e=t&&(i&&t[i]||t[o]);if("function"==typeof e)return e}var i="function"==typeof Symbol&&Symbol.iterator,o="@@iterator";t.exports=r},function(t,e,n){"use strict";function r(){return i++}var i=1;t.exports=r},function(t,e,n){"use strict";function r(t){for(;t&&t.firstChild;)t=t.firstChild;return t}function i(t){for(;t;){if(t.nextSibling)return t.nextSibling;t=t.parentNode}}function o(t,e){for(var n=r(t),o=0,a=0;n;){if(3===n.nodeType){if(a=o+n.textContent.length,o<=e&&a>=e)return{node:n,offset:e-o};o=a}n=r(i(n))}}t.exports=o},function(t,e,n){"use strict";function r(t,e){var n={};return n[t.toLowerCase()]=e.toLowerCase(),n["Webkit"+t]="webkit"+e,n["Moz"+t]="moz"+e,n["ms"+t]="MS"+e,n["O"+t]="o"+e.toLowerCase(),n}function i(t){if(u[t])return u[t];if(!a[t])return t;var e=a[t];for(var n in e)if(e.hasOwnProperty(n)&&n in c)return u[t]=e[n];return""}var o=n(6),a={animationend:r("Animation","AnimationEnd"),animationiteration:r("Animation","AnimationIteration"),animationstart:r("Animation","AnimationStart"),transitionend:r("Transition","TransitionEnd")},u={},c={};o.canUseDOM&&(c=document.createElement("div").style,"AnimationEvent"in window||(delete a.animationend.animation,delete a.animationiteration.animation,delete a.animationstart.animation),"TransitionEvent"in window||delete a.transitionend.transition),t.exports=i},function(t,e,n){"use strict";function r(t){return'"'+i(t)+'"'}var i=n(54);t.exports=r},function(t,e,n){"use strict";var r=n(163);t.exports=r.renderSubtreeIntoContainer},function(t,e,n){"use strict";function r(t,e){var n=l.extractSingleTouch(e);return n?n[t.page]:t.page in e?e[t.page]:e[t.client]+f[t.envScroll]}function i(t,e){var n=r(b.x,e),i=r(b.y,e);return Math.pow(Math.pow(n-t.x,2)+Math.pow(i-t.y,2),.5)}function o(t){return{tapMoveThreshold:g,ignoreMouseThreshold:m,eventTypes:C,extractEvents:function(e,n,o,a){if(!h(e)&&!d(e))return null;if(v(e))_=M();else if(t(_,M()))return null;var u=null,l=i(y,o);return d(e)&&l<g&&(u=s.getPooled(C.touchTap,n,o,a)),h(e)?(y.x=r(b.x,o),y.y=r(b.y,o)):d(e)&&(y.x=0,y.y=0),c.accumulateTwoPhaseDispatches(u),u}}}var a=n(339),u=n(50),c=n(23),s=n(25),l=n(397),f=n(89),p=n(329),h=(a.topLevelTypes,u.isStartish),d=u.isEndish,v=function(t){var e=["topTouchCancel","topTouchEnd","topTouchStart","topTouchMove"];return e.indexOf(t)>=0},g=10,m=750,y={x:null,y:null},_=null,b={x:{page:"pageX",client:"clientX",envScroll:"currentPageScrollLeft"},y:{page:"pageY",client:"clientY",envScroll:"currentPageScrollTop"}},x=["topTouchStart","topTouchCancel","topTouchEnd","topTouchMove"],w=["topMouseDown","topMouseMove","topMouseUp"].concat(x),C={touchTap:{phasedRegistrationNames:{bubbled:p({onTouchTap:null}),captured:p({onTouchTapCapture:null})},dependencies:w}},M=function(){return Date.now?Date.now:function(){return+new Date}}();t.exports=o},function(t,e){var n={extractSingleTouch:function(t){var e=t.touches,n=t.changedTouches,r=e&&e.length>0,i=n&&n.length>0;return!r&&i?n[0]:r?e[0]:t}};t.exports=n},function(t,e){t.exports=function(t,e){if(t&&e-t<750)return!0}},function(t,e,n){"use strict";function r(t){var e=/[=:]/g,n={"=":"=0",":":"=2"},r=(""+t).replace(e,function(t){return n[t]});return"$"+r}function i(t){var e=/(=0|=2)/g,n={"=0":"=","=2":":"},r="."===t[0]&&"$"===t[1]?t.substring(2):t.substring(1);return(""+r).replace(e,function(t){return n[t]})}var o={escape:r,unescape:i};t.exports=o},function(t,e,n){"use strict";var r=n(28),i=(n(0),function(t){var e=this;if(e.instancePool.length){var n=e.instancePool.pop();return e.call(n,t),n}return new e(t)}),o=function(t,e){var n=this;if(n.instancePool.length){var r=n.instancePool.pop();return n.call(r,t,e),r}return new n(t,e)},a=function(t,e,n){var r=this;if(r.instancePool.length){var i=r.instancePool.pop();return r.call(i,t,e,n),i}return new r(t,e,n)},u=function(t,e,n,r){var i=this;if(i.instancePool.length){var o=i.instancePool.pop();return i.call(o,t,e,n,r),o}return new i(t,e,n,r)},c=function(t){var e=this;t instanceof e?void 0:r("25"),t.destructor(),e.instancePool.length<e.poolSize&&e.instancePool.push(t)},s=10,l=i,f=function(t,e){var n=t;return n.instancePool=[],n.getPooled=e||l,n.poolSize||(n.poolSize=s),n.release=c,n},p={addPoolingTo:f,oneArgumentPooler:i,twoArgumentPooler:o,threeArgumentPooler:a,fourArgumentPooler:u};t.exports=p},function(t,e,n){"use strict";function r(t){return(""+t).replace(b,"$&/")}function i(t,e){this.func=t,this.context=e,this.count=0}function o(t,e,n){var r=t.func,i=t.context;r.call(i,e,t.count++)}function a(t,e,n){if(null==t)return t;var r=i.getPooled(e,n);m(t,o,r),i.release(r)}function u(t,e,n,r){this.result=t,this.keyPrefix=e,this.func=n,this.context=r,this.count=0}function c(t,e,n){var i=t.result,o=t.keyPrefix,a=t.func,u=t.context,c=a.call(u,e,t.count++);Array.isArray(c)?s(c,i,n,g.thatReturnsArgument):null!=c&&(v.isValidElement(c)&&(c=v.cloneAndReplaceKey(c,o+(!c.key||e&&e.key===c.key?"":r(c.key)+"/")+n)),i.push(c))}function s(t,e,n,i,o){var a="";null!=n&&(a=r(n)+"/");var s=u.getPooled(e,a,i,o);m(t,c,s),u.release(s)}function l(t,e,n){if(null==t)return t;var r=[];return s(t,r,null,e,n),r}function f(t,e,n){return null}function p(t,e){return m(t,f,null)}function h(t){var e=[];return s(t,e,null,g.thatReturnsArgument),e}var d=n(400),v=n(27),g=n(8),m=n(409),y=d.twoArgumentPooler,_=d.fourArgumentPooler,b=/\/+/g;i.prototype.destructor=function(){this.func=null,this.context=null,this.count=0},d.addPoolingTo(i,y),u.prototype.destructor=function(){this.result=null,this.keyPrefix=null,this.func=null,this.context=null,this.count=0},d.addPoolingTo(u,_);var x={forEach:a,map:l,mapIntoWithKeyPrefixInternal:s,count:p,toArray:h};t.exports=x},function(t,e,n){"use strict";function r(t){return t}function i(t,e){var n=b.hasOwnProperty(e)?b[e]:null;w.hasOwnProperty(e)&&("OVERRIDE_BASE"!==n?p("73",e):void 0),t&&("DEFINE_MANY"!==n&&"DEFINE_MANY_MERGED"!==n?p("74",e):void 0)}function o(t,e){if(e){"function"==typeof e?p("75"):void 0,v.isValidElement(e)?p("76"):void 0;var n=t.prototype,r=n.__reactAutoBindPairs;e.hasOwnProperty(y)&&x.mixins(t,e.mixins);for(var o in e)if(e.hasOwnProperty(o)&&o!==y){var a=e[o],u=n.hasOwnProperty(o);if(i(u,o),x.hasOwnProperty(o))x[o](t,a);else{var l=b.hasOwnProperty(o),f="function"==typeof a,h=f&&!l&&!u&&e.autobind!==!1;if(h)r.push(o,a),n[o]=a;else if(u){var d=b[o];!l||"DEFINE_MANY_MERGED"!==d&&"DEFINE_MANY"!==d?p("77",d,o):void 0,"DEFINE_MANY_MERGED"===d?n[o]=c(n[o],a):"DEFINE_MANY"===d&&(n[o]=s(n[o],a))}else n[o]=a}}}else;}function a(t,e){if(e)for(var n in e){var r=e[n];if(e.hasOwnProperty(n)){var i=n in x;i?p("78",n):void 0;var o=n in t;o?p("79",n):void 0,t[n]=r}}}function u(t,e){t&&e&&"object"==typeof t&&"object"==typeof e?void 0:p("80");for(var n in e)e.hasOwnProperty(n)&&(void 0!==t[n]?p("81",n):void 0,t[n]=e[n]);return t}function c(t,e){return function(){var n=t.apply(this,arguments),r=e.apply(this,arguments);if(null==n)return r;if(null==r)return n;var i={};return u(i,n),u(i,r),i}}function s(t,e){return function(){t.apply(this,arguments),e.apply(this,arguments)}}function l(t,e){var n=e.bind(t);return n;
 }function f(t){for(var e=t.__reactAutoBindPairs,n=0;n<e.length;n+=2){var r=e[n],i=e[n+1];t[r]=l(t,i)}}var p=n(28),h=n(3),d=n(97),v=n(27),g=(n(175),n(98)),m=n(38),y=(n(0),n(1),"mixins"),_=[],b={mixins:"DEFINE_MANY",statics:"DEFINE_MANY",propTypes:"DEFINE_MANY",contextTypes:"DEFINE_MANY",childContextTypes:"DEFINE_MANY",getDefaultProps:"DEFINE_MANY_MERGED",getInitialState:"DEFINE_MANY_MERGED",getChildContext:"DEFINE_MANY_MERGED",render:"DEFINE_ONCE",componentWillMount:"DEFINE_MANY",componentDidMount:"DEFINE_MANY",componentWillReceiveProps:"DEFINE_MANY",shouldComponentUpdate:"DEFINE_ONCE",componentWillUpdate:"DEFINE_MANY",componentDidUpdate:"DEFINE_MANY",componentWillUnmount:"DEFINE_MANY",updateComponent:"OVERRIDE_BASE"},x={displayName:function(t,e){t.displayName=e},mixins:function(t,e){if(e)for(var n=0;n<e.length;n++)o(t,e[n])},childContextTypes:function(t,e){t.childContextTypes=h({},t.childContextTypes,e)},contextTypes:function(t,e){t.contextTypes=h({},t.contextTypes,e)},getDefaultProps:function(t,e){t.getDefaultProps?t.getDefaultProps=c(t.getDefaultProps,e):t.getDefaultProps=e},propTypes:function(t,e){t.propTypes=h({},t.propTypes,e)},statics:function(t,e){a(t,e)},autobind:function(){}},w={replaceState:function(t,e){this.updater.enqueueReplaceState(this,t),e&&this.updater.enqueueCallback(this,e,"replaceState")},isMounted:function(){return this.updater.isMounted(this)}},C=function(){};h(C.prototype,d.prototype,w);var M={createClass:function(t){var e=r(function(t,n,r){this.__reactAutoBindPairs.length&&f(this),this.props=t,this.context=n,this.refs=m,this.updater=r||g,this.state=null;var i=this.getInitialState?this.getInitialState():null;"object"!=typeof i||Array.isArray(i)?p("82",e.displayName||"ReactCompositeComponent"):void 0,this.state=i});e.prototype=new C,e.prototype.constructor=e,e.prototype.__reactAutoBindPairs=[],_.forEach(o.bind(null,e)),o(e,t),e.getDefaultProps&&(e.defaultProps=e.getDefaultProps()),e.prototype.render?void 0:p("83");for(var n in b)e.prototype[n]||(e.prototype[n]=null);return e},injection:{injectMixin:function(t){_.push(t)}}};t.exports=M},function(t,e,n){"use strict";var r=n(27),i=r.createFactory,o={a:i("a"),abbr:i("abbr"),address:i("address"),area:i("area"),article:i("article"),aside:i("aside"),audio:i("audio"),b:i("b"),base:i("base"),bdi:i("bdi"),bdo:i("bdo"),big:i("big"),blockquote:i("blockquote"),body:i("body"),br:i("br"),button:i("button"),canvas:i("canvas"),caption:i("caption"),cite:i("cite"),code:i("code"),col:i("col"),colgroup:i("colgroup"),data:i("data"),datalist:i("datalist"),dd:i("dd"),del:i("del"),details:i("details"),dfn:i("dfn"),dialog:i("dialog"),div:i("div"),dl:i("dl"),dt:i("dt"),em:i("em"),embed:i("embed"),fieldset:i("fieldset"),figcaption:i("figcaption"),figure:i("figure"),footer:i("footer"),form:i("form"),h1:i("h1"),h2:i("h2"),h3:i("h3"),h4:i("h4"),h5:i("h5"),h6:i("h6"),head:i("head"),header:i("header"),hgroup:i("hgroup"),hr:i("hr"),html:i("html"),i:i("i"),iframe:i("iframe"),img:i("img"),input:i("input"),ins:i("ins"),kbd:i("kbd"),keygen:i("keygen"),label:i("label"),legend:i("legend"),li:i("li"),link:i("link"),main:i("main"),map:i("map"),mark:i("mark"),menu:i("menu"),menuitem:i("menuitem"),meta:i("meta"),meter:i("meter"),nav:i("nav"),noscript:i("noscript"),object:i("object"),ol:i("ol"),optgroup:i("optgroup"),option:i("option"),output:i("output"),p:i("p"),param:i("param"),picture:i("picture"),pre:i("pre"),progress:i("progress"),q:i("q"),rp:i("rp"),rt:i("rt"),ruby:i("ruby"),s:i("s"),samp:i("samp"),script:i("script"),section:i("section"),select:i("select"),small:i("small"),source:i("source"),span:i("span"),strong:i("strong"),style:i("style"),sub:i("sub"),summary:i("summary"),sup:i("sup"),table:i("table"),tbody:i("tbody"),td:i("td"),textarea:i("textarea"),tfoot:i("tfoot"),th:i("th"),thead:i("thead"),time:i("time"),title:i("title"),tr:i("tr"),track:i("track"),u:i("u"),ul:i("ul"),var:i("var"),video:i("video"),wbr:i("wbr"),circle:i("circle"),clipPath:i("clipPath"),defs:i("defs"),ellipse:i("ellipse"),g:i("g"),image:i("image"),line:i("line"),linearGradient:i("linearGradient"),mask:i("mask"),path:i("path"),pattern:i("pattern"),polygon:i("polygon"),polyline:i("polyline"),radialGradient:i("radialGradient"),rect:i("rect"),stop:i("stop"),svg:i("svg"),text:i("text"),tspan:i("tspan")};t.exports=o},function(t,e,n){"use strict";function r(t,e){return t===e?0!==t||1/t===1/e:t!==t&&e!==e}function i(t){this.message=t,this.stack=""}function o(t){function e(e,n,r,o,a,u,c){o=o||E,u=u||r;if(null==n[r]){var s=w[a];return e?new i(null===n[r]?"The "+s+" `"+u+"` is marked as required "+("in `"+o+"`, but its value is `null`."):"The "+s+" `"+u+"` is marked as required in "+("`"+o+"`, but its value is `undefined`.")):null}return t(n,r,o,a,u)}var n=e.bind(null,!1);return n.isRequired=e.bind(null,!0),n}function a(t){function e(e,n,r,o,a,u){var c=e[n],s=y(c);if(s!==t){var l=w[o],f=_(c);return new i("Invalid "+l+" `"+a+"` of type "+("`"+f+"` supplied to `"+r+"`, expected ")+("`"+t+"`."))}return null}return o(e)}function u(){return o(M.thatReturns(null))}function c(t){function e(e,n,r,o,a){if("function"!=typeof t)return new i("Property `"+a+"` of component `"+r+"` has invalid PropType notation inside arrayOf.");var u=e[n];if(!Array.isArray(u)){var c=w[o],s=y(u);return new i("Invalid "+c+" `"+a+"` of type "+("`"+s+"` supplied to `"+r+"`, expected an array."))}for(var l=0;l<u.length;l++){var f=t(u,l,r,o,a+"["+l+"]",C);if(f instanceof Error)return f}return null}return o(e)}function s(){function t(t,e,n,r,o){var a=t[e];if(!x.isValidElement(a)){var u=w[r],c=y(a);return new i("Invalid "+u+" `"+o+"` of type "+("`"+c+"` supplied to `"+n+"`, expected a single ReactElement."))}return null}return o(t)}function l(t){function e(e,n,r,o,a){if(!(e[n]instanceof t)){var u=w[o],c=t.name||E,s=b(e[n]);return new i("Invalid "+u+" `"+a+"` of type "+("`"+s+"` supplied to `"+r+"`, expected ")+("instance of `"+c+"`."))}return null}return o(e)}function f(t){function e(e,n,o,a,u){for(var c=e[n],s=0;s<t.length;s++)if(r(c,t[s]))return null;var l=w[a],f=JSON.stringify(t);return new i("Invalid "+l+" `"+u+"` of value `"+c+"` "+("supplied to `"+o+"`, expected one of "+f+"."))}return Array.isArray(t)?o(e):M.thatReturnsNull}function p(t){function e(e,n,r,o,a){if("function"!=typeof t)return new i("Property `"+a+"` of component `"+r+"` has invalid PropType notation inside objectOf.");var u=e[n],c=y(u);if("object"!==c){var s=w[o];return new i("Invalid "+s+" `"+a+"` of type "+("`"+c+"` supplied to `"+r+"`, expected an object."))}for(var l in u)if(u.hasOwnProperty(l)){var f=t(u,l,r,o,a+"."+l,C);if(f instanceof Error)return f}return null}return o(e)}function h(t){function e(e,n,r,o,a){for(var u=0;u<t.length;u++){var c=t[u];if(null==c(e,n,r,o,a,C))return null}var s=w[o];return new i("Invalid "+s+" `"+a+"` supplied to "+("`"+r+"`."))}return Array.isArray(t)?o(e):M.thatReturnsNull}function d(){function t(t,e,n,r,o){if(!g(t[e])){var a=w[r];return new i("Invalid "+a+" `"+o+"` supplied to "+("`"+n+"`, expected a ReactNode."))}return null}return o(t)}function v(t){function e(e,n,r,o,a){var u=e[n],c=y(u);if("object"!==c){var s=w[o];return new i("Invalid "+s+" `"+a+"` of type `"+c+"` "+("supplied to `"+r+"`, expected `object`."))}for(var l in t){var f=t[l];if(f){var p=f(u,l,r,o,a+"."+l,C);if(p)return p}}return null}return o(e)}function g(t){switch(typeof t){case"number":case"string":case"undefined":return!0;case"boolean":return!t;case"object":if(Array.isArray(t))return t.every(g);if(null===t||x.isValidElement(t))return!0;var e=k(t);if(!e)return!1;var n,r=e.call(t);if(e!==t.entries){for(;!(n=r.next()).done;)if(!g(n.value))return!1}else for(;!(n=r.next()).done;){var i=n.value;if(i&&!g(i[1]))return!1}return!0;default:return!1}}function m(t,e){return"symbol"===t||("Symbol"===e["@@toStringTag"]||"function"==typeof Symbol&&e instanceof Symbol)}function y(t){var e=typeof t;return Array.isArray(t)?"array":t instanceof RegExp?"object":m(e,t)?"symbol":e}function _(t){var e=y(t);if("object"===e){if(t instanceof Date)return"date";if(t instanceof RegExp)return"regexp"}return e}function b(t){return t.constructor&&t.constructor.name?t.constructor.name:E}var x=n(27),w=n(175),C=n(405),M=n(8),k=n(177),E=(n(1),"<<anonymous>>"),T={array:a("array"),bool:a("boolean"),func:a("function"),number:a("number"),object:a("object"),string:a("string"),symbol:a("symbol"),any:u(),arrayOf:c,element:s(),instanceOf:l,node:d(),objectOf:p,oneOf:f,oneOfType:h,shape:v};i.prototype=Error.prototype,t.exports=T},function(t,e,n){"use strict";var r="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";t.exports=r},function(t,e,n){"use strict";function r(t,e,n){this.props=t,this.context=e,this.refs=c,this.updater=n||u}function i(){}var o=n(3),a=n(97),u=n(98),c=n(38);i.prototype=a.prototype,r.prototype=new i,r.prototype.constructor=r,o(r.prototype,a.prototype),r.prototype.isPureReactComponent=!0,t.exports=r},function(t,e,n){"use strict";t.exports="15.4.2"},function(t,e,n){"use strict";function r(t){return o.isValidElement(t)?void 0:i("143"),t}var i=n(28),o=n(27);n(0);t.exports=r},function(t,e,n){"use strict";function r(t,e){return t&&"object"==typeof t&&null!=t.key?s.escape(t.key):e.toString(36)}function i(t,e,n,o){var p=typeof t;if("undefined"!==p&&"boolean"!==p||(t=null),null===t||"string"===p||"number"===p||"object"===p&&t.$$typeof===u)return n(o,t,""===e?l+r(t,0):e),1;var h,d,v=0,g=""===e?l:e+f;if(Array.isArray(t))for(var m=0;m<t.length;m++)h=t[m],d=g+r(h,m),v+=i(h,d,n,o);else{var y=c(t);if(y){var _,b=y.call(t);if(y!==t.entries)for(var x=0;!(_=b.next()).done;)h=_.value,d=g+r(h,x++),v+=i(h,d,n,o);else for(;!(_=b.next()).done;){var w=_.value;w&&(h=w[1],d=g+s.escape(w[0])+f+r(h,0),v+=i(h,d,n,o))}}else if("object"===p){var C="",M=String(t);a("31","[object Object]"===M?"object with keys {"+Object.keys(t).join(", ")+"}":M,C)}}return v}function o(t,e,n){return null==t?0:i(t,"",e,n)}var a=n(28),u=(n(15),n(174)),c=n(177),s=(n(0),n(399)),l=(n(1),"."),f=":";t.exports=o},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var i=n(41),o=r(i),a=n(182),u=r(a),c=n(183),s=r(c),l=n(181),f=r(l),p=n(180),h=r(p),d=n(179),v=r(d);(0,s.default)(),window.SHAP={SimpleListVisualizer:f.default,AdditiveForceVisualizer:h.default,AdditiveForceArrayVisualizer:v.default,React:o.default,ReactDom:u.default}}]);</script></div></div>
 </div>
+<div class="section" id="loading-data-and-model">
+<h2>loading data and model<a class="headerlink" href="#loading-data-and-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="data">
-<h2>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<h3>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_data_samples_actual</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">subject_list</span><span class="p">):</span>
@@ -643,8 +611,6 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </div>
 </div>
 </div>
-<div class="section" id="parameters">
-<h3>parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ARGS</span><span class="p">():</span> <span class="k">pass</span>
@@ -660,9 +626,6 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="organizing-into-tensors">
-<h3>organizing into tensors<a class="headerlink" href="#organizing-into-tensors" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subject_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -686,129 +649,24 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2137, 12, 85) (2137, 12) (2167, 12, 85) (2167, 12)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-24 14:36:49.057696: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-28 11:16:25.257054: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-03-24 14:36:49.059678: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+2022-03-28 11:16:25.629026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-03-24 14:36:49.060117: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
-2022-03-24 14:36:49.060182: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-03-24 14:36:49.457168: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
-2022-03-24 14:36:49.457200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
-2022-03-24 14:36:49.457206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
-2022-03-24 14:36:49.457886: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14804 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
+2022-03-28 11:16:25.632022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
+2022-03-28 11:16:25.632137: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-03-28 11:16:26.289058: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-03-28 11:16:26.289091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
+2022-03-28 11:16:26.289096: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
+2022-03-28 11:16:26.304569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14804 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="saliency-maps">
-<h2>saliency maps<a class="headerlink" href="#saliency-maps" title="Permalink to this headline">¶</a></h2>
-<p>We compute saliency of input features (ROIs) based on the temperature scaled model. This is because the temperature scaling brings the last layer’s activity closer to zero so that gradient through the softmax layer becomes non-zero.</p>
-<div class="section" id="add-temperature-to-pretrained-models">
-<h3>add temperature to pretrained models<a class="headerlink" href="#add-temperature-to-pretrained-models" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">args</span><span class="o">.</span><span class="n">temp</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;temperature&#39;</span><span class="p">)</span>
-<span class="n">S_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_saliency_maps</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fMRI_sequence</span><span class="p">,</span> <span class="n">target_class_idx</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    compute saliency maps:</span>
-<span class="sd">    1&gt; pass fMRI_sequence to get class scores</span>
-<span class="sd">    2&gt; backpropagate class score of target class</span>
-<span class="sd">    3&gt; return gradients w.r.t. inputs</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-    <span class="n">fMRI_sequence</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">fMRI_sequence</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
-        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">fMRI_sequence</span><span class="p">)</span>
-        <span class="n">probs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">fMRI_sequence</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="n">target_class_idx</span><span class="p">]</span> <span class="c1"># class probability score of the target class</span>
-    <span class="k">return</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">fMRI_sequence</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_saliency_maps_of_dataset</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">t_model</span><span class="p">):</span>
-    <span class="n">normalize</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="n">appr_TR</span> <span class="o">=</span> <span class="mi">7</span>
-    <span class="n">saliency_appr</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">saliency_retr</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">idx_sample</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
-
-        <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">idx_sample</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-        <span class="c1"># approach class</span>
-        <span class="n">sample_saliency</span> <span class="o">=</span> <span class="n">compute_saliency_maps</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="n">t_model</span><span class="p">,</span> 
-            <span class="n">fMRI_sequence</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span> 
-            <span class="n">target_class_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">sample_saliency</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">sample_saliency</span><span class="p">)</span>
-        <span class="n">saliency_appr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_saliency</span><span class="p">)</span>
-
-        <span class="c1"># retreat class</span>
-        <span class="n">sample_saliency</span> <span class="o">=</span> <span class="n">compute_saliency_maps</span><span class="p">(</span>
-            <span class="n">model</span><span class="o">=</span><span class="n">t_model</span><span class="p">,</span> 
-            <span class="n">fMRI_sequence</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span> 
-            <span class="n">target_class_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">sample_saliency</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">sample_saliency</span><span class="p">)</span>
-        <span class="n">saliency_retr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_saliency</span><span class="p">)</span>
-
-    <span class="n">saliency_appr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">saliency_appr</span><span class="p">)</span>
-    <span class="n">saliency_retr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">saliency_retr</span><span class="p">)</span>
-
-    <span class="c1"># mean_saliency_appr = np.mean(saliency_appr, axis=0)</span>
-    <span class="c1"># mean_saliency_retr = np.mean(saliency_retr, axis=0)</span>
-    <span class="c1"># saliency_contrast = mean_saliency_appr - mean_saliency_retr</span>
-    
-    <span class="k">return</span> <span class="p">(</span><span class="n">saliency_appr</span><span class="p">,</span> <span class="n">saliency_retr</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unmask_ROIwise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    input:</span>
-<span class="sd">    -----</span>
-<span class="sd">    x: np.array of size &lt;num_time, num_rois&gt;</span>
-<span class="sd">    mask: nilearn niimg of size &lt;num_vox_x, num_vox_y, num_vox_z&gt;</span>
-<span class="sd">    </span>
-<span class="sd">    output:</span>
-<span class="sd">    ------</span>
-<span class="sd">    final_mask: nilearn niimg that contains the unmasked 4D </span>
-<span class="sd">                volumetric data of x</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">mask_data</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mask_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">final_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    
-    <span class="n">mask_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">mask_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">num_rois</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mask_data</span><span class="p">))</span>
-    
-    <span class="k">for</span> <span class="n">idx_roi</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_rois</span><span class="p">):</span>
-        
-        <span class="n">roi_data</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">idx_roi</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">mask_data</span><span class="o">==</span><span class="p">(</span><span class="n">idx_roi</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">final_data</span> <span class="o">+=</span> <span class="n">roi_data</span>
-        
-    <span class="n">final_mask</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">new_img_like</span><span class="p">(</span><span class="n">ref_niimg</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> 
-                              <span class="n">data</span><span class="o">=</span><span class="n">final_data</span><span class="p">,</span> 
-                              <span class="n">copy_header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">final_mask</span>
-        
-</pre></div>
-</div>
-</div>
-</div>
+<div class="section" id="model">
+<h3>model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model</span>
@@ -844,201 +702,183 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="non-adversarial-model-alternative-hypothesis">
-<h3>(non-adversarial) model: alternative hypothesis<a class="headerlink" href="#non-adversarial-model-alternative-hypothesis" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
-<span class="n">saliency_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/saliency/null_saliency.pkl&quot;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">saliency_file</span><span class="p">):</span>
-    <span class="c1"># load model</span>
-    <span class="n">model_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/models/GRU_classifier_model&quot;</span>
-    <span class="n">history_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/models/GRU_classifier_model_history&quot;</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_file</span><span class="p">):</span>
-        <span class="c1"># load the model</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
-        <span class="n">history</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">history_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the model </span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2"> was not saved&quot;</span><span class="p">)</span>
 
-    <span class="c1"># add temperature and softmax layers</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">model_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/models/GRU_classifier_model&quot;</span>
+<span class="n">history_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/models/GRU_classifier_model_history&quot;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_file</span><span class="p">):</span>
+    <span class="c1"># load the model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">history_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
 
-    <span class="n">t_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">layers</span> <span class="o">+</span>\
-        <span class="p">[</span><span class="n">T_layer</span><span class="p">,</span> <span class="n">S_layer</span><span class="p">])</span>
-
-    <span class="n">t_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-        <span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-        <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
-        <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()])</span>
-
-    <span class="c1"># saliency maps</span>
-    <span class="p">(</span><span class="n">saliency_appr</span><span class="p">,</span> <span class="n">saliency_retr</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_saliency_maps_of_dataset</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">t_model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="null-non-adversarial-model-null-hypothesis">
-<h3>null (non-adversarial) model: null hypothesis<a class="headerlink" href="#null-non-adversarial-model-null-hypothesis" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">saliency_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/saliency/null_saliency.pkl&quot;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">saliency_file</span><span class="p">):</span>
-    <span class="n">num_null_models</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="n">null_saliency_apprs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">null_saliency_retrs</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">idx_null</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_null_models</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">idx_null</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">null_model_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/models/GRU_classifier_null_model</span><span class="si">{</span><span class="n">idx_null</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">null_history_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/models/GRU_classifier_null_model</span><span class="si">{</span><span class="n">idx_null</span><span class="si">}</span><span class="s2">_history&quot;</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">null_model_file</span><span class="p">):</span>
-            <span class="c1"># load the model</span>
-            <span class="n">null_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">null_model_file</span><span class="p">)</span>
-            <span class="n">null_history</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">null_history_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span> 
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the model </span><span class="si">{</span><span class="n">null_model_file</span><span class="si">}</span><span class="s2"> was not saved&quot;</span><span class="p">)</span>
-            <span class="k">continue</span>
-
-        <span class="c1"># add temperature and softmax layers</span>
-        <span class="n">null_model</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
-
-        <span class="n">null_t_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-            <span class="n">null_model</span><span class="o">.</span><span class="n">layers</span> <span class="o">+</span>\
-            <span class="p">[</span><span class="n">T_layer</span><span class="p">,</span> <span class="n">S_layer</span><span class="p">])</span>
-
-        <span class="n">null_t_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-            <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
-            <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()])</span>
-
-        <span class="c1"># saliency maps</span>
-        <span class="p">(</span><span class="n">null_saliency_appr</span><span class="p">,</span> <span class="n">null_saliency_retr</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_saliency_maps_of_dataset</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">null_t_model</span><span class="p">)</span>
-        <span class="n">null_saliency_apprs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">null_saliency_appr</span><span class="p">)</span>
-        <span class="n">null_saliency_retrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">null_saliency_retr</span><span class="p">)</span>
-    
-    <span class="c1"># store in a df</span>
-    <span class="n">saliency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-        <span class="s1">&#39;idx_model&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_null_models</span><span class="p">)),</span>
-        <span class="s1">&#39;saliency_appr&#39;</span><span class="p">:</span> <span class="n">null_saliency_apprs</span><span class="p">,</span> 
-        <span class="s1">&#39;saliency_retr&#39;</span><span class="p">:</span> <span class="n">null_saliency_retrs</span><span class="p">,</span>
-    <span class="p">})</span> 
-    <span class="c1"># add the true saliency maps</span>
-    <span class="n">saliency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">saliency_df</span><span class="p">,</span> 
-         <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-             <span class="p">{</span><span class="s1">&#39;idx_model&#39;</span><span class="p">:[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
-              <span class="s1">&#39;saliency_appr&#39;</span><span class="p">:[</span><span class="n">saliency_appr</span><span class="p">],</span> 
-              <span class="s1">&#39;saliency_retr&#39;</span><span class="p">:[</span><span class="n">saliency_retr</span><span class="p">]})])</span>
-    <span class="c1"># save the df</span>
-    <span class="n">saliency_df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">saliency_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="plotting-to-see-significance">
-<h3>plotting to see significance<a class="headerlink" href="#plotting-to-see-significance" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_batch</span><span class="p">,</span> <span class="n">num_time</span><span class="p">,</span> <span class="n">num_rois</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
-
-<span class="n">appr_TR</span> <span class="o">=</span> <span class="mi">7</span>
-
-<span class="c1"># load the null and alt. saliency maps</span>
-<span class="n">saliency_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/saliency/null_saliency.pkl&quot;</span>
-<span class="n">saliency_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">saliency_file</span><span class="p">)</span>
-
-<span class="n">alt_sal</span> <span class="o">=</span> <span class="n">saliency_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
-<span class="p">(</span><span class="n">alt_sal_appr_mean</span><span class="p">,</span> 
- <span class="n">alt_sal_appr_std</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">alt_sal</span><span class="p">[</span><span class="s1">&#39;saliency_appr&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> 
-    <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">alt_sal</span><span class="p">[</span><span class="s1">&#39;saliency_appr&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="c1">#/np.sqrt(num_batch))</span>
-<span class="p">(</span><span class="n">alt_sal_retr_mean</span><span class="p">,</span> 
- <span class="n">alt_sal_retr_std</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">alt_sal</span><span class="p">[</span><span class="s1">&#39;saliency_retr&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> 
-    <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">alt_sal</span><span class="p">[</span><span class="s1">&#39;saliency_retr&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="c1">#/np.sqrt(num_batch))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">x</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-    
-<span class="k">def</span> <span class="nf">func_concat</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    
-<span class="n">saliency_df</span> <span class="o">=</span> <span class="n">saliency_df</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">func_mean</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">saliency_df</span> <span class="o">=</span> <span class="n">saliency_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">func_concat</span><span class="p">,</span> <span class="n">result_type</span><span class="o">=</span><span class="s1">&#39;reduce&#39;</span><span class="p">)</span><span class="c1">#.to_frame().transpose()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_names_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/home/govindas/parcellations/templates/README_MAX_ROIs_final_gm_85.txt&quot;</span>
-<span class="n">roi_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">roi_names_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="n">sal_appr</span> <span class="o">=</span> <span class="n">saliency_df</span><span class="p">[</span><span class="s1">&#39;saliency_appr&#39;</span><span class="p">]</span>
-<span class="n">sal_retr</span> <span class="o">=</span> <span class="n">saliency_df</span><span class="p">[</span><span class="s1">&#39;saliency_retr&#39;</span><span class="p">]</span>
-
-<span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#1/2.54</span>
-<span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">5</span> <span class="c1"># 17 x 5 = 85 = num_rois</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span> 
-                        <span class="n">ncols</span><span class="o">=</span><span class="n">ncols</span><span class="p">,</span> 
-                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="mi">40</span><span class="o">*</span><span class="n">cm</span><span class="p">),</span> 
-                        <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                    <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                    <span class="n">wspace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_time</span><span class="p">,</span> <span class="n">num_time</span><span class="p">)</span>
-<span class="n">y_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">idx_roi</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_names</span><span class="p">)):</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">idx_roi</span><span class="o">//</span><span class="n">ncols</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">idx_roi</span><span class="p">,</span> <span class="n">ncols</span><span class="p">)]</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">roi_names</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx_roi</span><span class="p">][[</span><span class="s1">&#39;Hemi&#39;</span><span class="p">,</span> <span class="s1">&#39;ROI&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="n">y_alt_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">sal_appr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="n">appr_TR</span><span class="p">,</span> <span class="n">idx_roi</span><span class="p">],</span> <span class="n">sal_retr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">appr_TR</span><span class="p">:,</span> <span class="n">idx_roi</span><span class="p">]])</span>
-    <span class="n">y_null_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">sal_appr</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="n">appr_TR</span><span class="p">,</span> <span class="n">idx_roi</span><span class="p">],</span> <span class="n">sal_retr</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">appr_TR</span><span class="p">:,</span> <span class="n">idx_roi</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">alt_sal_appr_std</span><span class="p">[:</span><span class="n">appr_TR</span><span class="p">,</span> <span class="n">idx_roi</span><span class="p">],</span> <span class="n">alt_sal_retr_std</span><span class="p">[</span><span class="n">appr_TR</span><span class="p">:,</span> <span class="n">idx_roi</span><span class="p">]])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
-        <span class="n">x_pts</span><span class="p">,</span> 
-        <span class="n">y_alt_pts</span><span class="p">,</span> 
-        <span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-        <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Alt.&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">x_pts</span><span class="p">,</span> 
-        <span class="n">y_null_pts</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> 
-        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
-        <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Null&#39;</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">y_pts</span><span class="p">,</span> <span class="n">x_pts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_pts</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">y_pts</span><span class="p">,</span> <span class="n">x_pts</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">x_pts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-
-    <span class="c1"># layout</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_pts</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_pts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_pts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_pts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_pts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># ax.legend()</span>
+    <span class="c1"># evaluate the model</span>
+    <span class="n">eval_hist</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2"> is not saved&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04-ROIwise_nearmiss_segments_null_saliency_24_0.png" src="../../_images/04-ROIwise_nearmiss_segments_null_saliency_24_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-28 11:16:27.318507: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-03-28 11:16:27.336049: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
+2022-03-28 11:16:27.721357: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17/68 [======&gt;.......................] - ETA: 0s - loss: 0.1300 - sparse_categorical_accuracy: 0.9939
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-28 11:16:28.182581: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68/68 [==============================] - 2s 10ms/step - loss: 0.1300 - sparse_categorical_accuracy: 0.9950
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="testing-hypergraphs">
+<h2>testing hypergraphs<a class="headerlink" href="#testing-hypergraphs" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scenes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;FN&#39;</span><span class="p">,</span> <span class="s1">&#39;TH&#39;</span><span class="p">),</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;TH&#39;</span><span class="p">,</span> <span class="s1">&#39;JV&#39;</span><span class="p">),</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;FN&#39;</span><span class="p">,</span> <span class="s1">&#39;JA&#39;</span><span class="p">),</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;JV&#39;</span><span class="p">,</span> <span class="s1">&#39;JU&#39;</span><span class="p">,</span> <span class="s1">&#39;CH&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">),</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;MA&#39;</span><span class="p">,</span> <span class="s1">&#39;GP&#39;</span><span class="p">),</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;TH&#39;</span><span class="p">,</span> <span class="s1">&#39;GP&#39;</span><span class="p">),</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;JU&#39;</span><span class="p">,</span> <span class="s1">&#39;CH&#39;</span><span class="p">,</span> <span class="s1">&#39;BR&#39;</span><span class="p">,</span> <span class="s1">&#39;CN&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">,</span> <span class="s1">&#39;JV&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">),</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;GP&#39;</span><span class="p">,</span> <span class="s1">&#39;MP&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">hnx</span><span class="o">.</span><span class="n">Hypergraph</span><span class="p">(</span><span class="n">scenes</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;layout_kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">39</span><span class="p">},</span> <span class="s1">&#39;with_node_counts&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">.25</span>
+
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">()])</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">sizes</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sizes</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">hnx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">H</span><span class="p">,</span>
+                 <span class="n">label_alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">edges_kwargs</span><span class="o">=</span><span class="p">{</span>
+                     <span class="s1">&#39;facecolors&#39;</span><span class="p">:</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">sizes</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="p">),</span>
+                     <span class="s1">&#39;edgecolors&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;linewidths&#39;</span><span class="p">:</span> <span class="mi">2</span>
+                 <span class="p">},</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_13_0.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_13_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="lesion-analysis">
+<h2>lesion analysis<a class="headerlink" href="#lesion-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">num_batch</span><span class="p">,</span> <span class="n">num_time</span><span class="p">,</span> <span class="n">num_rois</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">roi_names_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/home/govindas/parcellations/MAX_85_ROI_masks/ROI_names.txt&quot;</span>
+<span class="n">roi_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">roi_names_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;roi_name&#39;</span><span class="p">])</span>
+
+<span class="c1"># powerset of all combinations</span>
+<span class="k">def</span> <span class="nf">powerset</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">max_combs</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="s2">&quot;powerset([1,2,3]) --&gt; () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_combs</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">records_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_appr_vs_retr/lesion/records.pkl&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">records_file</span><span class="p">):</span>
+    <span class="c1"># fill in the dictionary</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">pset</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_rois</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">max_combs</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">rois_set</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">pset</span><span class="p">):</span>
+        <span class="n">rois_set</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">rois_set</span><span class="p">)</span>
+        <span class="n">roi_names_set</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">roi_names</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">rois_set</span><span class="p">)][</span><span class="s1">&#39;roi_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+        <span class="n">X_abl</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">X_abl</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">rois_set</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="n">records</span><span class="p">[</span><span class="n">roi_names_set</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_abl</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># save the dictionary</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">records_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">records_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># organize the roi sets in ascending order of accuracies.</span>
+<span class="c1"># so that we can see which rois decrease performance the most.</span>
+<span class="n">rois_records</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_rois</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">records</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">==</span> <span class="n">idx</span><span class="p">}</span>
+    <span class="n">rois_records</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;rois_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="single-roi">
+<h3>single roi<a class="headerlink" href="#single-roi" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#1/2.54</span>
+<span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span> 
+    <span class="n">ncols</span><span class="o">=</span><span class="n">ncols</span><span class="p">,</span> 
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">cm</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">cm</span><span class="p">),</span> 
+    <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+
+<span class="n">rescale</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lesioning single roi&quot;</span><span class="p">)</span>
+
+<span class="n">x_pts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">rois_records</span><span class="p">[</span><span class="s1">&#39;rois_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_rois</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">width</span><span class="o">=</span><span class="n">x_pts</span><span class="p">,</span> 
+    <span class="n">height</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">](</span><span class="n">rescale</span><span class="p">(</span><span class="n">x_pts</span><span class="p">)))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">rois_records</span><span class="p">[</span><span class="s1">&#39;rois_0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">],</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> 
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+
+
+<span class="c1"># layout</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_rois</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">rois_records</span><span class="p">[</span><span class="s1">&#39;rois_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.992</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># ax.legend()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_18_0.png" src="../../_images/05-ROIwise_nearmiss_segments_lesion_analysis_18_0.png" />
 </div>
 </div>
 </div>
@@ -1070,19 +910,12 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03-ROIwise_nearmiss_segments_saliency.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="04-ROIwise_nearmiss_segments_null_saliency.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">March 11, 14-15, 2022: saliency maps</p>
+            <p class="prev-next-title">March 23, 2022: null saliency</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="05-ROIwise_nearmiss_segments_lesion_analysis.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">March 25, 2022: lesion analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
