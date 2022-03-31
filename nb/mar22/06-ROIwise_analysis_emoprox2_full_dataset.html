@@ -880,7 +880,7 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">null_history</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">null_history_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 
     <span class="c1"># evaluate the model</span>
-    <span class="n">null_eval_hists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">null_model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+    <span class="n">null_eval_hists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">null_model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -889,703 +889,93 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4602
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|█▏                                                                                                                       | 1/100 [00:04&lt;07:39,  4.64s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5340
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|██▍                                                                                                                      | 2/100 [00:08&lt;07:04,  4.33s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5120
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|███▋                                                                                                                     | 3/100 [00:13&lt;07:12,  4.46s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4922
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|████▊                                                                                                                    | 4/100 [00:17&lt;07:03,  4.41s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 4s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5137
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|██████                                                                                                                   | 5/100 [00:22&lt;07:22,  4.66s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5576
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|███████▎                                                                                                                 | 6/100 [00:26&lt;07:01,  4.48s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5090
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|████████▍                                                                                                                | 7/100 [00:31&lt;06:52,  4.43s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4928
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|█████████▋                                                                                                               | 8/100 [00:36&lt;07:01,  4.58s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4839
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|██████████▉                                                                                                              | 9/100 [00:40&lt;06:51,  4.52s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4833
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|████████████                                                                                                            | 10/100 [00:45&lt;06:56,  4.63s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4626
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|█████████████▏                                                                                                          | 11/100 [00:49&lt;06:41,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4949
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|██████████████▍                                                                                                         | 12/100 [00:53&lt;06:27,  4.41s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4634
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|███████████████▌                                                                                                        | 13/100 [00:58&lt;06:38,  4.58s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4483
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|████████████████▊                                                                                                       | 14/100 [01:03&lt;06:30,  4.54s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5422
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|██████████████████                                                                                                      | 15/100 [01:08&lt;06:32,  4.61s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5476
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|███████████████████▏                                                                                                    | 16/100 [01:12&lt;06:19,  4.52s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4985
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|████████████████████▍                                                                                                   | 17/100 [01:16&lt;06:10,  4.47s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5431
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█████████████████████▌                                                                                                  | 18/100 [01:21&lt;06:23,  4.68s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5091
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|██████████████████████▊                                                                                                 | 19/100 [01:26&lt;06:10,  4.58s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5224
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|████████████████████████                                                                                                | 20/100 [01:31&lt;06:15,  4.70s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4747
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|█████████████████████████▏                                                                                              | 21/100 [01:35&lt;06:00,  4.57s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5197
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██████████████████████████▍                                                                                             | 22/100 [01:39&lt;05:50,  4.49s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5330
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|███████████████████████████▌                                                                                            | 23/100 [01:44&lt;05:53,  4.59s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.4882
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|████████████████████████████▊                                                                                           | 24/100 [01:48&lt;05:40,  4.47s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5140
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██████████████████████████████                                                                                          | 25/100 [01:53&lt;05:43,  4.58s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5322
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|███████████████████████████████▏                                                                                        | 26/100 [01:57&lt;05:32,  4.49s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4828
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|████████████████████████████████▍                                                                                       | 27/100 [02:02&lt;05:22,  4.42s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5208
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|█████████████████████████████████▌                                                                                      | 28/100 [02:07&lt;05:28,  4.57s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.4804
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██████████████████████████████████▊                                                                                     | 29/100 [02:11&lt;05:20,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4979
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|████████████████████████████████████                                                                                    | 30/100 [02:16&lt;05:24,  4.63s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4738
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|█████████████████████████████████████▏                                                                                  | 31/100 [02:20&lt;05:11,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.4503
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|██████████████████████████████████████▍                                                                                 | 32/100 [02:24&lt;04:59,  4.41s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4836
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███████████████████████████████████████▌                                                                                | 33/100 [02:29&lt;05:09,  4.62s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 45ms/step - loss: nan - sparse_categorical_accuracy: 0.4710
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|████████████████████████████████████████▊                                                                               | 34/100 [02:34&lt;05:01,  4.58s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.4324
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|██████████████████████████████████████████                                                                              | 35/100 [02:39&lt;04:59,  4.61s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4946
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███████████████████████████████████████████▏                                                                            | 36/100 [02:43&lt;04:48,  4.52s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5236
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|████████████████████████████████████████████▍                                                                           | 37/100 [02:47&lt;04:39,  4.44s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 45ms/step - loss: nan - sparse_categorical_accuracy: 0.5281
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|█████████████████████████████████████████████▌                                                                          | 38/100 [02:52&lt;04:50,  4.68s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4565
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|██████████████████████████████████████████████▊                                                                         | 39/100 [02:57&lt;04:40,  4.59s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5022
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████████████████████████████████████████████████                                                                        | 40/100 [03:02&lt;04:39,  4.66s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4458
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|█████████████████████████████████████████████████▏                                                                      | 41/100 [03:06&lt;04:28,  4.54s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5004
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|██████████████████████████████████████████████████▍                                                                     | 42/100 [03:10&lt;04:19,  4.48s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4943
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|███████████████████████████████████████████████████▌                                                                    | 43/100 [03:15&lt;04:23,  4.63s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5106
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████████████████████████████████████████████████████▊                                                                   | 44/100 [03:19&lt;04:12,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4916
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|██████████████████████████████████████████████████████                                                                  | 45/100 [03:24&lt;04:13,  4.61s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4376
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|███████████████████████████████████████████████████████▏                                                                | 46/100 [03:28&lt;04:03,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5059
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████████████████████████████████████████████████████████▍                                                               | 47/100 [03:33&lt;03:56,  4.45s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5284
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|█████████████████████████████████████████████████████████▌                                                              | 48/100 [03:38&lt;03:59,  4.60s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5187
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|██████████████████████████████████████████████████████████▊                                                             | 49/100 [03:42&lt;03:49,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4667
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|████████████████████████████████████████████████████████████                                                            | 50/100 [03:47&lt;03:50,  4.60s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5365
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████████████████████████████████████████████████████████████▏                                                          | 51/100 [03:51&lt;03:39,  4.48s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5095
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|██████████████████████████████████████████████████████████████▍                                                         | 52/100 [03:55&lt;03:30,  4.38s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.5148
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|███████████████████████████████████████████████████████████████▌                                                        | 53/100 [04:00&lt;03:37,  4.62s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5070
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|████████████████████████████████████████████████████████████████▊                                                       | 54/100 [04:05&lt;03:29,  4.55s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5192
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|██████████████████████████████████████████████████████████████████                                                      | 55/100 [04:10&lt;03:29,  4.66s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5331
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|███████████████████████████████████████████████████████████████████▏                                                    | 56/100 [04:14&lt;03:18,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5091
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|████████████████████████████████████████████████████████████████████▍                                                   | 57/100 [04:18&lt;03:11,  4.45s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4940
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████████████████████████████████████████████████████████████████████▌                                                  | 58/100 [04:23&lt;03:14,  4.63s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4816
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|██████████████████████████████████████████████████████████████████████▊                                                 | 59/100 [04:28&lt;03:06,  4.55s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.4515
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|████████████████████████████████████████████████████████████████████████                                                | 60/100 [04:33&lt;03:08,  4.71s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.4855
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|█████████████████████████████████████████████████████████████████████████▏                                              | 61/100 [04:37&lt;02:57,  4.55s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5187
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████████████████████████████████████████████████████████████████████████▍                                             | 62/100 [04:41&lt;02:50,  4.47s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4852
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|███████████████████████████████████████████████████████████████████████████▌                                            | 63/100 [04:46&lt;02:50,  4.61s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5029
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|████████████████████████████████████████████████████████████████████████████▊                                           | 64/100 [04:50&lt;02:41,  4.48s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4865
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████████████████████████████████████████████████████████████████████████████                                          | 65/100 [04:55&lt;02:42,  4.63s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5542
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|███████████████████████████████████████████████████████████████████████████████▏                                        | 66/100 [04:59&lt;02:33,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5424
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|████████████████████████████████████████████████████████████████████████████████▍                                       | 67/100 [05:04&lt;02:27,  4.47s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4905
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|█████████████████████████████████████████████████████████████████████████████████▌                                      | 68/100 [05:09&lt;02:27,  4.59s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5489
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████████████████████████████████████████████████████████████████████████████████▊                                     | 69/100 [05:13&lt;02:19,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5030
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|████████████████████████████████████████████████████████████████████████████████████                                    | 70/100 [05:18&lt;02:18,  4.62s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5311
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|█████████████████████████████████████████████████████████████████████████████████████▏                                  | 71/100 [05:22&lt;02:10,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5062
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|██████████████████████████████████████████████████████████████████████████████████████▍                                 | 72/100 [05:26&lt;02:04,  4.46s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.4712
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|███████████████████████████████████████████████████████████████████████████████████████▌                                | 73/100 [05:32&lt;02:06,  4.68s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4911
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|████████████████████████████████████████████████████████████████████████████████████████▊                               | 74/100 [05:36&lt;01:57,  4.53s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4888
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|██████████████████████████████████████████████████████████████████████████████████████████                              | 75/100 [05:41&lt;01:56,  4.64s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.4801
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████████████████████████████████████████████████████████████████████████████████████████▏                            | 76/100 [05:45&lt;01:49,  4.58s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 45ms/step - loss: nan - sparse_categorical_accuracy: 0.5405
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|████████████████████████████████████████████████████████████████████████████████████████████▍                           | 77/100 [05:50&lt;01:44,  4.54s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5100
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|█████████████████████████████████████████████████████████████████████████████████████████████▌                          | 78/100 [05:55&lt;01:42,  4.68s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4784
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 79%|██████████████████████████████████████████████████████████████████████████████████████████████▊                         | 79/100 [05:59&lt;01:36,  4.57s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.5146
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████████████████████████████████████████████████████████████████████████████████████████████                        | 80/100 [06:04&lt;01:32,  4.62s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5427
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|█████████████████████████████████████████████████████████████████████████████████████████████████▏                      | 81/100 [06:08&lt;01:25,  4.49s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5430
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|██████████████████████████████████████████████████████████████████████████████████████████████████▍                     | 82/100 [06:12&lt;01:19,  4.42s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.5378
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|███████████████████████████████████████████████████████████████████████████████████████████████████▌                    | 83/100 [06:17&lt;01:19,  4.66s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 39ms/step - loss: nan - sparse_categorical_accuracy: 0.5273
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████████████████████████████████████████████████████████████████████████████████████████████████▊                   | 84/100 [06:21&lt;01:11,  4.49s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.4503
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|██████████████████████████████████████████████████████████████████████████████████████████████████████                  | 85/100 [06:26&lt;01:09,  4.62s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 39ms/step - loss: nan - sparse_categorical_accuracy: 0.5138
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|███████████████████████████████████████████████████████████████████████████████████████████████████████▏                | 86/100 [06:31&lt;01:02,  4.47s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4615
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████████████████████████████████████████████████████████████████████████████████████████████████████▍               | 87/100 [06:35&lt;00:57,  4.39s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5202
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▌              | 88/100 [06:40&lt;00:55,  4.60s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5047
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 89%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▊             | 89/100 [06:44&lt;00:49,  4.53s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5244
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 90/100 [06:49&lt;00:46,  4.65s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.4690
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▏          | 91/100 [06:53&lt;00:40,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5278
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▍         | 92/100 [06:57&lt;00:35,  4.40s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 40ms/step - loss: nan - sparse_categorical_accuracy: 0.5478
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████▌        | 93/100 [07:02&lt;00:31,  4.56s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.4978
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊       | 94/100 [07:07&lt;00:27,  4.51s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.5572
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████      | 95/100 [07:12&lt;00:23,  4.66s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.4849
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏    | 96/100 [07:16&lt;00:18,  4.55s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.5093
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍   | 97/100 [07:20&lt;00:13,  4.49s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5205
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌  | 98/100 [07:26&lt;00:09,  4.68s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.5167
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 99%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊ | 99/100 [07:30&lt;00:04,  4.57s/it]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.4917
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [07:35&lt;00:00,  4.55s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|█▏                                                                                                                       | 1/100 [00:04&lt;06:46,  4.10s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|█▏                                                                                                                       | 1/100 [00:06&lt;11:11,  6.78s/it]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">null_history</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">null_history_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="c1"># evaluate the model</span>
+<span class="ne">---&gt; </span><span class="mi">48</span> <span class="n">null_eval_hists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">null_model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:1489,</span> in <span class="ni">Model.evaluate</span><span class="nt">(self, x, y, batch_size, verbose, sample_weight, steps, callbacks, max_queue_size, workers, use_multiprocessing, return_dict, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1487</span> <span class="k">with</span> <span class="n">trace</span><span class="o">.</span><span class="n">Trace</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">step_num</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">_r</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1488</span>   <span class="n">callbacks</span><span class="o">.</span><span class="n">on_test_batch_begin</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1489</span>   <span class="n">tmp_logs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_function</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1490</span>   <span class="k">if</span> <span class="n">data_handler</span><span class="o">.</span><span class="n">should_sync</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1491</span>     <span class="n">context</span><span class="o">.</span><span class="n">async_wait</span><span class="p">()</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py:889,</span> in <span class="ni">Function.__call__</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span> <span class="n">compiler</span> <span class="o">=</span> <span class="s2">&quot;xla&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jit_compile</span> <span class="k">else</span> <span class="s2">&quot;nonXla&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">888</span> <span class="k">with</span> <span class="n">OptionalXlaContext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jit_compile</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">889</span>   <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">891</span> <span class="n">new_tracing_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experimental_get_tracing_count</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span> <span class="n">without_tracing</span> <span class="o">=</span> <span class="p">(</span><span class="n">tracing_count</span> <span class="o">==</span> <span class="n">new_tracing_count</span><span class="p">)</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py:924,</span> in <span class="ni">Function._call</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span> <span class="c1"># In this case we have not created variables on the first call. So we can</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span> <span class="c1"># run the first trace but we should fail if variables are created.</span>
+<span class="ne">--&gt; </span><span class="mi">924</span> <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stateful_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">925</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_created_variables</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">926</span>   <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Creating variables on a non-first call to a function&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>                    <span class="s2">&quot; decorated with tf.function.&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/eager/function.py:3023,</span> in <span class="ni">Function.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3020</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3021</span>   <span class="p">(</span><span class="n">graph_function</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3022</span>    <span class="n">filtered_flat_args</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maybe_define_function</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3023</span> <span class="k">return</span> <span class="n">graph_function</span><span class="o">.</span><span class="n">_call_flat</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3024</span>     <span class="n">filtered_flat_args</span><span class="p">,</span> <span class="n">captured_inputs</span><span class="o">=</span><span class="n">graph_function</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">)</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/eager/function.py:1960,</span> in <span class="ni">ConcreteFunction._call_flat</span><span class="nt">(self, args, captured_inputs, cancellation_manager)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1956</span> <span class="n">possible_gradient_type</span> <span class="o">=</span> <span class="n">gradients_util</span><span class="o">.</span><span class="n">PossibleTapeGradientTypes</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1957</span> <span class="k">if</span> <span class="p">(</span><span class="n">possible_gradient_type</span> <span class="o">==</span> <span class="n">gradients_util</span><span class="o">.</span><span class="n">POSSIBLE_GRADIENT_TYPES_NONE</span>
+<span class="g g-Whitespace">   </span><span class="mi">1958</span>     <span class="ow">and</span> <span class="n">executing_eagerly</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1959</span>   <span class="c1"># No tape is watching; skip to running the function.</span>
+<span class="ne">-&gt; </span><span class="mi">1960</span>   <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_call_outputs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inference_function</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1961</span>       <span class="n">ctx</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">cancellation_manager</span><span class="o">=</span><span class="n">cancellation_manager</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1962</span> <span class="n">forward_backward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_forward_and_backward_functions</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1963</span>     <span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1964</span>     <span class="n">possible_gradient_type</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1965</span>     <span class="n">executing_eagerly</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1966</span> <span class="n">forward_function</span><span class="p">,</span> <span class="n">args_with_tangents</span> <span class="o">=</span> <span class="n">forward_backward</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/eager/function.py:591,</span> in <span class="ni">_EagerDefinedFunction.call</span><span class="nt">(self, ctx, args, cancellation_manager)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span> <span class="k">with</span> <span class="n">_InterpolateFunctionError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>   <span class="k">if</span> <span class="n">cancellation_manager</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">591</span>     <span class="n">outputs</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>         <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>         <span class="n">num_outputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_outputs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span>         <span class="n">inputs</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span>   <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>     <span class="n">outputs</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute_with_cancellation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span>         <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">600</span>         <span class="n">num_outputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_outputs</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">603</span>         <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">604</span>         <span class="n">cancellation_manager</span><span class="o">=</span><span class="n">cancellation_manager</span><span class="p">)</span>
+
+<span class="nn">File ~/venvs/expln-ai3.9/lib/python3.9/site-packages/tensorflow/python/eager/execute.py:59,</span> in <span class="ni">quick_execute</span><span class="nt">(op_name, num_outputs, inputs, attrs, ctx, name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>   <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>   <span class="n">tensors</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_Execute</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">op_name</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>                                       <span class="n">inputs</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="k">except</span> <span class="n">core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>   <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1993,7 +1383,7 @@ coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwid
 </table>
 </div></div></div>
 </div>
-<p>The table above tells that an individual network or its subnetwork is reducing performance only upto second decimal point.
+<p><strong>The table above tells that an individual network or its subnetwork is reducing performance only upto second decimal point.</strong>
 Hence, below we lesion combinations of networks to observe higher changes in accuracy.</p>
 </div>
 <div class="section" id="combinations-of-networks">
