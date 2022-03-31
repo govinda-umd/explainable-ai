@@ -255,12 +255,22 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-ROIwise_nearmiss_segments_saliency.html">
-     March 11, 14-15, 2022: emoprox2 approach vs retreat segments classification
+     March 11, 14-15, 2022: saliency maps
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04-ROIwise_nearmiss_segments_null_saliency.html">
      March 23, 2022: null saliency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-ROIwise_nearmiss_segments_lesion_analysis.html">
+     March 25, 28, 2022: lesion analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-ROIwise_analysis_emoprox2_full_dataset.html">
+     March 29,30, 2022: analysis on emoprox2 full dataset
     </a>
    </li>
   </ul>
@@ -368,10 +378,23 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <p>Summary of progress in March 2022</p>
-<ul class="simple">
+<ul>
 <li><p>Item 1</p></li>
 <li><p>Item 2</p></li>
-<li><p>Item 3</p></li>
+<li><p>Emoprox2 full dataset:
+I got the full data of emoprox2 paradigm for the 300 ROI Schaefer parcellation, (not the MAX paradigm’s 85 ROIs). Each participant goes through 6 runs, each with 2 blocks of stimuli. A block may have shock events. So the data is naturally partitioned into continuous segments between
+start of block to shock onset,
+shock offset to next shock onset, and
+shock offset to the end of the block.
+I used these segments as my data samples and trained the GRU model. The data contains time series from all the 300 ROIs.</p>
+<p>The model’s accuracy is 72% and is above chance.</p>
+<p>Then I did lesion analysis. As the ROIs were categorized into 7 networks, I lesioned these networks and their sub networks and found that no single network drops the accuracy more than the second decimal point. So I went on to lesion combinations of networks; 7 choose 1, 7 choose 2, and 7 choose 3. I do this in two ways:
+I lesioned a set of networks by masking time series of those networks and keeping others intact and saw which set of networks decrease the accuracy the most. The more drop in accuracy, the better.
+I only kept time series of a set of networks and zeroed out all other ROIs and saw what is the contribution of that particular set of networks in isolation from others. Here, the more the accuracy, the better.
+In both ways I found that the model’s performance depends upon time series from Visual, Somato motor, and Ventral attention networks.</p>
+<p>Report:
+<a class="reference external" href="https://govinda-umd.github.io/explainable-ai/nb/mar22/06-ROIwise_analysis_emoprox2_full_dataset.html">https://govinda-umd.github.io/explainable-ai/nb/mar22/06-ROIwise_analysis_emoprox2_full_dataset.html</a></p>
+</li>
 <li><p>…</p></li>
 </ul>
 </div>
