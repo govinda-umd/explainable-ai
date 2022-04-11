@@ -42,12 +42,11 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -98,132 +97,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  January 2022
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../jan22/jan22.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../jan22/jan22_updates.html">
-   Updates
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../jan22/date21.html">
-     Jan 21, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../jan22/extract-dataset.html">
-       get dataset: emoproxII
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../jan22/date30.html">
-     Jan 30, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../jan22/intro_shap_values.html">
-       January 30, 2022: intro to shap explanations
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  February 2022
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../feb22/feb22.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../feb22/feb22_updates.html">
-   Updates
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../feb22/date1.html">
-     Feb 1, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/basic_pipeline.html">
-       February 1-2, 10-14, 2022: complete basic pipeline
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../feb22/date15.html">
-     Feb 15, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/visualize_data.html">
-       visualize the data
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/linear_regression.html">
-       build a simple linear model
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/model_explanations.html">
-       model explanations
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   March 2022
  </span>
 </p>
@@ -237,8 +110,8 @@
   <a class="reference internal" href="mar22_updates.html">
    Updates
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -255,12 +128,76 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-ROIwise_nearmiss_segments_saliency.html">
-     March 11, 14-15, 2022: emoprox2 approach vs retreat segments classification
+     March 11, 14-15, 2022: saliency maps
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04-ROIwise_nearmiss_segments_null_saliency.html">
      March 23, 2022: null saliency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-ROIwise_nearmiss_segments_lesion_analysis.html">
+     March 25, 28, 2022: lesion analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-ROIwise_analysis_emoprox2_full_dataset.html">
+     March 29,30, 2022: analysis on emoprox2 full dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  April 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../apr22/apr22.html">
+   Summary
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../apr22/apr22_updates.html">
+   Updates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apr22/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2.html">
+     April 2, 2022: Schaefer parcellation (300), hemodynamic lag 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apr22/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag3.html">
+     April 2, 2022: Schaefer parcellation (300), hemodynamic lag 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apr22/01-Schaefer2018_roi300_net7_beta_timeseries.html">
+     April 4, 2022: emoprox near_miss_data proximity regressor beta time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apr22/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolags_comp.html">
+     April 6, 2022: Schaefer parcellation (300), hemodynamic lags comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apr22/01-ROIwise_appr_retr_timeseries_plots.html">
+     April 6-8, 2022: Schaefer parcellation (300), plot fMRI time series of approach and retreat segments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apr22/00-ROIwise_analysis_emoprox2_near_misses_300ROIs_hemolags_comp.html">
+     April 11, 2022: Schaefer parcellation (300), near misses dataset, hemodynamic lags comparison
     </a>
    </li>
   </ul>

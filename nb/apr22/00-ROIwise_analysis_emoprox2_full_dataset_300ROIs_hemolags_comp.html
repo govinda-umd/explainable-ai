@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>April 2, 2022: Schaefer parcellation (300), hemodynamic lags comparison &#8212; My Project [Daily Progress]</title>
+    <title>April 6, 2022: Schaefer parcellation (300), hemodynamic lags comparison &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,12 +42,11 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -98,186 +97,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  January 2022
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../jan22/jan22.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../jan22/jan22_updates.html">
-   Updates
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../jan22/date21.html">
-     Jan 21, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../jan22/extract-dataset.html">
-       get dataset: emoproxII
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../jan22/date30.html">
-     Jan 30, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../jan22/intro_shap_values.html">
-       January 30, 2022: intro to shap explanations
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  February 2022
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../feb22/feb22.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../feb22/feb22_updates.html">
-   Updates
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../feb22/date1.html">
-     Feb 1, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/basic_pipeline.html">
-       February 1-2, 10-14, 2022: complete basic pipeline
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../feb22/date15.html">
-     Feb 15, 2022
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/visualize_data.html">
-       visualize the data
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/linear_regression.html">
-       build a simple linear model
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../feb22/model_explanations.html">
-       model explanations
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  March 2022
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../mar22/mar22.html">
-   Summary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../mar22/mar22_updates.html">
-   Updates
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../mar22/01-ROIwise_nearmiss_segments_data_and_model.html">
-     March 3-10, 2022: emoprox2 approach vs retreat segments classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../mar22/02-ROIwise_nearmiss_segments_data_and_null_models.html">
-     March 16, 2022: null models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../mar22/03-ROIwise_nearmiss_segments_saliency.html">
-     March 11, 14-15, 2022: saliency maps
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../mar22/04-ROIwise_nearmiss_segments_null_saliency.html">
-     March 23, 2022: null saliency
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../mar22/05-ROIwise_nearmiss_segments_lesion_analysis.html">
-     March 25, 28, 2022: lesion analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../mar22/06-ROIwise_analysis_emoprox2_full_dataset.html">
-     March 29,30, 2022: analysis on emoprox2 full dataset
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   April 2022
  </span>
 </p>
@@ -291,8 +110,8 @@
   <a class="reference internal" href="apr22_updates.html">
    Updates
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -314,12 +133,17 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     April 2, 2022: Schaefer parcellation (300), hemodynamic lags comparison
+     April 6, 2022: Schaefer parcellation (300), hemodynamic lags comparison
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-ROIwise_appr_retr_timeseries_plots.html">
      April 6-8, 2022: Schaefer parcellation (300), plot fMRI time series of approach and retreat segments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="00-ROIwise_analysis_emoprox2_near_misses_300ROIs_hemolags_comp.html">
+     April 11, 2022: Schaefer parcellation (300), near misses dataset, hemodynamic lags comparison
     </a>
    </li>
   </ul>
@@ -443,7 +267,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>April 2, 2022: Schaefer parcellation (300), hemodynamic lags comparison</h1>
+                <h1>April 6, 2022: Schaefer parcellation (300), hemodynamic lags comparison</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -467,9 +291,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="april-2-2022-schaefer-parcellation-300-hemodynamic-lags-comparison">
-<h1>April 2, 2022: Schaefer parcellation (300), hemodynamic lags comparison<a class="headerlink" href="#april-2-2022-schaefer-parcellation-300-hemodynamic-lags-comparison" title="Permalink to this headline">¶</a></h1>
-<p>The model performance with <code class="docutils literal notranslate"><span class="pre">hemo_lags</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">3</span></code> were almost the same. Here we check whether it is the case for any hemodynamic lag: ±{5, 6, 7, 8}.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="april-6-2022-schaefer-parcellation-300-hemodynamic-lags-comparison">
+<h1>April 6, 2022: Schaefer parcellation (300), hemodynamic lags comparison<a class="headerlink" href="#april-6-2022-schaefer-parcellation-300-hemodynamic-lags-comparison" title="Permalink to this headline">¶</a></h1>
+<p>Models’ performance with <code class="docutils literal notranslate"><span class="pre">hemo_lags</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">3</span></code> were almost the same. Here we check whether it is the case for any hemodynamic lag: ±{5, 6, 7, 8}.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -533,23 +357,23 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 14:39:58.119235: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-04-08 14:40:00.144338: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
-2022-04-08 14:40:00.152371: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-11 14:00:39.258774: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-04-11 14:00:41.242831: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2022-04-11 14:00:41.268804: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:17:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-04-08 14:40:00.152555: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
+2022-04-11 14:00:41.269016: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-04-08 14:40:00.152575: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-04-08 14:40:00.155076: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
-2022-04-08 14:40:00.155144: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
-2022-04-08 14:40:00.155912: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
-2022-04-08 14:40:00.156148: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
-2022-04-08 14:40:00.156834: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
-2022-04-08 14:40:00.157406: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
-2022-04-08 14:40:00.157532: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
-2022-04-08 14:40:00.158182: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
+2022-04-11 14:00:41.269043: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-04-11 14:00:41.271534: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-04-11 14:00:41.271640: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+2022-04-11 14:00:41.272357: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2022-04-11 14:00:41.272612: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2022-04-11 14:00:41.273266: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
+2022-04-11 14:00:41.273834: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
+2022-04-11 14:00:41.273974: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2022-04-11 14:00:41.274617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
 </pre></div>
 </div>
 <div class="output text_html"><div align='center'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAdxJREFUeNq0Vt1Rg0AQJjcpgBJiBWIFkgoMFYhPPAIVECogPuYpdJBYgXQQrMCUkA50V7+d2ZwXuXPGm9khHLu3f9+3l1nkWNvtNqfHLgpfQ1EUS3tz5nAQ0+NIsiAZSc6eDlI8M3J00B/mDuUKDk6kfOebAgW3pkdD0pFcODGW4gKKvOrAUm04MA4QDt1OEIXU9hDigfS5rC1eS5T90gltck1Xrizo257kgySZcNRzgCSxCvgiE9nckPJo2b/B2AcEkk2OwL8bD8gmOKR1GPbaCUqxEgTq0tLvgb6zfo7+DgYGkkWL2tqLDV4RSITfbHPPfJKIrWz4nJQTMPAWA7IbD6imcNaDeDfgk+4No+wZr40BL3g9eQJJCFqRQ54KiSt72lsLpE3o3MCBSxDuq4yOckU2hKXRuwBH3OyMR4g1UpyTYw6mlmBqNdUXRM1NfyF5EPI6JkcpIDBIX8jX6DR/6ckAZJ0wEAdLR8DEk6OfC1Pp8BKo6TQIwPJbvJ6toK5lmuvJoRtfK6Ym1iRYIarRo2UyYHvRN5qpakR3yoizWrouoyuXXQqI185LCw07op5ZyCRGL99h24InP0e9xdQukEKVmhzrqZuRIfwISB//cP3Wk3f8f/yR+BRgAHu00HjLcEQBAAAAAElFTkSuQmCC' /></div><script charset='utf-8'>!function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=410)}([function(t,e,n){"use strict";function r(t,e,n,r,o,a,u,c){if(i(e),!t){var s;if(void 0===e)s=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,a,u,c],f=0;s=new Error(e.replace(/%s/g,function(){return l[f++]})),s.name="Invariant Violation"}throw s.framesToPop=1,s}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";var r=n(8),i=r;t.exports=i},function(t,e,n){"use strict";function r(t){for(var e=arguments.length-1,n="Minified React error #"+t+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant="+t,r=0;r<e;r++)n+="&args[]="+encodeURIComponent(arguments[r+1]);n+=" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";var i=new Error(n);throw i.name="Invariant Violation",i.framesToPop=1,i}t.exports=r},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}function i(){try{if(!Object.assign)return!1;var t=new String("abc");if(t[5]="de","5"===Object.getOwnPropertyNames(t)[0])return!1;for(var e={},n=0;n<10;n++)e["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(e).map(function(t){return e[t]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(t){i[t]=t}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},i)).join("")}catch(t){return!1}}/*
@@ -745,45 +569,45 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 14:40:02.797805: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-11 14:00:42.774112: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-04-08 14:40:02.799114: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+2022-04-11 14:00:42.776061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-04-08 14:40:02.799463: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
-2022-04-08 14:40:02.799509: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-04-08 14:40:03.168706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
-2022-04-08 14:40:03.168736: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
-2022-04-08 14:40:03.168741: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
-2022-04-08 14:40:03.169440: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14351 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
-2022-04-08 14:40:04.242663: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
-2022-04-08 14:40:04.260076: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
-2022-04-08 14:40:04.745101: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-04-11 14:00:42.776925: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
+2022-04-11 14:00:42.777021: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-04-11 14:00:43.180229: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-04-11 14:00:43.180264: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
+2022-04-11 14:00:43.180269: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
+2022-04-11 14:00:43.180984: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14804 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
+2022-04-11 14:00:44.271824: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-04-11 14:00:44.292095: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
+2022-04-11 14:00:44.818868: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 5/70 [=&gt;............................] - ETA: 2s - loss: 0.2079 - sparse_categorical_accuracy: 0.7308
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 4/70 [&gt;.............................] - ETA: 3s - loss: 0.2050 - sparse_categorical_accuracy: 0.7325 
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-08 14:40:05.081529: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-04-11 14:00:45.145904: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70/70 [==============================] - 4s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.7259
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70/70 [==============================] - 4s 45ms/step - loss: nan - sparse_categorical_accuracy: 0.7259
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.7157
+70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.7157
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.6988
+70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.6988
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.7106
+70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.7106
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 4s 46ms/step - loss: nan - sparse_categorical_accuracy: 0.7272
+70/70 [==============================] - 4s 45ms/step - loss: nan - sparse_categorical_accuracy: 0.7272
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.7470
+70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.7470
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.7557
+70/70 [==============================] - 3s 44ms/step - loss: nan - sparse_categorical_accuracy: 0.7557
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 45ms/step - loss: nan - sparse_categorical_accuracy: 0.7477
+70/70 [==============================] - 3s 42ms/step - loss: nan - sparse_categorical_accuracy: 0.7477
 WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-70/70 [==============================] - 3s 43ms/step - loss: nan - sparse_categorical_accuracy: 0.7268
+70/70 [==============================] - 3s 41ms/step - loss: nan - sparse_categorical_accuracy: 0.7268
 </pre></div>
 </div>
 </div>
