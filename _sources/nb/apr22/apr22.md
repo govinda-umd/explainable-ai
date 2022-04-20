@@ -10,7 +10,7 @@ Summary of progress in April 2022
     In order to incorporate hemodynamic lag in the fMRI responses w.r.t. to the stimulus, I selected time series by shifting each continuous segment by 2TRs and 3TRs.
     With these datasets I trained the GRU model, and checked whether their performances are above chance.
 
-- **Observations from emoprox2 stimuli**. 
+- **Observations from emoprox2 stimuli**. [](./02-understanding_emoprox2_stimulus.ipynb)
     1. This plot shows that the (canonical) fMRI response peaks at around 8.75TRs. And the information about the stimulus is present from around 5(or 6)TRs. So we should take segments of the fMRI signal shifted by 5(6)TRs from the onset of stimulus. 
 
     2. We also observe that the responses for the two classes (appr/ retr) oscillate. We can define a segment as time points between the intersections of the response curves. This is because at intersection influence of both the stimuli is similar, and at other time points one of them dominates. Thus such a segment would have least *contamination* from the other response.
