@@ -25,7 +25,7 @@ Summary of progress in April 2022
         - A drawback may be that the segments will be only 2-3 TRs long. A simpler model than RNN may classify the data better. We may not be learning any temporal patterns in the data.
 
 - **Ideas for setting up training procedure**
-    1. Introduce a third label.
+    1. Introduce a **third label**.
 
     2. Use a **Temporal Convolutional Network (TCN)** and classify a segment into the two classes. TCN takes as input an image, does temporal convolution, and predicts a label for the image. In our case, input image can be the time series of all rois within a segment: a time x roi matrix. TCN will do temporal convolution and may find patterns of approach and retreat in the data. By computing importance scores, we can build intuition as to which rois at which time points are important for classification. 
 
