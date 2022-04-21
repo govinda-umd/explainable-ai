@@ -1049,6 +1049,7 @@ chmod +x &quot;${main_working_path}/helpers/getVIF.py&quot;
 </div>
 <p>We plan to partition fMRI time series into three categories of contiguous segments: (uncontaminated) appr, (uncontaminated) retr, and unidentifiable/ don’t-care.</p>
 <p><strong>Till now</strong>, we found the indices of these contiguous time periods in <code class="docutils literal notranslate"><span class="pre">appr_segs</span></code>, <code class="docutils literal notranslate"><span class="pre">retr_segs</span></code>, and <code class="docutils literal notranslate"><span class="pre">dont_care_segs</span></code> ndarrays. We used the canonical fMRI responses to do so.</p>
+<p><strong>Importantly</strong>, many of the appr/ retr segments are 6 to 7 TRs long. We have sufficient data samples to use a RNN model.</p>
 </div>
 <div class="section" id="partitions-of-the-canonical-fmri-response">
 <h3>partitions of the canonical fMRI response<a class="headerlink" href="#partitions-of-the-canonical-fmri-response" title="Permalink to this headline">¶</a></h3>
