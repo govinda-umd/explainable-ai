@@ -22,7 +22,8 @@ Summary of progress in April 2022
     2. We also observe that the responses for the two classes (appr/ retr) oscillate. We can define a segment as time points between the intersections of the response curves. This is because at intersection influence of both the stimuli is similar, and at other time points one of them dominates. Thus such a segment would have least *contamination* from response for the other stimulus.
 
     3. Since it may be difficult to determine which class the fMRI responses at the intersection time points belong to, we can introduce a third target label: **Don't care, or indistinguishable, or unidentifiable**. So the time points between intersections can belong to either of the two classes and the points around intersections can belong to the new third class. 
-        - A drawback may be that the segments will be only 2-3 TRs long. A simpler model than RNN may classify the data better. We may not be learning any temporal patterns in the data.
+        - ~~A drawback may be that the segments will be only 2-3 TRs long.~~ A simpler model than RNN may classify the data better. We may not be learning any temporal patterns in the data.
+        - Many segments are 6 to 7 TRs long. 
 
 - **Ideas for setting up training procedure**
     1. Introduce a **third label**.
