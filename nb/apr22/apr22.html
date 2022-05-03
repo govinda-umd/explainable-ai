@@ -473,8 +473,14 @@ With these datasets I trained the <strong>GRU model</strong>, and checked whethe
 <li><p><strong>Soft labels</strong>. Why associate a time segment with a hard label? We can assign for each time point a vector as a label. Each element of this vector label will represent the degree of belongingness to each class. We can then provide a longer segment as input and let the model learn temopral dependencies. This may not be a classification set up, it may become a regression set up. We can use the canonical responses of each stimulus, <a class="reference internal" href="02-understanding_emoprox2_stimulus.html"><span class="doc std std-doc">as in here</span></a> as the soft labels. We will neither need the third <em>don’t care</em> label, nor any alternative simpler model. The only issue will be of finding saliency methods for regression set ups.</p></li>
 </ol>
 </li>
-<li></li>
-<li><p>…</p></li>
+<li><p><strong>Progress</strong></p>
+<ol class="simple">
+<li><p>I created all stimulus files and their convolved regressors from scratch.
+These files in bswift were too old and had undergone many changes. It was difficult to track them without proper documentation.
+And since I am creating dataset freshly, I wanted to create stimulus files from the basic paradigm files.</p></li>
+<li><p>I will implement the 3 ideas in May…</p></li>
+</ol>
+</li>
 </ul>
 </div>
 
