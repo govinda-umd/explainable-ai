@@ -331,6 +331,11 @@ const thebe_selector_output = ".output, .cell_output"
      April 14,15,20,21, 2022: Understanding stimulus of emoprox2 paradigm
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-create_stimuli.html">
+     April 25-30, 2022: create emoprox2 stimuli/regressors
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -445,14 +450,14 @@ In order to incorporate hemodynamic lag in the fMRI responses w.r.t. to the stim
 With these datasets I trained the <strong>GRU model</strong>, and checked whether their performances are above chance.</p>
 <ol class="simple">
 <li><p>Although model’s accuracy is ~0.7, this single value is not representative of how the model <em>sees</em> the input time series. i.e. information from which time points does the model use more(less) to classify the segment correctly?</p></li>
-<li><p>Since we have the stimulus timing files, we should understand how the stimulus and its following fMRI response vary with time. Can we clearly separate approach segments from retreat segments? Ans. No! The paradigm was designed to study how threat anticipation (approach) and relaxation (retreat) phases interact, and how does one phase transition into the other. What are the dynamic patterns of roi activities that encode such stimuli?</p></li>
+<li><p>Since we have the stimulus timing files, we should understand how the stimulus and its following fMRI response vary with time. Can we clearly separate approach segments from retreat segments? Ans. No! <em>The paradigm was designed to study how threat anticipation (approach) and relaxation (retreat) phases interact, and how does one phase transition into the other.</em> <strong>What are the dynamic patterns of roi activities that encode such stimuli?</strong></p></li>
 <li><p>The purpose is to predict the class labels for whole time series of unseen participants.</p></li>
 </ol>
 </li>
 <li><p><strong>Observations from emoprox2 stimuli</strong>. <a class="reference internal" href="02-understanding_emoprox2_stimulus.html"><span class="doc std std-doc">April 14,15,20,21, 2022: Understanding stimulus of emoprox2 paradigm</span></a></p>
 <ol class="simple">
 <li><p>The plots show that the (canonical) fMRI response peaks at around 8.75TRs. And the information about the stimulus is present from around 5(or 6)TRs. So we should take segments of the fMRI signal shifted by 5(6)TRs from the onset of stimulus.</p></li>
-<li><p>We also observe that the responses for the two classes (appr/ retr) oscillate. We can define a segment as time points between the intersections of the response curves. This is because at intersection influence of both the stimuli is similar, and at other time points one of them dominates. Thus such a segment would have least <em>contamination</em> from response for the other stimulus.</p></li>
+<li><p>We also observe that the responses for the two classes (appr/ retr) oscillate. <em>We can define a segment as time points between the intersections of the response curves.</em> This is because at intersection influence of both the stimuli is similar, and at other time points one of them dominates. Thus such a segment would have least <em>contamination</em> from response for the other stimulus.</p></li>
 <li><p>Since it may be difficult to determine which class the fMRI responses at the intersection time points belong to, we can introduce a third target label: <strong>Don’t care, or indistinguishable, or unidentifiable</strong>. So the time points between intersections can belong to either of the two classes and the points around intersections can belong to the new third class.</p>
 <ul>
 <li><p>~~A drawback may be that the segments will be only 2-3 TRs long.~~ A simpler model than RNN may classify the data better. ~~We may not be learning any temporal patterns in the data.~~</p></li>
