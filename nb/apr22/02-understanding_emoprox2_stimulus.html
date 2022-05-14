@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="April 25-30, 2022: create emoprox2 stimuli/regressors" href="03-create_stimuli.html" />
     <link rel="prev" title="April 11, 2022: Schaefer parcellation (300), near misses dataset, hemodynamic lags comparison" href="00-ROIwise_analysis_emoprox2_near_misses_300ROIs_hemolags_comp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -330,6 +331,40 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      April 14,15,20,21, 2022: Understanding stimulus of emoprox2 paradigm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-create_stimuli.html">
+     April 25-30, 2022: create emoprox2 stimuli/regressors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  May 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../may22/may22.html">
+   Summary
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../may22/may22_updates.html">
+   Updates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../may22/00-idea1_create_dataset.html">
+     May 3, 4, 2022: Idea1: don’t care labels: create dataset
     </a>
    </li>
   </ul>
@@ -969,13 +1004,7 @@ chmod +x &quot;${main_working_path}/helpers/getVIF.py&quot;
 <h3>appr, retr, and don’t-care time segments<a class="headerlink" href="#appr-retr-and-don-t-care-time-segments" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">segment_lengths</span><span class="p">(</span><span class="n">segs</span><span class="p">,</span> <span class="n">contig_regions</span><span class="p">):</span>
-    <span class="n">seg_lengths</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">contig_regions</span><span class="p">:</span>
-        <span class="n">seg_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">segs</span><span class="p">[</span><span class="n">region</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">region</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span>
-    <span class="k">return</span> <span class="n">seg_lengths</span>
-
-<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">appr_segs</span><span class="p">,</span> <span class="n">retr_segs</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">idx_block</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">):</span>
     <span class="n">appr_segs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">appr_regs</span><span class="p">[</span><span class="n">idx_block</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">retr_regs</span><span class="p">[</span><span class="n">idx_block</span><span class="p">]</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">appr_regs</span><span class="p">[</span><span class="n">idx_block</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">))</span>
@@ -1129,6 +1158,13 @@ chmod +x &quot;${main_working_path}/helpers/getVIF.py&quot;
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">April 11, 2022: Schaefer parcellation (300), near misses dataset, hemodynamic lags comparison</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="03-create_stimuli.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">April 25-30, 2022: create emoprox2 stimuli/regressors</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
