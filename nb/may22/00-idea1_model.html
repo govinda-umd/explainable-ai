@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>May 11-14, 2022: Idea1: don’t care labels: create and train a model &#8212; My Project [Daily Progress]</title>
+    <title>May 11-14,16, 2022: Idea1: don’t care labels: create and train a model &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -50,7 +50,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="May 3, 4, 2022: Idea1: don’t care labels: create dataset" href="00-idea1_create_dataset.html" />
+    <link rel="prev" title="May 3-4, 13-16, 2022: Idea1: don’t care labels: create dataset" href="00-idea1_create_dataset.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -361,12 +361,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="00-idea1_create_dataset.html">
-     May 3, 4, 2022: Idea1: don’t care labels: create dataset
+     May 3-4, 13-16, 2022: Idea1: don’t care labels: create dataset
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     May 11-14, 2022: Idea1: don’t care labels: create and train a model
+     May 11-14,16, 2022: Idea1: don’t care labels: create and train a model
     </a>
    </li>
   </ul>
@@ -495,7 +495,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>May 11-14, 2022: Idea1: don’t care labels: create and train a model</h1>
+                <h1>May 11-14,16, 2022: Idea1: don’t care labels: create and train a model</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -524,8 +524,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="may-11-14-2022-idea1-don-t-care-labels-create-and-train-a-model">
-<h1>May 11-14, 2022: Idea1: don’t care labels: create and train a model<a class="headerlink" href="#may-11-14-2022-idea1-don-t-care-labels-create-and-train-a-model" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="may-11-14-16-2022-idea1-don-t-care-labels-create-and-train-a-model">
+<h1>May 11-14,16, 2022: Idea1: don’t care labels: create and train a model<a class="headerlink" href="#may-11-14-16-2022-idea1-don-t-care-labels-create-and-train-a-model" title="Permalink to this headline">¶</a></h1>
 <p>Write your own <code class="docutils literal notranslate"><span class="pre">loss_function</span></code> to ignore padded time steps while computing loss and training/evaluating.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,23 +595,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-13 22:09:08.586495: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-05-13 22:09:10.477012: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
-2022-05-13 22:09:10.483803: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-16 14:44:16.603000: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-05-16 14:44:18.601300: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2022-05-16 14:44:18.608238: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
 pciBusID: 0000:17:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-05-13 22:09:10.483975: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
+2022-05-16 14:44:18.608410: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
 pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
 coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
-2022-05-13 22:09:10.483992: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
-2022-05-13 22:09:10.486516: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
-2022-05-13 22:09:10.486571: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
-2022-05-13 22:09:10.487299: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
-2022-05-13 22:09:10.487548: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
-2022-05-13 22:09:10.488256: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
-2022-05-13 22:09:10.488861: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
-2022-05-13 22:09:10.488982: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
-2022-05-13 22:09:10.489611: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
+2022-05-16 14:44:18.608426: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-05-16 14:44:18.610777: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-05-16 14:44:18.610838: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+2022-05-16 14:44:18.611556: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2022-05-16 14:44:18.611786: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2022-05-16 14:44:18.612454: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
+2022-05-16 14:44:18.613025: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
+2022-05-16 14:44:18.613149: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2022-05-16 14:44:18.613786: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
 </pre></div>
 </div>
 <div class="output text_html"><div align='center'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAdxJREFUeNq0Vt1Rg0AQJjcpgBJiBWIFkgoMFYhPPAIVECogPuYpdJBYgXQQrMCUkA50V7+d2ZwXuXPGm9khHLu3f9+3l1nkWNvtNqfHLgpfQ1EUS3tz5nAQ0+NIsiAZSc6eDlI8M3J00B/mDuUKDk6kfOebAgW3pkdD0pFcODGW4gKKvOrAUm04MA4QDt1OEIXU9hDigfS5rC1eS5T90gltck1Xrizo257kgySZcNRzgCSxCvgiE9nckPJo2b/B2AcEkk2OwL8bD8gmOKR1GPbaCUqxEgTq0tLvgb6zfo7+DgYGkkWL2tqLDV4RSITfbHPPfJKIrWz4nJQTMPAWA7IbD6imcNaDeDfgk+4No+wZr40BL3g9eQJJCFqRQ54KiSt72lsLpE3o3MCBSxDuq4yOckU2hKXRuwBH3OyMR4g1UpyTYw6mlmBqNdUXRM1NfyF5EPI6JkcpIDBIX8jX6DR/6ckAZJ0wEAdLR8DEk6OfC1Pp8BKo6TQIwPJbvJ6toK5lmuvJoRtfK6Ym1iRYIarRo2UyYHvRN5qpakR3yoizWrouoyuXXQqI185LCw07op5ZyCRGL99h24InP0e9xdQukEKVmhzrqZuRIfwISB//cP3Wk3f8f/yR+BRgAHu00HjLcEQBAAAAAElFTkSuQmCC' /></div><script charset='utf-8'>!function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=410)}([function(t,e,n){"use strict";function r(t,e,n,r,o,a,u,c){if(i(e),!t){var s;if(void 0===e)s=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,a,u,c],f=0;s=new Error(e.replace(/%s/g,function(){return l[f++]})),s.name="Invariant Violation"}throw s.framesToPop=1,s}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";var r=n(8),i=r;t.exports=i},function(t,e,n){"use strict";function r(t){for(var e=arguments.length-1,n="Minified React error #"+t+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant="+t,r=0;r<e;r++)n+="&args[]="+encodeURIComponent(arguments[r+1]);n+=" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";var i=new Error(n);throw i.name="Invariant Violation",i.framesToPop=1,i}t.exports=r},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}function i(){try{if(!Object.assign)return!1;var t=new String("abc");if(t[5]="de","5"===Object.getOwnPropertyNames(t)[0])return!1;for(var e={},n=0;n<10;n++)e["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(e).map(function(t){return e[t]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(t){i[t]=t}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},i)).join("")}catch(t){return!1}}/*
@@ -827,76 +827,151 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer gru will not use cuDNN kernels since it doesn&#39;t meet the criteria. It will use a generic GPU kernel as fallback when running on GPU.
-Epoch 1/50
-127/127 [==============================] - 7s 43ms/step - loss: 1.4656 - sparse_categorical_accuracy: 0.5108 - val_loss: 1.1565 - val_sparse_categorical_accuracy: 0.5565
-Epoch 2/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.9975 - sparse_categorical_accuracy: 0.5373 - val_loss: 0.8404 - val_sparse_categorical_accuracy: 0.5725
-Epoch 3/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.7674 - sparse_categorical_accuracy: 0.5518 - val_loss: 0.6851 - val_sparse_categorical_accuracy: 0.5788
-Epoch 4/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.6550 - sparse_categorical_accuracy: 0.5595 - val_loss: 0.6096 - val_sparse_categorical_accuracy: 0.5846
-Epoch 5/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.6010 - sparse_categorical_accuracy: 0.5640 - val_loss: 0.5731 - val_sparse_categorical_accuracy: 0.5868
-Epoch 6/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5736 - sparse_categorical_accuracy: 0.5647 - val_loss: 0.5546 - val_sparse_categorical_accuracy: 0.5904
-Epoch 7/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5597 - sparse_categorical_accuracy: 0.5657 - val_loss: 0.5443 - val_sparse_categorical_accuracy: 0.5917
-Epoch 8/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5511 - sparse_categorical_accuracy: 0.5679 - val_loss: 0.5394 - val_sparse_categorical_accuracy: 0.5904
-Epoch 9/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5477 - sparse_categorical_accuracy: 0.5660 - val_loss: 0.5364 - val_sparse_categorical_accuracy: 0.5844
-Epoch 10/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5436 - sparse_categorical_accuracy: 0.5686 - val_loss: 0.5325 - val_sparse_categorical_accuracy: 0.5891
-Epoch 11/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5428 - sparse_categorical_accuracy: 0.5656 - val_loss: 0.5328 - val_sparse_categorical_accuracy: 0.5850
-Epoch 12/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5413 - sparse_categorical_accuracy: 0.5642 - val_loss: 0.5311 - val_sparse_categorical_accuracy: 0.5878
-Epoch 13/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5399 - sparse_categorical_accuracy: 0.5681 - val_loss: 0.5300 - val_sparse_categorical_accuracy: 0.5877
-Epoch 14/50
-127/127 [==============================] - 5s 43ms/step - loss: 0.5396 - sparse_categorical_accuracy: 0.5662 - val_loss: 0.5296 - val_sparse_categorical_accuracy: 0.5872
-Epoch 15/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5398 - sparse_categorical_accuracy: 0.5621 - val_loss: 0.5296 - val_sparse_categorical_accuracy: 0.5927
-Epoch 16/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5383 - sparse_categorical_accuracy: 0.5662 - val_loss: 0.5282 - val_sparse_categorical_accuracy: 0.5909
-Epoch 17/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5391 - sparse_categorical_accuracy: 0.5602 - val_loss: 0.5292 - val_sparse_categorical_accuracy: 0.5899
-Epoch 18/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5383 - sparse_categorical_accuracy: 0.5648 - val_loss: 0.5279 - val_sparse_categorical_accuracy: 0.5895
-Epoch 19/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5374 - sparse_categorical_accuracy: 0.5650 - val_loss: 0.5277 - val_sparse_categorical_accuracy: 0.5926
-Epoch 20/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5381 - sparse_categorical_accuracy: 0.5673 - val_loss: 0.5280 - val_sparse_categorical_accuracy: 0.5901
-Epoch 21/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5381 - sparse_categorical_accuracy: 0.5656 - val_loss: 0.5285 - val_sparse_categorical_accuracy: 0.5872
-Epoch 22/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5368 - sparse_categorical_accuracy: 0.5670 - val_loss: 0.5276 - val_sparse_categorical_accuracy: 0.5883
-Epoch 23/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5370 - sparse_categorical_accuracy: 0.5669 - val_loss: 0.5280 - val_sparse_categorical_accuracy: 0.5846
-Epoch 24/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5373 - sparse_categorical_accuracy: 0.5684 - val_loss: 0.5273 - val_sparse_categorical_accuracy: 0.5882
-Epoch 25/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5369 - sparse_categorical_accuracy: 0.5664 - val_loss: 0.5267 - val_sparse_categorical_accuracy: 0.5921
-Epoch 26/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5361 - sparse_categorical_accuracy: 0.5685 - val_loss: 0.5279 - val_sparse_categorical_accuracy: 0.5885
-Epoch 27/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5370 - sparse_categorical_accuracy: 0.5673 - val_loss: 0.5270 - val_sparse_categorical_accuracy: 0.5928
-Epoch 28/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5372 - sparse_categorical_accuracy: 0.5676 - val_loss: 0.5276 - val_sparse_categorical_accuracy: 0.5881
-Epoch 29/50
-127/127 [==============================] - 5s 41ms/step - loss: 0.5356 - sparse_categorical_accuracy: 0.5708 - val_loss: 0.5269 - val_sparse_categorical_accuracy: 0.5873
-Epoch 30/50
-127/127 [==============================] - 5s 42ms/step - loss: 0.5368 - sparse_categorical_accuracy: 0.5668 - val_loss: 0.5281 - val_sparse_categorical_accuracy: 0.5799
---- train time =  160.6937 seconds ---
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-13 22:13:45.327068: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-16 14:55:45.028432: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-05-16 14:55:45.030559: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
+coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
+2022-05-16 14:55:45.031422: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 1
+2022-05-16 14:55:45.031516: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-05-16 14:55:45.442030: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-05-16 14:55:45.442059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      1 
+2022-05-16 14:55:45.442065: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 1:   N 
+2022-05-16 14:55:45.442752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 14363 MB memory) -&gt; physical GPU (device: 1, name: Quadro RTX 5000, pci bus id: 0000:65:00.0, compute capability: 7.5)
+2022-05-16 14:55:45.609036: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:176] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-05-16 14:55:45.628044: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3699850000 Hz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-16 14:55:47.168169: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5/127 [&gt;.............................] - ETA: 4s - loss: 1.8114 - sparse_categorical_accuracy: 0.4806 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-16 14:55:47.488060: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>127/127 [==============================] - 7s 44ms/step - loss: 1.4666 - sparse_categorical_accuracy: 0.5119 - val_loss: 1.1572 - val_sparse_categorical_accuracy: 0.5542
+Epoch 2/50
+127/127 [==============================] - 5s 43ms/step - loss: 1.0002 - sparse_categorical_accuracy: 0.5335 - val_loss: 0.8402 - val_sparse_categorical_accuracy: 0.5748
+Epoch 3/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.7676 - sparse_categorical_accuracy: 0.5547 - val_loss: 0.6847 - val_sparse_categorical_accuracy: 0.5817
+Epoch 4/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.6551 - sparse_categorical_accuracy: 0.5606 - val_loss: 0.6085 - val_sparse_categorical_accuracy: 0.5896
+Epoch 5/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.6015 - sparse_categorical_accuracy: 0.5622 - val_loss: 0.5725 - val_sparse_categorical_accuracy: 0.5890
+Epoch 6/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5741 - sparse_categorical_accuracy: 0.5686 - val_loss: 0.5544 - val_sparse_categorical_accuracy: 0.5908
+Epoch 7/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5600 - sparse_categorical_accuracy: 0.5660 - val_loss: 0.5447 - val_sparse_categorical_accuracy: 0.5893
+Epoch 8/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5528 - sparse_categorical_accuracy: 0.5657 - val_loss: 0.5404 - val_sparse_categorical_accuracy: 0.5820
+Epoch 9/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5478 - sparse_categorical_accuracy: 0.5642 - val_loss: 0.5367 - val_sparse_categorical_accuracy: 0.5826
+Epoch 10/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5443 - sparse_categorical_accuracy: 0.5679 - val_loss: 0.5327 - val_sparse_categorical_accuracy: 0.5904
+Epoch 11/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5428 - sparse_categorical_accuracy: 0.5676 - val_loss: 0.5335 - val_sparse_categorical_accuracy: 0.5791
+Epoch 12/50
+127/127 [==============================] - 5s 43ms/step - loss: 0.5410 - sparse_categorical_accuracy: 0.5641 - val_loss: 0.5311 - val_sparse_categorical_accuracy: 0.5882
+Epoch 13/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5403 - sparse_categorical_accuracy: 0.5659 - val_loss: 0.5310 - val_sparse_categorical_accuracy: 0.5839
+Epoch 14/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5401 - sparse_categorical_accuracy: 0.5604 - val_loss: 0.5288 - val_sparse_categorical_accuracy: 0.5902
+Epoch 15/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5384 - sparse_categorical_accuracy: 0.5686 - val_loss: 0.5290 - val_sparse_categorical_accuracy: 0.5926
+Epoch 16/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5391 - sparse_categorical_accuracy: 0.5647 - val_loss: 0.5285 - val_sparse_categorical_accuracy: 0.5908
+Epoch 17/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5393 - sparse_categorical_accuracy: 0.5637 - val_loss: 0.5285 - val_sparse_categorical_accuracy: 0.5886
+Epoch 18/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5381 - sparse_categorical_accuracy: 0.5666 - val_loss: 0.5280 - val_sparse_categorical_accuracy: 0.5901
+Epoch 19/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5375 - sparse_categorical_accuracy: 0.5677 - val_loss: 0.5278 - val_sparse_categorical_accuracy: 0.5914
+Epoch 20/50
+127/127 [==============================] - 5s 43ms/step - loss: 0.5382 - sparse_categorical_accuracy: 0.5688 - val_loss: 0.5272 - val_sparse_categorical_accuracy: 0.5912
+Epoch 21/50
+127/127 [==============================] - 5s 41ms/step - loss: 0.5369 - sparse_categorical_accuracy: 0.5669 - val_loss: 0.5276 - val_sparse_categorical_accuracy: 0.5909
+Epoch 22/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5377 - sparse_categorical_accuracy: 0.5698 - val_loss: 0.5277 - val_sparse_categorical_accuracy: 0.5893
+Epoch 23/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5383 - sparse_categorical_accuracy: 0.5635 - val_loss: 0.5289 - val_sparse_categorical_accuracy: 0.5826
+Epoch 24/50
+127/127 [==============================] - 5s 43ms/step - loss: 0.5371 - sparse_categorical_accuracy: 0.5655 - val_loss: 0.5282 - val_sparse_categorical_accuracy: 0.5827
+Epoch 25/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5376 - sparse_categorical_accuracy: 0.5618 - val_loss: 0.5271 - val_sparse_categorical_accuracy: 0.5912
+Epoch 26/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5363 - sparse_categorical_accuracy: 0.5674 - val_loss: 0.5282 - val_sparse_categorical_accuracy: 0.5902
+Epoch 27/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5375 - sparse_categorical_accuracy: 0.5625 - val_loss: 0.5275 - val_sparse_categorical_accuracy: 0.5909
+Epoch 28/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5363 - sparse_categorical_accuracy: 0.5673 - val_loss: 0.5266 - val_sparse_categorical_accuracy: 0.5890
+Epoch 29/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5366 - sparse_categorical_accuracy: 0.5686 - val_loss: 0.5265 - val_sparse_categorical_accuracy: 0.5908
+Epoch 30/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5355 - sparse_categorical_accuracy: 0.5716 - val_loss: 0.5277 - val_sparse_categorical_accuracy: 0.5837
+Epoch 31/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5368 - sparse_categorical_accuracy: 0.5663 - val_loss: 0.5278 - val_sparse_categorical_accuracy: 0.5869
+Epoch 32/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5366 - sparse_categorical_accuracy: 0.5683 - val_loss: 0.5266 - val_sparse_categorical_accuracy: 0.5922
+Epoch 33/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5358 - sparse_categorical_accuracy: 0.5715 - val_loss: 0.5271 - val_sparse_categorical_accuracy: 0.5907
+Epoch 34/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5360 - sparse_categorical_accuracy: 0.5687 - val_loss: 0.5263 - val_sparse_categorical_accuracy: 0.5928
+Epoch 35/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5366 - sparse_categorical_accuracy: 0.5691 - val_loss: 0.5273 - val_sparse_categorical_accuracy: 0.5891
+Epoch 36/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5363 - sparse_categorical_accuracy: 0.5693 - val_loss: 0.5273 - val_sparse_categorical_accuracy: 0.5909
+Epoch 37/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5374 - sparse_categorical_accuracy: 0.5647 - val_loss: 0.5270 - val_sparse_categorical_accuracy: 0.5890
+Epoch 38/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5362 - sparse_categorical_accuracy: 0.5691 - val_loss: 0.5266 - val_sparse_categorical_accuracy: 0.5872
+Epoch 39/50
+127/127 [==============================] - 5s 42ms/step - loss: 0.5351 - sparse_categorical_accuracy: 0.5699 - val_loss: 0.5266 - val_sparse_categorical_accuracy: 0.5904
+--- train time =  210.7866 seconds ---
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-16 14:59:17.082528: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: /home/govindas/explainable-ai/results/emoprox_full_data/models/GRU_classifier_idea1/assets
-321/321 [==============================] - 3s 9ms/step - loss: 0.5328 - sparse_categorical_accuracy: 0.5742
+321/321 [==============================] - 3s 9ms/step - loss: 0.5323 - sparse_categorical_accuracy: 0.5798
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training_loss&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;sparse_categorical_accuracy&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;forestgreen&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training_acc&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;losses&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epochs&quot;</span><span class="p">)</span>
+
+<span class="n">ay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ay</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;valid_loss&#39;</span><span class="p">)</span>
+<span class="n">ay</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_sparse_categorical_accuracy&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;forestgreen&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;valid_acc&#39;</span><span class="p">)</span>
+<span class="n">ay</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;accuracies&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb18c38bcd0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/00-idea1_model_8_1.png" src="../../_images/00-idea1_model_8_1.png" />
 </div>
 </div>
 </div>
@@ -931,7 +1006,7 @@ Epoch 30/50
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">May 3, 4, 2022: Idea1: don’t care labels: create dataset</p>
+            <p class="prev-next-title">May 3-4, 13-16, 2022: Idea1: don’t care labels: create dataset</p>
         </div>
     </a>
 </div>
