@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>May 21,24, 2022: pytorch implementation of model: idea1 &#8212; My Project [Daily Progress]</title>
+    <title>May 21,24,25, 2022: pytorch implementation of model: idea1 &#8212; My Project [Daily Progress]</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -381,7 +381,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     May 21,24, 2022: pytorch implementation of model: idea1
+     May 21,24,25, 2022: pytorch implementation of model: idea1
     </a>
    </li>
   </ul>
@@ -515,7 +515,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>May 21,24, 2022: pytorch implementation of model: idea1</h1>
+                <h1>May 21,24,25, 2022: pytorch implementation of model: idea1</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -549,8 +549,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="may-21-24-2022-pytorch-implementation-of-model-idea1">
-<h1>May 21,24, 2022: pytorch implementation of model: idea1<a class="headerlink" href="#may-21-24-2022-pytorch-implementation-of-model-idea1" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="may-21-24-25-2022-pytorch-implementation-of-model-idea1">
+<h1>May 21,24,25, 2022: pytorch implementation of model: idea1<a class="headerlink" href="#may-21-24-25-2022-pytorch-implementation-of-model-idea1" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -609,9 +609,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-24 22:43:19.444056: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
 </pre></div>
 </div>
 </div>
@@ -928,9 +925,9 @@ const thebe_selector_output = ".output, .cell_output"
         
     <span class="k">return</span> <span class="n">stat_img_all_rois</span>
 
-<span class="n">mask_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/home/govindas/parcellations/templates/MAX_ROIs_final_gm_85.nii.gz&quot;</span>
+<span class="n">parcellation_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/home/govindas/parcellations/templates/MAX_ROIs_final_gm_85.nii.gz&quot;</span>
 <span class="c1"># print(mask_file)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">mask_file</span><span class="p">)</span>
+<span class="n">parcellation</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">parcellation</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -970,40 +967,42 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
-<span class="n">target_class</span> <span class="o">=</span> <span class="n">APPR</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_train</span><span class="p">[</span><span class="n">y_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">target_class</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">X_test</span><span class="p">[</span><span class="n">y_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">target_class</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">captum.attr</span> <span class="kn">import</span> <span class="n">Saliency</span>
+
+<span class="k">def</span> <span class="nf">saliency_attributes</span><span class="p">(</span><span class="n">target_class</span><span class="p">):</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+    <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">],</span> <span class="p">[</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">]):</span>
+        <span class="n">idxs</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_class</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idxs</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+    
+    <span class="n">saliency</span> <span class="o">=</span> <span class="n">Saliency</span><span class="p">(</span><span class="n">sf_model</span><span class="p">)</span>
+    <span class="n">attributions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="n">attribs</span> <span class="o">=</span> <span class="n">saliency</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span>
+            <span class="nb">input</span><span class="p">,</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">target_class</span><span class="p">,</span>
+            <span class="nb">abs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">attribs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">attribs</span><span class="p">,</span> <span class="p">(</span><span class="n">target</span> <span class="o">!=</span> <span class="n">MASK</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">attribs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">attribs</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">attribs</span><span class="p">)</span>
+        <span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">attribs</span>
+        
+    <span class="k">return</span> <span class="n">attributions</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">captum.attr</span> <span class="kn">import</span> <span class="n">Saliency</span>
-
-<span class="n">attributions</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;saliency&#39;</span>
-<span class="n">saliency</span> <span class="o">=</span> <span class="n">Saliency</span><span class="p">(</span><span class="n">sf_model</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-
-    <span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">saliency</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span>
-        <span class="nb">input</span><span class="p">,</span>
-        <span class="n">target</span><span class="o">=</span><span class="n">target_class</span><span class="p">,</span>
-        <span class="nb">abs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">cond_nifti_file</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_full_data/interpretations&quot;</span> 
-                       <span class="sa">f</span><span class="s2">&quot;/idea1_method-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_name-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_target_class-</span><span class="si">{</span><span class="n">target_class</span><span class="si">}</span><span class="s2">_ts.nii.gz&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">):</span>
-        <span class="n">stat_img_all_rois</span> <span class="o">=</span> <span class="n">plot_roi_vec_on_niimg</span><span class="p">(</span>
-            <span class="n">roi_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
-            <span class="n">mask</span><span class="o">=</span><span class="n">mask</span>
-        <span class="p">)</span>
-        <span class="c1"># print(appr_nifti_file)</span>
-        <span class="n">stat_img_all_rois</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attributions</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">target_class</span> <span class="ow">in</span> <span class="p">[</span><span class="n">APPR</span><span class="p">,</span> <span class="n">RETR</span><span class="p">]:</span>
+    <span class="n">attributions</span><span class="p">[</span><span class="n">target_class</span><span class="p">]</span> <span class="o">=</span> <span class="n">saliency_attributes</span><span class="p">(</span><span class="n">target_class</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1016,35 +1015,116 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">captum.attr</span> <span class="kn">import</span> <span class="n">IntegratedGradients</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">null saliency distribution</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;saliency&#39;</span>
+<span class="n">num_null</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]:</span>
+    <span class="n">true_mean</span><span class="p">,</span> <span class="n">null_mean</span><span class="p">,</span> <span class="n">null_std</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">{}</span>
 
-<span class="n">attributions</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;IG&#39;</span>
-<span class="n">ig</span> <span class="o">=</span> <span class="n">IntegratedGradients</span><span class="p">(</span><span class="n">sf_model</span><span class="p">,</span> <span class="n">multiply_by_inputs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">true_appr</span><span class="p">,</span> <span class="n">true_retr</span> <span class="o">=</span> <span class="n">attributions</span><span class="p">[</span><span class="n">APPR</span><span class="p">][</span><span class="n">name</span><span class="p">],</span> <span class="n">attributions</span><span class="p">[</span><span class="n">RETR</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">num_appr</span><span class="p">,</span> <span class="n">num_retr</span> <span class="o">=</span> <span class="n">true_appr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">true_retr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-    
-    <span class="n">baselines</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ig</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span>
-        <span class="nb">input</span><span class="p">,</span> 
-        <span class="n">baselines</span><span class="p">,</span>
-        <span class="n">target</span><span class="o">=</span><span class="n">target_class</span><span class="p">,</span>
-        <span class="n">n_steps</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-        <span class="n">internal_batch_size</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="n">return_convergence_delta</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">)</span>
+    <span class="n">null_appr</span><span class="p">,</span> <span class="n">null_retr</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">idx_null</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_null</span><span class="p">)):</span>
+        <span class="n">n_concat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">true_appr</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">true_retr</span><span class="o">.</span><span class="n">copy</span><span class="p">()),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">n_concat</span><span class="p">)</span>
+        <span class="n">n_a</span><span class="p">,</span> <span class="n">n_r</span> <span class="o">=</span> <span class="n">n_concat</span><span class="p">[:</span><span class="n">num_appr</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">n_concat</span><span class="p">[</span><span class="n">num_appr</span><span class="p">:,</span> <span class="o">...</span><span class="p">]</span>
+        <span class="n">null_appr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_a</span><span class="p">)</span>
+        <span class="n">null_retr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_r</span><span class="p">)</span>
 
-    <span class="n">cond_nifti_file</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_full_data/interpretations&quot;</span> 
-                       <span class="sa">f</span><span class="s2">&quot;/idea1_method-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_name-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_target_class-</span><span class="si">{</span><span class="n">target_class</span><span class="si">}</span><span class="s2">_ts.nii.gz&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">):</span>
-        <span class="n">stat_img_all_rois</span> <span class="o">=</span> <span class="n">plot_roi_vec_on_niimg</span><span class="p">(</span>
-            <span class="n">roi_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
-            <span class="n">mask</span><span class="o">=</span><span class="n">mask</span>
+    <span class="n">null_appr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">null_appr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">null_retr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">null_retr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">null_appr_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">null_appr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">null_retr_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">null_retr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">null_mean</span><span class="p">[</span><span class="n">APPR</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">null_appr_means</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">null_std</span><span class="p">[</span><span class="n">APPR</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">null_appr_means</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#/np.sqrt(null_appr_means.shape[-1])</span>
+    <span class="n">null_mean</span><span class="p">[</span><span class="n">RETR</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">null_retr_means</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">null_std</span><span class="p">[</span><span class="n">RETR</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">null_retr_means</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#/np.sqrt(null_retr_means.shape[-1])</span>
+
+    <span class="n">true_mean</span><span class="p">[</span><span class="n">APPR</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">true_appr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">true_mean</span><span class="p">[</span><span class="n">RETR</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">true_retr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">target_class</span> <span class="ow">in</span> <span class="p">[</span><span class="n">APPR</span><span class="p">,</span> <span class="n">RETR</span><span class="p">]:</span>
+        <span class="n">cond_nifti_file</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_full_data/interpretations&quot;</span> 
+            <span class="sa">f</span><span class="s2">&quot;/idea1_method-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_name-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_target_class-</span><span class="si">{</span><span class="n">target_class</span><span class="si">}</span><span class="s2">_true_ts.nii.gz&quot;</span>
         <span class="p">)</span>
-        <span class="c1"># print(appr_nifti_file)</span>
-        <span class="n">stat_img_all_rois</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">):</span>
+            <span class="n">stat_img_all_rois</span> <span class="o">=</span> <span class="n">plot_roi_vec_on_niimg</span><span class="p">(</span>
+                <span class="n">roi_data</span><span class="o">=</span><span class="n">true_mean</span><span class="p">[</span><span class="n">target_class</span><span class="p">],</span>
+                <span class="n">mask</span><span class="o">=</span><span class="n">parcellation</span>
+            <span class="p">)</span>
+            <span class="n">stat_img_all_rois</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">)</span>
+
+        <span class="n">null_nifti_file</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_full_data/interpretations&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;/idea1_method-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_name-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_target_class-</span><span class="si">{</span><span class="n">target_class</span><span class="si">}</span><span class="s2">_null_lower_ts.nii.gz&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">null_nifti_file</span><span class="p">):</span>
+            <span class="n">stat_img_all_rois</span> <span class="o">=</span> <span class="n">plot_roi_vec_on_niimg</span><span class="p">(</span>
+                <span class="n">roi_data</span><span class="o">=</span><span class="n">null_mean</span><span class="p">[</span><span class="n">target_class</span><span class="p">]</span><span class="o">-</span><span class="n">null_std</span><span class="p">[</span><span class="n">target_class</span><span class="p">],</span>
+                <span class="n">mask</span><span class="o">=</span><span class="n">parcellation</span>
+            <span class="p">)</span>
+            <span class="n">stat_img_all_rois</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">null_nifti_file</span><span class="p">)</span>
+
+        <span class="n">null_nifti_file</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_full_data/interpretations&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;/idea1_method-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_name-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_target_class-</span><span class="si">{</span><span class="n">target_class</span><span class="si">}</span><span class="s2">_null_upper_ts.nii.gz&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">null_nifti_file</span><span class="p">):</span>
+            <span class="n">stat_img_all_rois</span> <span class="o">=</span> <span class="n">plot_roi_vec_on_niimg</span><span class="p">(</span>
+                <span class="n">roi_data</span><span class="o">=</span><span class="n">null_mean</span><span class="p">[</span><span class="n">target_class</span><span class="p">]</span><span class="o">+</span><span class="n">null_std</span><span class="p">[</span><span class="n">target_class</span><span class="p">],</span>
+                <span class="n">mask</span><span class="o">=</span><span class="n">parcellation</span>
+            <span class="p">)</span>
+            <span class="n">stat_img_all_rois</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">null_nifti_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 100/100 [00:16&lt;00:00,  6.14it/s]
+100%|██████████| 100/100 [00:18&lt;00:00,  5.46it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from captum.attr import IntegratedGradients</span>
+
+<span class="c1"># method = &#39;IG&#39;</span>
+<span class="c1"># ig = IntegratedGradients(sf_model, multiply_by_inputs=True)</span>
+
+<span class="c1"># for name, input, target in zip(names, inputs, targets):</span>
+<span class="c1">#     model.train()</span>
+<span class="c1">#     model.zero_grad()</span>
+    
+<span class="c1">#     cond_nifti_file = (f&quot;{results_dir}/emoprox_full_data/interpretations&quot; </span>
+<span class="c1">#                        f&quot;/idea1_method-{method}_name-{name}_target_class-{target_class}_ts.nii.gz&quot;)</span>
+<span class="c1">#     if not os.path.exists(cond_nifti_file):</span>
+
+<span class="c1">#         baselines = 0.0</span>
+<span class="c1">#         attribs = ig.attribute(</span>
+<span class="c1">#             input, </span>
+<span class="c1">#             baselines,</span>
+<span class="c1">#             target=target_class,</span>
+<span class="c1">#             n_steps=500,</span>
+<span class="c1">#             internal_batch_size=input.shape[0],</span>
+<span class="c1">#             return_convergence_delta=False</span>
+<span class="c1">#         )</span>
+
+<span class="c1">#         attribs = torch.mul(attribs, (target != MASK)[:, :, None]).cpu().numpy()</span>
+<span class="c1">#         attribs = np.ma.masked_where(attribs == 0.0, attribs)</span>
+
+<span class="c1">#         stat_img_all_rois = plot_roi_vec_on_niimg(</span>
+<span class="c1">#             roi_data=np.ma.mean(attribs, axis=0),</span>
+<span class="c1">#             mask=mask</span>
+<span class="c1">#         )</span>
+<span class="c1">#         # print(appr_nifti_file)</span>
+<span class="c1">#         stat_img_all_rois.to_filename(cond_nifti_file)</span>
     
 </pre></div>
 </div>
@@ -1052,36 +1132,33 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">captum.attr</span> <span class="kn">import</span> <span class="n">Deconvolution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from captum.attr import Deconvolution</span>
 
-<span class="n">attributions</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;deconvolution&#39;</span>
-<span class="n">deconv</span> <span class="o">=</span> <span class="n">Deconvolution</span><span class="p">(</span><span class="n">sf_model</span><span class="p">)</span>
+<span class="c1"># method = &#39;deconvolution&#39;</span>
+<span class="c1"># deconv = Deconvolution(sf_model)</span>
 
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="c1"># for name, input, target in zip(names, inputs, targets):</span>
+<span class="c1">#     model.train()</span>
+<span class="c1">#     model.zero_grad()</span>
     
-    <span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">deconv</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span>
-        <span class="nb">input</span><span class="p">,</span>
-        <span class="n">target</span><span class="o">=</span><span class="n">target_class</span><span class="p">,</span>
-    <span class="p">)</span>
-    
-    <span class="n">cond_nifti_file</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">/emoprox_full_data/interpretations&quot;</span> 
-                       <span class="sa">f</span><span class="s2">&quot;/idea1_method-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">_name-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_target_class-</span><span class="si">{</span><span class="n">target_class</span><span class="si">}</span><span class="s2">_ts.nii.gz&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">):</span>
-        <span class="n">stat_img_all_rois</span> <span class="o">=</span> <span class="n">plot_roi_vec_on_niimg</span><span class="p">(</span>
-            <span class="n">roi_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">attributions</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
-            <span class="n">mask</span><span class="o">=</span><span class="n">mask</span>
-        <span class="p">)</span>
-        <span class="c1"># print(appr_nifti_file)</span>
-        <span class="n">stat_img_all_rois</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">cond_nifti_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/captum/attr/_core/guided_backprop_deconvnet.py:64: UserWarning: Setting backward hooks on ReLU activations.The hooks will be removed after the attribution is finished
-  warnings.warn(
+<span class="c1">#     cond_nifti_file = (f&quot;{results_dir}/emoprox_full_data/interpretations&quot; </span>
+<span class="c1">#                        f&quot;/idea1_method-{method}_name-{name}_target_class-{target_class}_ts.nii.gz&quot;)</span>
+<span class="c1">#     if not os.path.exists(cond_nifti_file):</span>
+        
+<span class="c1">#         attribs = deconv.attribute(</span>
+<span class="c1">#             input,</span>
+<span class="c1">#             target=target_class,</span>
+<span class="c1">#         )</span>
+
+<span class="c1">#         attribs = torch.mul(attribs, (target != MASK)[:, :, None]).cpu().numpy()</span>
+<span class="c1">#         attribs = np.ma.masked_where(attribs == 0.0, attribs)</span>
+
+<span class="c1">#         stat_img_all_rois = plot_roi_vec_on_niimg(</span>
+<span class="c1">#             roi_data=np.ma.mean(attribs, axis=0),</span>
+<span class="c1">#             mask=mask</span>
+<span class="c1">#         )</span>
+<span class="c1">#         # print(appr_nifti_file)</span>
+<span class="c1">#         stat_img_all_rois.to_filename(cond_nifti_file)</span>
 </pre></div>
 </div>
 </div>
