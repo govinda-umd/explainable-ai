@@ -117,9 +117,9 @@ training
 linear_model.fit(x=X_train, 
                  y=y_train, 
                  batch_size=32, 
-                 epochs=50, 
+                 epochs=100, 
                  verbose='auto',
-                 callbacks=tf.keras.callbacks.EarlyStopping(patience=5),
+                 # callbacks=tf.keras.callbacks.EarlyStopping(patience=5),
                  validation_split=0.2, 
                  shuffle=True)
 

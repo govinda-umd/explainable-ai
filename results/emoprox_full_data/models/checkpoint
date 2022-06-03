@@ -1,0 +1,2 @@
+model_checkpoint_path: "GRU_classifier_gruunits_32_idea1_300ROIs"
+all_model_checkpoint_paths: "GRU_classifier_gruunits_32_idea1_300ROIs"

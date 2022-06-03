@@ -38,5 +38,74 @@ parts:
               - file: nb/feb22/visualize_data
               - file: nb/feb22/linear_regression
               - file: nb/feb22/model_explanations
+
+  - caption: March 2022
+    chapters:
+      - file: nb/mar22/mar22
+      
+      - file: nb/mar22/mar22_updates
+        sections:
+        
+          - file: nb/mar22/01-ROIwise_nearmiss_segments_data_and_model
           
+          - file: nb/mar22/02-ROIwise_nearmiss_segments_data_and_null_models
+        
+          - file: nb/mar22/03-ROIwise_nearmiss_segments_saliency
+          
+          - file: nb/mar22/04-ROIwise_nearmiss_segments_null_saliency
+          
+          - file: nb/mar22/05-ROIwise_nearmiss_segments_lesion_analysis
+          
+          - file: nb/mar22/06-ROIwise_analysis_emoprox2_full_dataset
+
+  - caption: April 2022
+    chapters:
+      - file: nb/apr22/apr22
+      
+      - file: nb/apr22/apr22_updates
+        sections:
+        
+          - file: nb/apr22/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2
+          
+          - file: nb/apr22/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag3
+
+          - file: nb/apr22/01-Schaefer2018_roi300_net7_beta_timeseries
+
+          - file: nb/apr22/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolags_comp
+
+          - file: nb/apr22/01-ROIwise_appr_retr_timeseries_plots
+
+          - file: nb/apr22/00-ROIwise_analysis_emoprox2_near_misses_300ROIs_hemolags_comp
+
+          - file: nb/apr22/02-understanding_emoprox2_stimulus
+
+          - file: nb/apr22/03-create_stimuli
+
+  - caption: May 2022
+    chapters:
+      - file: nb/may22/may22
+
+      - file: nb/may22/may22_updates
+        sections:
+
+          - file: nb/may22/00-idea1_create_dataset_MAXROIs
+
+          - file: nb/may22/00-idea1_model_MAXROIs
+
+          - file: nb/may22/01-checking_temporal_masking_MAXROIs
+
+          - file: nb/may22/01-checking_temporal_masking_300ROIs
+
+          - file: nb/may22/00-idea1_model_pytorch
+
+  - caption: June 2022
+    chapters:
+      - file: nb/jun22/jun22
+
+      - file: nb/jun22/jun22_updates
+        sections:
+
+          - file: nb/jun22/00-max_dataset
+
+          - file: nb/jun22/01-max_data_samples
       

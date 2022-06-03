@@ -85,11 +85,18 @@ linear_model = tf.keras.models.load_model(model_file)
 linear_model.summary()
 
 
+# In[4]:
+
+
+with open(f"/home/govindas/parcellations/MAX_85_ROI_masks/ROI_names.txt", 'r') as f:
+    roi_names = f.read().split('\n')[:-1]
+
+
 # ## explanations
 
 # ### data for explaining the model
 
-# In[4]:
+# In[5]:
 
 
 # x, y = prepare_data_for_model(test_df[:1], shuffle=False)
@@ -99,7 +106,7 @@ y = np.concatenate(test_df[:1]['y'].tolist())
 
 # ### shap: GradientExplainer
 
-# In[5]:
+# In[6]:
 
 
 # select a set of background examples to take an expectation over
@@ -109,16 +116,16 @@ background = shap.utils.sample(X, nsamples=50)
 gradient_explainer = shap.GradientExplainer(linear_model, background)
 
 
-# In[6]:
+# In[7]:
 
 
 shap_values_gradient = gradient_explainer.shap_values(x)
 
 
-# In[7]:
+# In[8]:
 
 
-shap.summary_plot(shap_values_gradient[0], x, max_display=x.shape[-1])
+shap.summary_plot(shap_values_gradient[0], x, max_display=25, feature_names=roi_names)
 
 
 # ### shap: KernelExplainer
@@ -137,12 +144,32 @@ kernel_explainer = shap.KernelExplainer(linear_model, background)
 shap_values_kernel = kernel_explainer.shap_values(x, nsamples=500)
 
 
-# In[9]:
+# In[10]:
 
 
-shap.summary_plot(shap_values_kernel[0], x, max_display=x.shape[-1])
+shap.summary_plot(shap_values_kernel[0], x, max_display=25, feature_names=roi_names)
 
-shap.force_plot(kernel_explainer.expected_value[0], shap_values_kernel[0][0])fig, ax = plt.subplots(figsize=(25, 5), dpi=150)
-ax.plot(y)
-ax.set_title(f"proximity values")
-plt.grid(True)
+
+# ### shap: Explainer
+
+# In[11]:
+
+
+# select a set of background examples to take an expectation over
+# 50 'typical' feature values
+background = shap.utils.sample(X, nsamples=50)
+# background.shape
+
+# create an explainer with model and a masker
+# masker masks out tabular features by integrating over the given background dataset
+explainer = shap.Explainer(linear_model.predict, masker=shap.maskers.Partition(background))
+
+# here we explain two images using 500 evaluations of the underlying model to estimate the SHAP values
+shap_values_explainer = explainer(x, max_evals=171, batch_size=50, outputs=shap.Explanation.argsort.flip[:4])
+
+
+# In[12]:
+
+
+shap.summary_plot(shap_values_explainer, x, max_display=25, feature_names=roi_names)
+
