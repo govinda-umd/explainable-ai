@@ -644,7 +644,7 @@ Real data have a ton of noise.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 20:07:38.898410: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-09 16:04:02.674828: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using cuda:1 device
@@ -993,9 +993,9 @@ Real data have a ton of noise.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 44/44 [00:00&lt;00:00, 7881.00it/s]
-100%|██████████| 33/33 [00:00&lt;00:00, 7854.50it/s]
-100%|██████████| 32/32 [00:00&lt;00:00, 8357.27it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 44/44 [00:00&lt;00:00, 7908.02it/s]
+100%|██████████| 33/33 [00:00&lt;00:00, 8268.34it/s]
+100%|██████████| 32/32 [00:00&lt;00:00, 2437.53it/s]
 </pre></div>
 </div>
 </div>
@@ -1020,7 +1020,7 @@ Real data have a ton of noise.</p>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span>
-<span class="n">idx_roi</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">idx_roi</span> <span class="o">=</span> <span class="mi">24</span> <span class="c1"># L PCC</span>
 
 <span class="n">X_conds</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">LABELS</span><span class="p">:</span>
@@ -1183,13 +1183,13 @@ Real data have a ton of noise.</p>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:62: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
   warnings.warn(&quot;dropout option adds dropout after all but last &quot;
-100%|██████████| 100/100 [00:09&lt;00:00, 10.21it/s]
+100%|██████████| 100/100 [00:10&lt;00:00,  9.97it/s]
 /home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:942: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at  ../aten/src/ATen/native/cudnn/RNN.cpp:926.)
   result = _VF.gru(input, hx, self._flat_weights, self.bias, self.num_layers,
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.45315859466791153, 0.7752910107374191)
-test: (0.5590868405997753, 0.7118443436920643)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.44765110686421394, 0.7867407016456127)
+test: (0.5467038378119469, 0.7208426669239998)
 </pre></div>
 </div>
 <img alt="../../_images/01-simulated_data_white_noise_13_2.png" src="../../_images/01-simulated_data_white_noise_13_2.png" />
@@ -1285,13 +1285,13 @@ GRU model with either 8 units, or 16 units, or 32 units overfits on the training
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:62: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
   warnings.warn(&quot;dropout option adds dropout after all but last &quot;
-100%|██████████| 100/100 [00:09&lt;00:00, 10.18it/s]
+100%|██████████| 100/100 [00:10&lt;00:00,  9.93it/s]
 /home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:942: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at  ../aten/src/ATen/native/cudnn/RNN.cpp:926.)
   result = _VF.gru(input, hx, self._flat_weights, self.bias, self.num_layers,
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.19868684746325016, 0.912787027657032)
-test: (0.4983990639448166, 0.7906668931245804)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.20605060551315546, 0.9103854782879353)
+test: (0.4318741485476494, 0.8077567256987095)
 </pre></div>
 </div>
 <img alt="../../_images/01-simulated_data_white_noise_15_2.png" src="../../_images/01-simulated_data_white_noise_15_2.png" />
@@ -1385,13 +1385,13 @@ test: (0.4983990639448166, 0.7906668931245804)
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:62: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
   warnings.warn(&quot;dropout option adds dropout after all but last &quot;
-100%|██████████| 100/100 [00:09&lt;00:00, 10.03it/s]
+100%|██████████| 100/100 [00:10&lt;00:00,  9.98it/s]
 /home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:942: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at  ../aten/src/ATen/native/cudnn/RNN.cpp:926.)
   result = _VF.gru(input, hx, self._flat_weights, self.bias, self.num_layers,
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.07438795152120292, 0.9606485515832901)
-test: (0.3219709815457463, 0.8762556165456772)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.07593541801907122, 0.9623027294874191)
+test: (0.21739155240356922, 0.9167132116854191)
 </pre></div>
 </div>
 <img alt="../../_images/01-simulated_data_white_noise_16_2.png" src="../../_images/01-simulated_data_white_noise_16_2.png" />
@@ -1485,13 +1485,13 @@ test: (0.3219709815457463, 0.8762556165456772)
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:62: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
   warnings.warn(&quot;dropout option adds dropout after all but last &quot;
-100%|██████████| 100/100 [00:10&lt;00:00,  9.75it/s]
+100%|██████████| 100/100 [00:09&lt;00:00, 10.07it/s]
 /home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:942: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at  ../aten/src/ATen/native/cudnn/RNN.cpp:926.)
   result = _VF.gru(input, hx, self._flat_weights, self.bias, self.num_layers,
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.6591870412230492, 0.6144471764564514)
-test: (0.6698360182344913, 0.6030971258878708)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.6713389903306961, 0.5899633504450321)
+test: (0.6681652665138245, 0.5922851860523224)
 </pre></div>
 </div>
 <img alt="../../_images/01-simulated_data_white_noise_17_2.png" src="../../_images/01-simulated_data_white_noise_17_2.png" />
@@ -1585,13 +1585,13 @@ test: (0.6698360182344913, 0.6030971258878708)
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:62: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
   warnings.warn(&quot;dropout option adds dropout after all but last &quot;
-100%|██████████| 100/100 [00:10&lt;00:00,  9.86it/s]
+100%|██████████| 100/100 [00:09&lt;00:00, 10.15it/s]
 /home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/torch/nn/modules/rnn.py:942: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at  ../aten/src/ATen/native/cudnn/RNN.cpp:926.)
   result = _VF.gru(input, hx, self._flat_weights, self.bias, self.num_layers,
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.695920292288065, 0.5052017122507095)
-test: (0.6971389427781105, 0.49923272244632244)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valid: (0.6987479515373707, 0.49457909911870956)
+test: (0.6945313103497028, 0.5193917714059353)
 </pre></div>
 </div>
 <img alt="../../_images/01-simulated_data_white_noise_18_2.png" src="../../_images/01-simulated_data_white_noise_18_2.png" />
