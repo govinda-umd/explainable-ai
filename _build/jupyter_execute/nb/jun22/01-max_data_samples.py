@@ -115,15 +115,15 @@ args.MASK = -100
 
 # data
 args.num_subjects = len(max_data_df)
-args.num_train = round(0.45 * args.num_subjects)
-args.num_valid = round(0.05 * args.num_subjects)
+args.num_train = round(0.4 * args.num_subjects)
+args.num_valid = round(0.3 * args.num_subjects)
 args.num_test = args.num_subjects - args.num_train - args.num_valid
 
 '''
 generate dataset for the model
 '''
 subject_idx_list = np.arange(args.num_subjects)
-random.Random(args.SEED).shuffle(subject_idx_list)
+# random.Random(args.SEED).shuffle(subject_idx_list)
 
 train_idx_list = subject_idx_list[:args.num_train]
 valid_idx_list = subject_idx_list[args.num_train : args.num_train + args.num_valid]
@@ -137,64 +137,87 @@ test_idx_list = subject_idx_list[args.num_train + args.num_valid:]
 # In[5]:
 
 
-X_train
+print(X_train.shape, y_train.shape)
+print(X_valid.shape, y_valid.shape)
+print(X_test.shape, y_test.shape)
 
 
-# In[6]:
+# In[1]:
 
 
-X, y = X_train.cpu().numpy(), y_train.cpu().numpy()
-X_conds = {}
-for label in args.LABELS:
-    idx = y[:, 0] == label
-    X_conds[f"{label}_m"] = np.mean(X[idx, :], axis=0)
-    X_conds[f"{label}_s"] = 1.96 * np.std(X[idx, :], axis=0) / np.sqrt(idx.shape[0])
-
-roi_name_file = (
-    f"{os.environ['HOME']}/parcellations/MAX_85_ROI_masks/ROI_names.txt"
-)
-roi_names = pd.read_csv(roi_name_file, names=['roi_name']).values.squeeze()
-
-time = np.arange(X.shape[1])
-names = ['safe', 'threat']
-colors = {0:'royalblue', 1:'firebrick'}
-nrows, ncols = 17, 5
-
-fig, axs = plt.subplots(
-    nrows=nrows, 
-    ncols=ncols, 
-    figsize=(5*ncols, 4*nrows), 
-    sharex=False, 
-    sharey=True, 
-    dpi=150
-)
-
-plt.subplots_adjust(
-    left=None, bottom=None, 
-    right=None, top=None, 
-    wspace=None, hspace=0.5
-)
-
-for idx_roi, roi_name in enumerate(roi_names):
-    ax = axs[idx_roi//ncols, np.mod(idx_roi,ncols)]
-
-    ax.set_title(f"{roi_name}")
+def plot_roi_time_series(X, y, fig_file=None, savefig=True):
+    X_conds = {}
     for label in args.LABELS:
-        ts_mean = X_conds[f"{label}_m"][:, idx_roi]
-        ts_std = X_conds[f"{label}_s"][:, idx_roi]
+        idx = y[:, 0] == label
+        X_conds[f"{label}_m"] = np.mean(X[idx, :, :], axis=0)
+        X_conds[f"{label}_s"] = 1.96 * np.std(X[idx, :], axis=0) / np.sqrt(idx.shape[0])
 
-        ax.plot(ts_mean, color=colors[label], label=names[label])
+    roi_name_file = (
+        f"{os.environ['HOME']}/parcellations/MAX_85_ROI_masks/ROI_names.txt"
+    )
+    roi_names = pd.read_csv(roi_name_file, names=['roi_name']).values.squeeze()
 
-        ax.fill_between(
-            time, 
-            (ts_mean - ts_std), 
-            (ts_mean + ts_std),
-            alpha=0.3, color=colors[label],
+    time = np.arange(X.shape[1])
+    names = ['safe', 'threat']
+    colors = {0:'royalblue', 1:'firebrick'}
+    nrows, ncols = 17, 5
+
+    fig, axs = plt.subplots(
+        nrows=nrows, 
+        ncols=ncols, 
+        figsize=(5*ncols, 4*nrows), 
+        sharex=False, 
+        sharey=True, 
+        dpi=150
+    )
+
+    plt.subplots_adjust(
+        left=None, bottom=None, 
+        right=None, top=None, 
+        wspace=None, hspace=0.5
+    )
+
+    for idx_roi, roi_name in enumerate(roi_names):
+        ax = axs[idx_roi//ncols, np.mod(idx_roi,ncols)]
+
+        ax.set_title(f"{roi_name}")
+        for label in args.LABELS:
+            ts_mean = X_conds[f"{label}_m"][:, idx_roi]
+            ts_std = X_conds[f"{label}_s"][:, idx_roi]
+
+            ax.plot(ts_mean, color=colors[label], label=names[label])
+
+            ax.fill_between(
+                time, 
+                (ts_mean - ts_std), 
+                (ts_mean + ts_std),
+                alpha=0.3, color=colors[label],
+            )
+        ax.set_xlabel(f"time")
+        ax.set_ylabel(f"roi resp.")
+        ax.grid(True)
+        ax.legend()
+
+    if savefig:
+        fig.savefig(
+            fig_file,
+            dpi=150,
+            format='png',
+            bbox_inches='tight',
+            transparent=False
         )
-    ax.set_xlabel(f"time")
-    ax.set_ylabel(f"roi resp.")
-    ax.grid(True)
-    ax.legend()
+
+
+# In[7]:
+
+
+# fig_file = f"{proj_dir}/data/max/roi_timeseries_train.png"
+# X, y = X_train.cpu().numpy(), y_train.cpu().numpy()
+# plot_roi_time_series(X, y, fig_file)
+
+# fig_file = f"{proj_dir}/data/max/roi_timeseries_valid.png"
+# X, y = X_valid.cpu().numpy(), y_valid.cpu().numpy()
+# plot_roi_time_series(X, y, fig_file)
 
 
 # I compared the time series of each roi with the responses shown in the MAX paradigm paper: [Murty et al. - 2022 - Distributed and Multifaceted Effects of Threat and Safety](https://direct.mit.edu/jocn/article/34/3/495/108894).
@@ -202,60 +225,38 @@ for idx_roi, roi_name in enumerate(roi_names):
 
 # ## model
 
-# In[7]:
-
-
-# model args
-args.num_units = 32 
-args.num_classes = 2 # for binary classification
-args.l2 = 1e-2
-args.dropout = 0.5
-args.learning_rate = 4e-4
-
-args.num_epochs = 50
-args.validation_split = 0.2
-args.batch_size = 64
-
-args.return_sequences = True
-
-args.input_size = X_train.shape[-1]
-
-
 # In[8]:
 
 
-class GRU_classifier(nn.Module):
-    def __init__(self, args):
-        super(GRU_classifier, self).__init__()
-        self.gru = nn.GRU(
-            input_size=args.input_size,
-            hidden_size=args.num_units,
-            num_layers=1,
-            batch_first=True,
-            dropout=args.dropout
-        )
-        self.fc = nn.Linear(args.num_units, args.num_classes)
+def plot_training_history(history):
+    fig, axs = plt.subplots(
+        nrows=2, ncols=1,
+        figsize=(11,5),
+        dpi=150
+    )
 
-    def forward(self, x):
-        x, _ = self.gru(x)
-        y = self.fc(x)
-        return y
+    ax = axs[0]
+    ax.plot(history['train_loss'], color='tomato', linestyle='-.', label='training_loss')
+    ax.plot(history['valid_loss'], color='forestgreen', label='valid_loss')
+    ax.set_ylabel(f"losses")
+    ax.set_xlabel(f"epochs")
+    ax.legend()
+    ax.grid(True)
+
+    ax = axs[1]
+    ax.plot(history['train_acc'], color='tomato', linestyle='-.', label='training_acc')
+    ax.plot(history['valid_acc'], color='forestgreen', label='valid_acc')
+    ax.set_ylabel(f"accuracies")
+    ax.set_xlabel(f"epochs")
+    ax.set_ylim(0.5, 1.0)
+    ax.legend()
+    ax.grid(True)
 
 
 # In[9]:
 
 
-def accfn(y_true, y_pred):
-    labels_pred = torch.argmax(y_pred, axis=-1)
-    mask = (y_true != args.MASK).bool()
-    correct = 1-torch.abs(labels_pred[mask] - y_true[mask])
-    return correct.sum() / len(correct)
-
-
-# In[10]:
-
-
-def train(model, X, y, opt, lossfn, permutation):
+def train(model, X, y, opt, loss_obj, permutation):
     epoch_losses = []
     epoch_accs = []
 
@@ -266,12 +267,12 @@ def train(model, X, y, opt, lossfn, permutation):
         batch_x, batch_y = X[indices], y[indices]
 
         y_pred = model(batch_x,)
-        loss = lossfn(
+        loss = loss_obj(
             y_pred.view(-1, args.num_classes), 
             batch_y.view(-1)
         )
 
-        acc = accfn(batch_y, y_pred)
+        acc = model.accuracy(y_pred, batch_y)
 
         opt.zero_grad()
         loss.backward()
@@ -283,7 +284,7 @@ def train(model, X, y, opt, lossfn, permutation):
     return  np.sum(epoch_losses) / len(epoch_losses), np.sum(epoch_accs) / len(epoch_accs)
 
 
-def evaluate(model, X, y, lossfn, permutation):
+def evaluate(model, X, y, loss_obj, permutation):
     epoch_losses = []
     epoch_accs = []
 
@@ -295,12 +296,12 @@ def evaluate(model, X, y, lossfn, permutation):
             batch_x, batch_y = X[indices], y[indices]
 
             y_pred = model(batch_x,)
-            loss = lossfn(
+            loss = loss_obj(
                 y_pred.view(-1, args.num_classes), 
                 batch_y.view(-1)
             )
 
-            acc = accfn(batch_y, y_pred)
+            acc = model.accuracy(y_pred, batch_y)
 
             epoch_losses += [loss.item()]
             epoch_accs += [acc.item()]
@@ -308,38 +309,18 @@ def evaluate(model, X, y, lossfn, permutation):
     return np.sum(epoch_losses) / len(epoch_losses), np.sum(epoch_accs) / len(epoch_accs)
 
 
-# In[11]:
+# In[10]:
 
 
-model_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}.pt"
-history_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}_history"
-
-model = GRU_classifier(args).to(torch.float32)
-lossfn = nn.CrossEntropyLoss(ignore_index=args.MASK, reduction='mean')
-optimizer = torch.optim.Adam(model.parameters())
-
-model.to(device)
-lossfn.to(device)
-
-if os.path.exists(model_file):
-
-    model.load_state_dict(torch.load(model_file))
-    with open(history_file, 'rb') as f:
-        history = pickle.load(f)
-
-else:
-    
-    permut_train = torch.randperm(X_train.size()[0])
-    permut_valid = torch.randperm(X_valid.size()[0])
-
+def fit(model, loss_obj, optimizer):
     best_valid_loss = float('inf')
 
     train_loss, train_acc = np.zeros(args.num_epochs), np.zeros(args.num_epochs)
     valid_loss, valid_acc = np.zeros(args.num_epochs), np.zeros(args.num_epochs)
 
     for epoch in range(args.num_epochs):
-        train_loss[epoch], train_acc[epoch] = train(model, X_train, y_train, optimizer, lossfn, permut_train)
-        valid_loss[epoch], valid_acc[epoch] = evaluate(model, X_valid, y_valid, lossfn, permut_valid)
+        train_loss[epoch], train_acc[epoch] = train(model, X_train, y_train, optimizer, loss_obj, permut_train)
+        valid_loss[epoch], valid_acc[epoch] = evaluate(model, X_valid, y_valid, loss_obj, permut_valid)
 
         if valid_loss[epoch] < best_valid_loss:
             best_valid_loss = valid_loss[epoch]
@@ -356,39 +337,162 @@ else:
         'valid_acc': valid_acc
     }
 
-    torch.save(model.state_dict(), model_file)
+    # torch.save(model.state_dict(), model_file)
     with open(history_file, 'wb') as f:
         pickle.dump(history, f)
+
+
+# In[11]:
+
+
+# model args
+args.num_classes = 2 # for binary classification
+args.l2 = 1e-2
+args.dropout = 0.5
+args.learning_rate = 4e-4
+
+args.num_epochs = 50
+args.validation_split = 0.2
+args.batch_size = 64
+
+args.return_sequences = True
+
+args.input_size = X_train.shape[-1]
 
 
 # In[12]:
 
 
-fig, axs = plt.subplots(
-    nrows=2, ncols=1,
-    figsize=(11,5),
-    dpi=150
-)
+class GRU_classifier(nn.Module):
+    def __init__(self, args):
+        super(GRU_classifier, self).__init__()
 
-ax = axs[0]
-ax.plot(history['train_loss'], color='tomato', linestyle='-.', label='training_loss')
-ax.plot(history['valid_loss'], color='forestgreen', label='valid_loss')
-ax.set_ylabel(f"losses")
-ax.set_xlabel(f"epochs")
-ax.legend()
-ax.grid(True)
+        self.gru = nn.GRU(
+            input_size=args.input_size,
+            hidden_size=args.num_units,
+            num_layers=1,
+            batch_first=True,
+            dropout=args.dropout
+        )
+        
+        self.fc = nn.Linear(args.num_units, args.num_classes)
 
-ax = axs[1]
-ax.plot(history['train_acc'], color='tomato', linestyle='-.', label='training_acc')
-ax.plot(history['valid_acc'], color='forestgreen', label='valid_acc')
-ax.set_ylabel(f"accuracies")
-ax.set_xlabel(f"epochs")
-ax.legend()
-ax.grid(True)
+        self.dropout = nn.Dropout(args.dropout)
+
+    def forward(self, x):
+        x, hn = self.gru(x)
+        x = self.dropout(x)
+        y = self.fc(x)
+        return y
+
+    # def initHidden(self, args):
+        # return torch.zeros(1, args.batch_size, args.num_units, device=device)
+
+    def accuracy(self, y_pred, y_true):
+        labels_pred = torch.argmax(y_pred, axis=-1)
+        mask = (y_true != args.MASK).bool()
+        correct = 1-torch.abs(labels_pred[mask] - y_true[mask])
+        return correct.sum() / len(correct)
 
 
-# In[ ]:
+# In[13]:
 
 
+args.num_units = 8
+model_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}.pt"
+history_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}_history"
 
+model = GRU_classifier(args).to(torch.float32)
+loss_obj = nn.CrossEntropyLoss(ignore_index=args.MASK, reduction='mean')
+optimizer = torch.optim.Adam(model.parameters())
+
+model.to(device)
+loss_obj.to(device)
+
+# X_train, y_train, X_valid, y_valid, model_file, history_file
+permut_train = torch.randperm(X_train.size()[0])
+permut_valid = torch.randperm(X_valid.size()[0])
+
+if not os.path.exists(model_file):
+    fit(model, loss_obj, optimizer)
+
+
+model.load_state_dict(torch.load(model_file))
+with open(history_file, 'rb') as f:
+    history = pickle.load(f)
+
+plot_training_history(history)
+
+print(evaluate(model, X_valid, y_valid, loss_obj, permut_valid))
+
+permut_test = torch.randperm(X_test.size()[0])
+print(evaluate(model, X_test, y_test, loss_obj, permut_test))
+
+
+# In[14]:
+
+
+args.num_units = 16
+model_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}.pt"
+history_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}_history"
+
+model = GRU_classifier(args).to(torch.float32)
+loss_obj = nn.CrossEntropyLoss(ignore_index=args.MASK, reduction='mean')
+optimizer = torch.optim.Adam(model.parameters())
+
+model.to(device)
+loss_obj.to(device)
+
+# X_train, y_train, X_valid, y_valid, model_file, history_file
+permut_train = torch.randperm(X_train.size()[0])
+permut_valid = torch.randperm(X_valid.size()[0])
+
+if not os.path.exists(model_file):
+    fit(model, loss_obj, optimizer)
+
+
+model.load_state_dict(torch.load(model_file))
+with open(history_file, 'rb') as f:
+    history = pickle.load(f)
+
+plot_training_history(history)
+
+print(evaluate(model, X_valid, y_valid, loss_obj, permut_valid))
+
+permut_test = torch.randperm(X_test.size()[0])
+print(evaluate(model, X_test, y_test, loss_obj, permut_test))
+
+
+# In[15]:
+
+
+args.num_units = 32
+model_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}.pt"
+history_file = f"{results_dir}/max/models/GRU_classifier_gruunits_{args.num_units}_history"
+
+model = GRU_classifier(args).to(torch.float32)
+loss_obj = nn.CrossEntropyLoss(ignore_index=args.MASK, reduction='mean')
+optimizer = torch.optim.Adam(model.parameters())
+
+model.to(device)
+loss_obj.to(device)
+
+# X_train, y_train, X_valid, y_valid, model_file, history_file
+permut_train = torch.randperm(X_train.size()[0])
+permut_valid = torch.randperm(X_valid.size()[0])
+
+if not os.path.exists(model_file):
+    fit(model, loss_obj, optimizer)
+
+
+model.load_state_dict(torch.load(model_file))
+with open(history_file, 'rb') as f:
+    history = pickle.load(f)
+
+plot_training_history(history)
+
+print(evaluate(model, X_valid, y_valid, loss_obj, permut_valid))
+
+permut_test = torch.randperm(X_test.size()[0])
+print(evaluate(model, X_test, y_test, loss_obj, permut_test))
 

@@ -3,7 +3,7 @@
 
 # # May 21,24,25, 2022: pytorch implementation of model: idea1
 
-# In[37]:
+# In[1]:
 
 
 import os
@@ -53,13 +53,12 @@ month_dir = f"{proj_dir}/nb/may22"
 
 # folders
 sys.path.insert(0, proj_dir)
-import helpers.dataset_utils as dataset_utils
-import helpers.base_model as base_model
-import helpers.model_definitions as model_definitions
+import helpers.pytorch.dataset_utils as dataset_utils
+import helpers.pytorch.model_definitions as model_definitions
 import data.emoprox2.scripts.stimulus_utils as stimulus_utils
 
 
-# In[38]:
+# In[2]:
 
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -68,7 +67,7 @@ print(f"Using {device} device")
 
 # ## data
 
-# In[39]:
+# In[3]:
 
 
 def get_data(data, subject_list):
@@ -88,7 +87,7 @@ def get_data(data, subject_list):
     # return X, y, X_len
 
 
-# In[40]:
+# In[4]:
 
 
 '''
@@ -152,7 +151,7 @@ args.input_size = X_train.shape[-1]
 
 # ## model and training
 
-# In[41]:
+# In[5]:
 
 
 class GRU_classifier(nn.Module):
@@ -173,7 +172,7 @@ class GRU_classifier(nn.Module):
         return y
 
 
-# In[42]:
+# In[6]:
 
 
 def accfn(y_true, y_pred):
@@ -183,7 +182,7 @@ def accfn(y_true, y_pred):
     return correct.sum() / len(correct)
 
 
-# In[43]:
+# In[7]:
 
 
 def train(model, X, y, opt, lossfn, permutation):
@@ -239,7 +238,7 @@ def evaluate(model, X, y, lossfn, permutation):
     return np.sum(epoch_losses) / len(epoch_losses), np.sum(epoch_accs) / len(epoch_accs)
 
 
-# In[44]:
+# In[8]:
 
 
 model_file = f"{results_dir}/emoprox_full_data/models/GRU_classifier_gruunits_{args.num_units}_idea1.pt"
@@ -292,7 +291,7 @@ else:
         pickle.dump(history, f)
 
 
-# In[45]:
+# In[9]:
 
 
 fig, axs = plt.subplots(
@@ -322,7 +321,7 @@ ax.grid(True)
 
 # ## interpretation(s)
 
-# In[46]:
+# In[11]:
 
 
 def plot_roi_vec_on_niimg(roi_data, mask):
@@ -346,10 +345,10 @@ def plot_roi_vec_on_niimg(roi_data, mask):
 
 parcellation_file = f"/home/govindas/parcellations/templates/MAX_ROIs_final_gm_85.nii.gz"
 # print(mask_file)
-parcellation = image.load_img(parcellation)
+parcellation = image.load_img(parcellation_file)
 
 
-# In[47]:
+# In[12]:
 
 
 def forward_func(X):
@@ -370,7 +369,7 @@ sf_model = softmax_model(model)
 sf_model.to(device)
 
 
-# In[48]:
+# In[13]:
 
 
 from captum.attr import Saliency
@@ -402,7 +401,7 @@ def saliency_attributes(target_class):
     return attributions
 
 
-# In[49]:
+# In[14]:
 
 
 attributions = {}
@@ -410,7 +409,13 @@ for target_class in [APPR, RETR]:
     attributions[target_class] = saliency_attributes(target_class)
 
 
-# In[50]:
+# In[23]:
+
+
+attributions[APPR]['train'].shape
+
+
+# In[ ]:
 
 
 '''
@@ -481,7 +486,7 @@ for name in ['train', 'test']:
             stat_img_all_rois.to_filename(null_nifti_file)
 
 
-# In[51]:
+# In[ ]:
 
 
 # from captum.attr import IntegratedGradients
@@ -519,7 +524,7 @@ for name in ['train', 'test']:
     
 
 
-# In[52]:
+# In[ ]:
 
 
 # from captum.attr import Deconvolution

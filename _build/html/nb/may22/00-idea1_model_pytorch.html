@@ -419,6 +419,16 @@ const thebe_selector_output = ".output, .cell_output"
      May 30, 2022: Data samples and model
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/01-simulated_data_white_noise.html">
+     June 4, 2022: creating simulated data: white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/01-simulated_data_wss_noise.html">
+     June 6-8, 2022: simulated data: wss noise
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -635,9 +645,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="c1"># folders</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_dir</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">helpers.dataset_utils</span> <span class="k">as</span> <span class="nn">dataset_utils</span>
-<span class="kn">import</span> <span class="nn">helpers.base_model</span> <span class="k">as</span> <span class="nn">base_model</span>
-<span class="kn">import</span> <span class="nn">helpers.model_definitions</span> <span class="k">as</span> <span class="nn">model_definitions</span>
+<span class="kn">import</span> <span class="nn">helpers.pytorch.dataset_utils</span> <span class="k">as</span> <span class="nn">dataset_utils</span>
+<span class="kn">import</span> <span class="nn">helpers.pytorch.model_definitions</span> <span class="k">as</span> <span class="nn">model_definitions</span>
 <span class="kn">import</span> <span class="nn">data.emoprox2.scripts.stimulus_utils</span> <span class="k">as</span> <span class="nn">stimulus_utils</span>
 </pre></div>
 </div>
@@ -962,7 +971,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="n">parcellation_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/home/govindas/parcellations/templates/MAX_ROIs_final_gm_85.nii.gz&quot;</span>
 <span class="c1"># print(mask_file)</span>
-<span class="n">parcellation</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">parcellation</span><span class="p">)</span>
+<span class="n">parcellation</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">parcellation_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1044,6 +1053,21 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/govindas/venvs/expln-ai3.9/lib/python3.9/site-packages/captum/_utils/gradient.py:57: UserWarning: Input Tensor 0 did not already require gradients, required_grads has been set automatically.
   warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attributions</span><span class="p">[</span><span class="n">APPR</span><span class="p">][</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([9124, 8, 85])
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4091, 8, 85)
 </pre></div>
 </div>
 </div>

@@ -108,4 +108,8 @@ parts:
           - file: nb/jun22/00-max_dataset
 
           - file: nb/jun22/01-max_data_samples
+
+          - file: nb/jun22/01-simulated_data_white_noise
+
+          - file: nb/jun22/01-simulated_data_wss_noise
       
