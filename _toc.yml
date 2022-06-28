@@ -112,4 +112,10 @@ parts:
           - file: nb/jun22/01-simulated_data_white_noise
 
           - file: nb/jun22/01-simulated_data_wss_noise
+
+          - file: nb/jun22/02-interpretations_simulated_data_white_noise
+
+          - file: nb/jun22/03-interp-saliency_simdata-whitenoise_model-mlp
+
+          - file: nb/jun22/03-pytorch_quickstart
       

@@ -37,7 +37,7 @@ def get_max_data_trials(args, data_df, subj_idx_list):
             contig_regions = contiguous_regions(targets == label)
 
             for region in contig_regions:
-                X.append(ts[region[0]: region[1], :])
+                X.append(ts[region[0]: region[1], args.roi_idxs])
                 y.append(targets[region[0]: region[1]])
 
     X = np.stack(X, axis=0)
