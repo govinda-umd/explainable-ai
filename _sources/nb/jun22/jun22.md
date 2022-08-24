@@ -34,4 +34,4 @@ Summary of progress in June 2022
         2. computed attributions for a white noise image.
     Surprisingly, the attributions for these two types of images were qualitatively the same as those for a particular image. This meant that we could observe *what the model see for a class of input*.
 
-But since results on fMRI data were not promising, we thought of shifting our attention to some other computational tools and come back here in future.
+But since results on fMRI data were not promising, we thought of shifting our attention to some other computational tools, such as network analysis, and come back here in future.
