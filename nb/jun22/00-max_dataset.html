@@ -420,8 +420,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01-simulated_data.html">
-     June 4, 2022: creating simulated data
+    <a class="reference internal" href="01-simulated_data_white_noise.html">
+     June 4, 2022: creating simulated data: white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-simulated_data_wss_noise.html">
+     June 6-8, 2022: simulated data: wss noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-interpretations_simulated_data_white_noise.html">
+     June 10,13-16, 2022: model interpretation(s) on simulated data with white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-interp-saliency_simdata-whitenoise_model-mlp.html">
+     June 17, 2022: (simpler) model - mlp - interpretation(s) on simulated data with white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-pytorch_quickstart.html">
+     Jun 18-20, 2022: following PyTorch quickstart
     </a>
    </li>
   </ul>
@@ -594,9 +614,9 @@ threat is painful electrical stimulation and touch is a mild electric vibration.
 
 <span class="c1"># folders</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_dir</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">helpers.dataset_utils</span> <span class="k">as</span> <span class="nn">dataset_utils</span>
-<span class="kn">import</span> <span class="nn">helpers.base_model</span> <span class="k">as</span> <span class="nn">base_model</span>
-<span class="kn">import</span> <span class="nn">helpers.model_definitions</span> <span class="k">as</span> <span class="nn">model_definitions</span>
+<span class="kn">import</span> <span class="nn">helpers.pytorch.dataset_utils</span> <span class="k">as</span> <span class="nn">dataset_utils</span>
+<span class="kn">import</span> <span class="nn">helpers.tensorflow.base_model</span> <span class="k">as</span> <span class="nn">base_model</span>
+<span class="kn">import</span> <span class="nn">helpers.pytorch.model_definitions</span> <span class="k">as</span> <span class="nn">model_definitions</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +624,7 @@ threat is painful electrical stimulation and touch is a mild electric vibration.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-30 12:42:14.108273: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-21 16:08:08.515846: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
 </pre></div>
 </div>
 </div>
@@ -681,11 +701,6 @@ threat is painful electrical stimulation and touch is a mild electric vibration.
 <span class="k">else</span><span class="p">:</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">max_data_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">max_data_df</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 109/109 [00:17&lt;00:00,  6.13it/s]
 </pre></div>
 </div>
 </div>
@@ -803,7 +818,18 @@ threat is painful electrical stimulation and touch is a mild electric vibration.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-max_dataset_5_0.png" src="../../_images/00-max_dataset_5_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/home/govindas/explainable-ai/nb/jun22/00-max_dataset.ipynb Cell 6</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B129.2.150.11/home/govindas/explainable-ai/nb/jun22/00-max_dataset.ipynb#W5sdnNjb2RlLXJlbW90ZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B129.2.150.11/home/govindas/explainable-ai/nb/jun22/00-max_dataset.ipynb#W5sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">targets</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B129.2.150.11/home/govindas/explainable-ai/nb/jun22/00-max_dataset.ipynb#W5sdnNjb2RlLXJlbW90ZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B129.2.150.11/home/govindas/explainable-ai/nb/jun22/00-max_dataset.ipynb#W5sdnNjb2RlLXJlbW90ZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;targets&#39; is not defined
+</pre></div>
+</div>
+<img alt="../../_images/00-max_dataset_5_1.png" src="../../_images/00-max_dataset_5_1.png" />
 </div>
 </div>
 </div>

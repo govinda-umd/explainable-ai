@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Updates" href="jun22_updates.html" />
@@ -429,6 +431,21 @@ const thebe_selector_output = ".output, .cell_output"
      June 6-8, 2022: simulated data: wss noise
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-interpretations_simulated_data_white_noise.html">
+     June 10,13-16, 2022: model interpretation(s) on simulated data with white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-interp-saliency_simdata-whitenoise_model-mlp.html">
+     June 17, 2022: (simpler) model - mlp - interpretation(s) on simulated data with white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-pytorch_quickstart.html">
+     Jun 18-20, 2022: following PyTorch quickstart
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -534,10 +551,46 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <p>Summary of progress in June 2022</p>
-<ul class="simple">
-<li><p><strong>Progress</strong>
-1.</p></li>
+<ul>
+<li><p><strong>MAX Paradigm</strong></p>
+<ol class="simple">
+<li><p>This paradigm was designed by previous lab members and fMRI scans of 109 participants were collected. This is the main paper: [&#64;murty_distributed_2022]. It found that responses to threat and safety in the early periods differed from those in the late periods in many ROIs. Some ROIs displayed sustained responses to the two conditions, and some others displayed transient profiles. Overall, effect of anxious anticipation is <strong>distributed</strong> across the entire brain, including the <em>subcortical</em> regions.</p></li>
+</ol>
+</li>
+<li><p><strong>Progress</strong></p>
+<ol class="simple">
+<li><p><a class="reference internal" href="00-max_dataset.html"><span class="doc std std-doc"><strong>Data</strong></span></a> I extracted the fMRI time series for the MAX paradigm and grouped the subjects into two equal halves: <em>training</em>/<em>exploratory</em> set and an <em>unseen</em> set. I do all analyses on the training set and plan to report the final results on the unseen set to avoid circularity in the analysis. To test for generalizability of the models, I split the training set into two groups: training and validation, and track model’s performances on the validation set. For each subject, I extracted the time series for all the <em>fake</em> stimulus blocks.</p></li>
+<li><p><a class="reference internal" href="01-max_data_pytorch_models.html"><span class="doc std std-doc"><strong>Models</strong></span></a> I used two classes of models; one, a feed forward neural network (FFNN) model to classify data based on time averaged responses, and second, a recurrent neural network (RNN) model to utilise temporal patterns in the data for classification. All models are written using PyTorch.</p>
+<ol class="simple">
+<li><p>The FFNN is a two layer multilayer perceptron (MLP) that takes in time averaged ROI responses within a stimulus block and predicts the corresponding stimulus, threat/safe. Training loss keeps decreasing while validation loss stabilizes after certain epochs. But as anticipated, training accuracy increases beyond 0.8 with negligible rate, and validation accuracy plateaus ~0.7. This indicates that we need a more sophisticated model that can process time series data.</p></li>
+<li><p>In order to do that, I used RNN. It is a gated recurrent unit (GRU) developed previously by me and Joyneel that takes in the time series of all ROIs within a block as input and predicts the stimulus present for that block. The model has a single hidden layer with <span class="math notranslate nohighlight">\(32\)</span> hidden units and a fully connected layer to transform hidden state of the input to stimulus prediction. Very surprisingly, the validation accuracy is ~0.65. Moreover, training accuracy and validation accuracy curves diverge indicating that the model is overfitting.</p></li>
+</ol>
+</li>
+<li><p><strong>Simulating data</strong> But since the real data is very noisy, how do I make sure whether the model learns the relevant patterns in the data and not fit noise? The goal is to see how well the NN can do with data with very little noise. Is that a trivial problem to learn? Or very difficult even with just a little bit of noise. Real data have a ton of noise.</p>
+<ol class="simple">
+<li><p><a class="reference internal" href="01-simulated_data_white_noise.html"><span class="doc std std-doc">White noise</span></a> One way Luiz suggested was to simulate the time series by controlling for structure of noise. I can increase complexity of noise and converge the statistical properties of the simulated data to the real data. To start, I added an <strong>i.i.d. distributed Gaussian</strong> noise over the mean time series of each stimulus and created input samples. This is called <em>White noise</em>. I set the mean and standard deviation of the White noise to be that of the real data. I also scaled the standard deviation with a coefficient <span class="math notranslate nohighlight">\(\text{noise\_level} \gte 0\)</span> to control for amount of noise w.r.t. the mean signal. <span class="math notranslate nohighlight">\(\text{noise\_level} = 1.0\)</span> means that the std. of the noise is same as that of the real data, and <span class="math notranslate nohighlight">\(\text{noise\_level} = 0.5\)</span> means the std. of the noise is half of that of the real data. I varied the noise level from 0.0 through 5.0 and evaluated GRU model’s performance. At noise level of 1.0, validation accuracy is 0.78, meaning this is like a soft ceiling for model’s performance. Additionally, I found that reducing noise level from 1.0 to 0.5 increases validation accuracy from 0.78 to 0.91 and also increasing noise level from 1.0 to 2.0 validation accuracy drops from 0.78 to 0.60, which are significant. Since the simulated data is one realization of the noise distribution, I repeated the procedure for <span class="math notranslate nohighlight">\(1000\)</span> times, plotted the validation accuracy curves, and verified that the accuracy is around <span class="math notranslate nohighlight">\(0.78\)</span>.</p></li>
+<li><p><a class="reference internal" href="01-simulated_data_wss_noise.html"><span class="doc std std-doc">Wide sense stationary</span></a> Need to do this.</p></li>
+</ol>
+</li>
+<li><p><a class="reference internal" href="02-interpretations_simulated_data_white_noise.html"><span class="doc std std-doc"><strong>Interpreting the model</strong></span></a> Now the main part, explaining model’s predictions in terms of parts of the input. This is typically done by attributing importance scores to each input feature; the more the score, the more the importance. It is important to note that for multi-label-prediction model, each label will have its own explanations in the input. I started with the standrad interpretation methods: Saliency and Integrated gradients.
+Saliency is a simple approach for computing input attributions, returning the gradient of the output w.r.t. the input. This approach can be understood as writing the total differential of the output in terms of the differentials of input features. The partial derivatives of the output w.r.t. the input features become input attributions.
+Integrated gradients represents the integral of gradients w.r.t. inputs along the path from a given baseline to input. This approach satisfies the axioms of sensitivity and implementation invariance. More details can be found in the <a class="reference external" href="https://doi.org/10.48550/arXiv.1703.01365">original paper</a>.
+Luiz and I expected that attributions should reflect <em>visible</em> patterns in the inputs, i.e.</p>
+<ol class="simple">
+<li><p>attributions for all input features follow a very similar pattern,</p></li>
+<li><p>if a part of time series goes down and is not important, attributions are still high.
+<em>The results were not consistent with our understanding.</em></p></li>
+</ol>
+</li>
+<li><p><a class="reference internal" href="03-pytorch_quickstart.html"><span class="doc std std-doc"><strong>Verification on MNIST data</strong></span></a> As a final way to verify whether I was doing everything right, I trained a simple MLP model on a benchmark images dataset, famously known as MNIST digits dataset, and interpreted its predictions using Saliency and Integrated Gradients. MNIST digits dataset is a large collection of handwritten digits that is used as a benchmark for training any novel machine learning/deep learning model. Attributions using both methods met our expectations, i.e. attributions reflected the important parts of the input image essential for prediction.</p></li>
+</ol>
+<p>Luiz wanted to see <em>what does the model see for a class of input</em>, e.g. in MNIST a class is a digit (say <span class="math notranslate nohighlight">\(7\)</span>). However, all the methods I know of compute attributions for <em>a</em> particular input, not for a class of inputs. So I did the following:
+1. took average of all the images of each class and computed attributions for these (averaged) inputs,
+2. computed attributions for a white noise image.
+Surprisingly, the attributions for these two types of images were qualitatively the same as those for a particular image. This meant that we could observe <em>what the model see for a class of input</em>.</p>
+</li>
 </ul>
+<p>But since results on fMRI data were not promising, we thought of shifting our attention to some other computational tools and come back here in future.</p>
 </div>
 
     <script type="text/x-thebe-config">

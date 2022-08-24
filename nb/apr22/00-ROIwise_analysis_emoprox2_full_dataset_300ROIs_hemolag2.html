@@ -371,13 +371,77 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../may22/00-checking_temporal_masking_MAXROIs.html">
+    <a class="reference internal" href="../may22/01-checking_temporal_masking_MAXROIs.html">
      May 19, 2022: Check temporal masking in another dataset
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../may22/00-checking_temporal_masking_300ROIs.html">
+    <a class="reference internal" href="../may22/01-checking_temporal_masking_300ROIs.html">
      May 20, 2022: Check temporal masking in another dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../may22/00-idea1_model_pytorch.html">
+     May 21,24,25, 2022: pytorch implementation of model: idea1
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  June 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jun22/jun22.html">
+   Summary
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../jun22/jun22_updates.html">
+   Updates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/00-max_dataset.html">
+     May 28, 2022: Create MAX dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/01-max_data_samples.html">
+     May 30, 2022: Data samples and model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/01-simulated_data_white_noise.html">
+     June 4, 2022: creating simulated data: white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/01-simulated_data_wss_noise.html">
+     June 6-8, 2022: simulated data: wss noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/02-interpretations_simulated_data_white_noise.html">
+     June 10,13-16, 2022: model interpretation(s) on simulated data with white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/03-interp-saliency_simdata-whitenoise_model-mlp.html">
+     June 17, 2022: (simpler) model - mlp - interpretation(s) on simulated data with white noise
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jun22/03-pytorch_quickstart.html">
+     Jun 18-20, 2022: following PyTorch quickstart
     </a>
    </li>
   </ul>
@@ -662,9 +726,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="c1"># folders</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proj_dir</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">helpers.dataset_utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">helpers.base_model</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">helpers.model_definitions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">helpers.tensorflow.dataset_utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">helpers.tensorflow.base_model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">helpers.tensorflow.model_definitions</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># select the GPU to be used</span>
 <span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s1">&#39;GPU&#39;</span><span class="p">)</span>
@@ -682,6 +746,25 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-08-22 15:27:25.473330: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-08-22 15:27:29.265141: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcuda.so.1
+2022-08-22 15:27:29.289119: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:17:00.0 name: Quadro RTX 5000 computeCapability: 7.5
+coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
+2022-08-22 15:27:29.289312: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 1 with properties: 
+pciBusID: 0000:65:00.0 name: Quadro RTX 5000 computeCapability: 7.5
+coreClock: 1.815GHz coreCount: 48 deviceMemorySize: 15.75GiB deviceMemoryBandwidth: 417.29GiB/s
+2022-08-22 15:27:29.289336: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2022-08-22 15:27:29.292067: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublas.so.11
+2022-08-22 15:27:29.292159: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcublasLt.so.11
+2022-08-22 15:27:29.293018: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcufft.so.10
+2022-08-22 15:27:29.293289: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcurand.so.10
+2022-08-22 15:27:29.294011: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusolver.so.11
+2022-08-22 15:27:29.294677: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcusparse.so.11
+2022-08-22 15:27:29.294821: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudnn.so.8
+2022-08-22 15:27:29.295736: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0, 1
+</pre></div>
+</div>
 <div class="output text_html"><div align='center'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAWCAYAAAA1vze2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAdxJREFUeNq0Vt1Rg0AQJjcpgBJiBWIFkgoMFYhPPAIVECogPuYpdJBYgXQQrMCUkA50V7+d2ZwXuXPGm9khHLu3f9+3l1nkWNvtNqfHLgpfQ1EUS3tz5nAQ0+NIsiAZSc6eDlI8M3J00B/mDuUKDk6kfOebAgW3pkdD0pFcODGW4gKKvOrAUm04MA4QDt1OEIXU9hDigfS5rC1eS5T90gltck1Xrizo257kgySZcNRzgCSxCvgiE9nckPJo2b/B2AcEkk2OwL8bD8gmOKR1GPbaCUqxEgTq0tLvgb6zfo7+DgYGkkWL2tqLDV4RSITfbHPPfJKIrWz4nJQTMPAWA7IbD6imcNaDeDfgk+4No+wZr40BL3g9eQJJCFqRQ54KiSt72lsLpE3o3MCBSxDuq4yOckU2hKXRuwBH3OyMR4g1UpyTYw6mlmBqNdUXRM1NfyF5EPI6JkcpIDBIX8jX6DR/6ckAZJ0wEAdLR8DEk6OfC1Pp8BKo6TQIwPJbvJ6toK5lmuvJoRtfK6Ym1iRYIarRo2UyYHvRN5qpakR3yoizWrouoyuXXQqI185LCw07op5ZyCRGL99h24InP0e9xdQukEKVmhzrqZuRIfwISB//cP3Wk3f8f/yR+BRgAHu00HjLcEQBAAAAAElFTkSuQmCC' /></div><script charset='utf-8'>!function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=410)}([function(t,e,n){"use strict";function r(t,e,n,r,o,a,u,c){if(i(e),!t){var s;if(void 0===e)s=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,a,u,c],f=0;s=new Error(e.replace(/%s/g,function(){return l[f++]})),s.name="Invariant Violation"}throw s.framesToPop=1,s}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";var r=n(8),i=r;t.exports=i},function(t,e,n){"use strict";function r(t){for(var e=arguments.length-1,n="Minified React error #"+t+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant="+t,r=0;r<e;r++)n+="&args[]="+encodeURIComponent(arguments[r+1]);n+=" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";var i=new Error(n);throw i.name="Invariant Violation",i.framesToPop=1,i}t.exports=r},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}function i(){try{if(!Object.assign)return!1;var t=new String("abc");if(t[5]="de","5"===Object.getOwnPropertyNames(t)[0])return!1;for(var e={},n=0;n<10;n++)e["_"+String.fromCharCode(n)]=n;var r=Object.getOwnPropertyNames(e).map(function(t){return e[t]});if("0123456789"!==r.join(""))return!1;var i={};return"abcdefghijklmnopqrst".split("").forEach(function(t){i[t]=t}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},i)).join("")}catch(t){return!1}}/*
 object-assign
 (c) Sindre Sorhus
@@ -787,6 +870,15 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> 
  <span class="n">len_test</span><span class="p">,</span> 
  <span class="n">pos_test</span><span class="p">,</span> <span class="n">idx_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_data_samples</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># created this cell on August 17, 2022 for giving dataset to Anna (high school intern).</span>
+<span class="c1"># with open(f&quot;{proj_dir}/data/emoprox2/appr_retr_timesegments.pkl&quot;, &#39;wb&#39;) as f:</span>
+<span class="c1">#     pickle.dump([X_train, y_train, len_train, X_test, y_test, len_test], f)</span>
 </pre></div>
 </div>
 </div>
@@ -960,7 +1052,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;accuracy histograms of null models (blue) and actual model (red)&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_14_1.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_14_1.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_15_1.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_15_1.png" />
 </div>
 </div>
 </div>
@@ -1494,7 +1586,7 @@ Hence, below we lesion combinations of networks to observe higher changes in acc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_25_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_25_0.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_26_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_26_0.png" />
 </div>
 </div>
 <p>Accuracy drops by removing <code class="docutils literal notranslate"><span class="pre">Visual</span></code> network, so we consider it as important.</p>
@@ -1508,7 +1600,7 @@ Hence, below we lesion combinations of networks to observe higher changes in acc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_27_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_27_0.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_28_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_28_0.png" />
 </div>
 </div>
 <p>Removing <code class="docutils literal notranslate"><span class="pre">Visual</span></code>, and <code class="docutils literal notranslate"><span class="pre">Ventral</span> <span class="pre">attention</span></code> drops accuracy the most. Then <code class="docutils literal notranslate"><span class="pre">Visual</span></code> with <code class="docutils literal notranslate"><span class="pre">Default</span></code>.</p>
@@ -1522,7 +1614,7 @@ Hence, below we lesion combinations of networks to observe higher changes in acc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_29_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_29_0.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_30_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_30_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Visual</span></code>, <code class="docutils literal notranslate"><span class="pre">Ventral</span> <span class="pre">attention</span></code>, and <code class="docutils literal notranslate"><span class="pre">Default</span></code> can be considered important.</p>
@@ -1541,7 +1633,7 @@ Hence, below we lesion combinations of networks to observe higher changes in acc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_32_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_32_0.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_33_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_33_0.png" />
 </div>
 </div>
 <p>Again <code class="docutils literal notranslate"><span class="pre">Visual</span></code></p>
@@ -1555,7 +1647,7 @@ Hence, below we lesion combinations of networks to observe higher changes in acc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_34_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_34_0.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_35_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_35_0.png" />
 </div>
 </div>
 <p>Now <code class="docutils literal notranslate"><span class="pre">Visual</span></code>, and <code class="docutils literal notranslate"><span class="pre">Ventral</span> <span class="pre">attention</span></code>.</p>
@@ -1569,7 +1661,7 @@ Hence, below we lesion combinations of networks to observe higher changes in acc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_36_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_36_0.png" />
+<img alt="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_37_0.png" src="../../_images/00-ROIwise_analysis_emoprox2_full_dataset_300ROIs_hemolag2_37_0.png" />
 </div>
 </div>
 <p>The same set of networks: <code class="docutils literal notranslate"><span class="pre">Visual</span></code>, <code class="docutils literal notranslate"><span class="pre">Ventral</span> <span class="pre">attention</span></code>, and <code class="docutils literal notranslate"><span class="pre">Dorsal</span> <span class="pre">attention</span></code>!!</p>
